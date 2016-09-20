@@ -5,7 +5,7 @@ module.exports = function(app)
     app.delete("/api/test/:id", deleteMessage);
 
     var connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/test';
-    
+
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
 

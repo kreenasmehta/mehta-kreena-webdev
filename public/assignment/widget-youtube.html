@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>New Page</title>
+		<title>Edit Widget</title>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/style.css" rel="stylesheet"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -13,12 +13,12 @@
 
 		<nav class="navbar navbar-default navbar-fixed-top bg-primary">
 			<div class="container-fluid">
-				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left" href="page-list.html">
+				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left" href="widget-chooser.html">
 				</a>
 				<div class="navbar-header-fixed">
-					<p class="navbar-brand">New Page</p>
+					<p class="navbar-brand">Edit Widget</p>
 				</div>
-				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right" href="page-list.html">
+				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right" href="widget-list.html">
 				</a>
 			</div>
 		</nav>
@@ -29,13 +29,22 @@
 
 			<form>
 				<div class="form-group">
-					<label for="page-name">Name</label>
-					<input type="text" class="form-control" id="page-name" placeholder="Page Name">
+					<label for="image-name">Name</label>
+					<input type="text" class="form-control" id="image-name">
 				</div>
 				<div class="form-group">
-					<label for="page-title">Title</label>
-					<input type="text" class="form-control" id="page-title" placeholder="Page Title">
+					<label for="image-text">Text</label>
+					<input type="text" class="form-control" id="image-text">
 				</div>
+				<div class="form-group">
+					<label for="image-url">URL</label>
+					<input type="url" class="form-control" id="image-url" value="https://www.youtube.com/">
+				</div>
+				<div class="form-group">
+					<label for="image-width">Width</label>
+					<input type="text" class="form-control" id="image-width">
+				</div>
+				<a href="page-list.html" class="btn btn-danger btn-block">Delete</a>
 			</form>
 
 		</div>

@@ -5,3 +5,20 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+.profile-padding{
+    padding-top: 70px;
+}
+
+li.borderless {
+    border: 0 none;
+}
+
+.navbar-header{
+    height: 50px;
+}
+
+.navbar-fixed-bottom{
+    height: 50px;
+}
+

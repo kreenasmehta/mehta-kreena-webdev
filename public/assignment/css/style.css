@@ -31,3 +31,16 @@ li.borderless {
 .youtube-video{
     width: 100%;
 }
+
+.navbar-brand.header{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar-brand.glyphicon-plus{
+    padding-right: 0px;
+}
+
+.navbar-brand.glyphicon-ok{
+    padding-right: 0px;
+}

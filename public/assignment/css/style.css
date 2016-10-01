@@ -38,9 +38,27 @@ li.borderless {
 }
 
 .navbar-brand.glyphicon-plus{
-    padding-right: 0px;
+    padding-right: 0;
 }
 
 .navbar-brand.glyphicon-ok{
-    padding-right: 0px;
+    padding-right: 0;
+}
+
+.relative-position {
+    position: relative;
+}
+
+.absolute-position {
+    position: absolute;
+}
+
+.list-element-menu {
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+}
+.zero-right-padding {
+    padding-right: 0;
 }

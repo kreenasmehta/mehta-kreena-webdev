@@ -11,29 +11,76 @@
 
 		<nav class="navbar navbar-dark navbar-fixed-top bg-primary">
 			<div class="container-fluid">
-				<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header" href="website-list.html">
-				</a>
-				<div class="navbar-header-fixed">
-					<p class="navbar-brand header">Edit Website</p>
+				<div class="row">
+					<div class="col-md-4 hidden-sm hidden-xs">
+						<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header" href="profile.html">
+						</a>
+						<div class="navbar-header-fixed">
+							<p class="navbar-brand header">Websites</p>
+						</div>
+						<a class="navbar-brand bg-primary glyphicon glyphicon-plus pull-right header" href="website-new.html">
+						</a>
+					</div>
+					<div class="col-md-8">
+						<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header hidden-md hidden-lg" href="website-list.html">
+						</a>
+						<div class="navbar-header-fixed">
+							<p class="navbar-brand header">Edit Website</p>
+						</div>
+						<a class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right header" href="website-list.html">
+						</a>
+					</div>
 				</div>
-				<a class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right header" href="website-list.html">
-				</a>
 			</div>
 		</nav>
 
+
+
 		<div class="container-fluid">
 
-			<form>
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" class="form-control" id="name" placeholder="Name" value="Blogger">
+			<div class="row">
+				<div class="col-md-4 hidden-sm hidden-xs">
+					<ul class="list-unstyled">
+						<li class="text-primary list-group-item borderless"><a href="page-list.html">Address Book App</a>
+							<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right">
+					</span></a>
+
+						</li>
+						<li class="text-primary list-group-item borderless"><a href="page-list.html">Blogger</a>
+							<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right">
+					</span></a>
+						</li>
+						<li class="text-primary list-group-item borderless"><a href="page-list.html">Bloggin App</a>
+							<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right">
+					</span></a>
+						</li>
+						<li class="text-primary list-group-item borderless"><a href="page-list.html">Script Testing App</a>
+							<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right">
+					</span></a>
+						</li>
+					</ul>
+
 				</div>
-				<div class="form-group">
-					<label for="Description">Description</label>
-					<textarea class="form-control" id="Description" placeholder="Description" rows="5">A blog (a truncation of the expression weblog)[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries ("posts"). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual[citation needed], occasionally of a small group, and often covered a single subject or topic. In the 2010s, "multi-author blogs" (MABs) have developed, with posts written by large numbers of authors and sometimes professionally edited.</textarea>
+				<div class="verticalLine hidden-sm hidden-xs">
+
 				</div>
-				<a href="website-list.html" class="btn btn-danger btn-block">Delete</a>
-			</form>
+				<div class="col-md-8">
+					<form>
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" placeholder="Name" value="Blogger">
+						</div>
+						<div class="form-group">
+							<label for="Description">Description</label>
+							<textarea class="form-control" id="Description" placeholder="Description" rows="5">A blog (a truncation of the expression weblog)[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries ("posts"). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual[citation needed], occasionally of a small group, and often covered a single subject or topic. In the 2010s, "multi-author blogs" (MABs) have developed, with posts written by large numbers of authors and sometimes professionally edited.</textarea>
+						</div>
+						<a href="website-list.html" class="btn btn-danger btn-block">Delete</a>
+					</form>
+				</div>
+
+			</div>
+
+
 
 		</div>
 

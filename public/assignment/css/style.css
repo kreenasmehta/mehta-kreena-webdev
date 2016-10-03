@@ -72,3 +72,7 @@ li.borderless {
     top:0;
     bottom: 0;
 }
+
+.boldFont{
+    font-weight: bold;
+}

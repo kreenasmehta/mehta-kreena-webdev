@@ -6,8 +6,15 @@
         .module("WebAppMaker")
         .controller("WebsiteListController",WebsiteListController);
     
-    function WebsiteListController($routeParams) {
+    function WebsiteListController($routeParams, WebsiteService, UserService) {
         var vm = this;
-        var userId = parseInt($routeParams.uid);
+        var userId = $routeParams["uid"];
+        vm.websites = WebsiteService.findWebsitesByUser(userId);
+
+        var user = UserService.findUserByID(userId);
+        if(user != null){
+            vm.user = user;
+        }
+
     }
 })();

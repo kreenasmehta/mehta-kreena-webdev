@@ -29,6 +29,7 @@
 
         return api;
 
+
         function createUser(user) {
             user._id = "567";
             users.push(user);
@@ -66,11 +67,22 @@
             return null;
         }
         
-        function updateUser(userId, username) {
-
+        function updateUser(userId, user) {
+            for(i=0; i<users.length;i++){
+                if(users[i]._id === userId){
+                    users[i] = user;
+                    break;
+                }
+            }
         }
         
         function deleteUser(userId) {
+            for(i=0; i<users.length;i++){
+                if(users[i]._id === userId){
+                    users.splice(i, 1);
+                    break;
+                }
+            }
             
         }
 

@@ -6,15 +6,24 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($routeParams,$location, UserService) {
         var vm = this;
-        var userId = $routeParams.uid;
+        var userId = $routeParams["uid"];
+        vm.updateProfile= updateProfile;
 
-        var user = UserService.findUserByID(userId);
-        if(user != null){
-            vm.user = user;
+        function init() {
+            var user = UserService.findUserByID(userId);
+            if(user != null){
+                vm.user = user;
+            }
         }
 
+        function updateProfile(user) {
+            user = UserService.updateUser(user._id, user);
+            $location.url("/user/" + user._id);
+        }
+
+        init();
 
     }
 })();

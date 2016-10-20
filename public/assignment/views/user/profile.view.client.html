@@ -3,7 +3,7 @@
         <div class="navbar-header-fixed">
             <p class="navbar-brand profile-header boldFont">Profile</p>
         </div>
-        <a class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right profile-header" href="#/user/:uid">
+        <a ng-click="model.updateProfile(model.user)" class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right profile-header">
         </a>
     </div>
 </nav>
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>

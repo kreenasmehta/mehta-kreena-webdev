@@ -23,7 +23,8 @@
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser,
-            userExists: userExists
+            userExists: userExists,
+            passwordMatches: passwordMatches
         };
 
         return api;
@@ -79,6 +80,13 @@
                 if(user.username === username){
                     return true;
                 }
+            }
+            return false;
+        }
+
+        function passwordMatches(password, verifyPassword) {
+            if(password === verifyPassword){
+                return true;
             }
             return false;
         }

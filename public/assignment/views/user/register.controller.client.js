@@ -12,11 +12,18 @@
         
         function register(user) {
             var userExist = UserService.userExists(user.username);
-            if(userExist){
+            if (!userExist) {
+                var passwordMatch = UserService.passwordMatches(
+                    user.password, user.verifyPassword);
+                if (!passwordMatch) {
+                    vm.error = "The password do not match."
+
+                } else {
+                    user = UserService.createUser(user);
+                    $location.url("/user/" + user._id);
+                }
+            } else {
                 vm.error = "The given username already exists."
-            }else{
-                user = UserService.createUser(user);
-                $location.url("/user/" + user._id);
             }
         }
         

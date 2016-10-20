@@ -29,13 +29,14 @@
         }
         
         function findPageByWebsiteId(websiteId) {
+            var resultPages = [];
             for(var p in pages){
                 page = pages[p];
                 if(page.websiteId === websiteId){
-                    return page;
+                    resultPages.push(page);
                 }
             }
-            return null;
+            return resultPages;
             
         }
 

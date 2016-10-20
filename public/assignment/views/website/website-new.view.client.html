@@ -2,21 +2,21 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 hidden-sm hidden-xs">
-				<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header" href="#/user/:uid">
+				<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}">
 				</a>
 				<div class="navbar-header-fixed">
 					<p class="navbar-brand header boldFont">Websites</p>
 				</div>
-				<a class="navbar-brand bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/:uid/website/new">
+				<a class="navbar-brand bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/{{model.userId}}/website/new">
 				</a>
 			</div>
 			<div class="col-md-8">
-				<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header hidden-md hidden-lg" href="#/user/:uid/website">
+				<a class="navbar-brand bg-primary glyphicon glyphicon-chevron-left header hidden-md hidden-lg" href="#/user/{{model.userId}}/website">
 				</a>
 				<div class="navbar-header-fixed">
 					<p class="navbar-brand header boldFont">New Website</p>
 				</div>
-				<a class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right header" href="#/user/:uid/website">
+				<a ng-click="model.createWebsite(model.website)" class="navbar-brand bg-primary glyphicon glyphicon-ok pull-right header">
 				</a>
 			</div>
 		</div>
@@ -28,22 +28,12 @@
 	<div class="row">
 		<div class="col-md-4 hidden-sm hidden-xs">
 			<ul class="list-unstyled">
-				<li class="text-primary list-group-item borderless"><a href="#/user/:uid/website/:wid/page">Address Book App</a>
-					<a href="#/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right">
-			</span></a>
-
-				</li>
-				<li class="text-primary list-group-item borderless"><a href="#/user/:uid/website/:wid/page">Blogger</a>
-					<a href="#/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right">
-			</span></a>
-				</li>
-				<li class="text-primary list-group-item borderless"><a href="#/user/:uid/website/:wid/page">Bloggin App</a>
-					<a href="#/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right">
-			</span></a>
-				</li>
-				<li class="text-primary list-group-item borderless"><a href="#/user/:uid/website/:wid/page">Script Testing App</a>
-					<a href="#/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right">
-			</span></a>
+				<li ng-repeat="website in model.websites" class="text-primary list-group-item borderless">
+					<a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+					<a href="#/user/{{model.userId}}/website/{{website._id}}">
+						<span class="glyphicon glyphicon-cog pull-right">
+						</span>
+					</a>
 				</li>
 			</ul>
 
@@ -57,11 +47,19 @@
 			<form>
 				<div class="form-group">
 					<label for="name">Name</label>
-					<input type="text" class="form-control" id="name" placeholder="Name">
+					<input type="text"
+					       ng-model="model.website.name"
+					       class="form-control"
+					       id="name"
+					       placeholder="Name">
 				</div>
 				<div class="form-group">
 					<label for="Description">Description</label>
-					<textarea class="form-control" id="Description" placeholder="Description" rows="3"></textarea>
+					<textarea class="form-control"
+					          ng-model="model.website.description"
+					          id="Description"
+					          placeholder="Description"
+					          rows="3"></textarea>
 				</div>
 			</form>
 		</div>

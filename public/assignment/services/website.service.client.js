@@ -28,12 +28,15 @@
         };
 
         return api;
-        
-        function createWebsite(userId, website) {
-            
-        }
 
         var website;
+        function createWebsite(userId, website) {
+            website._id = "910";
+            website.developerId = userId;
+            websites.push(website);
+            return website;
+        }
+
         function findWebsitesByUser(userId) {
             var resultWebsites = [];
             for (var w in websites) {

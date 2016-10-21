@@ -25,6 +25,10 @@
 
         var page;
         function createPage(websiteId, page) {
+            page._id = "123";
+            page.websiteId = websiteId;
+            pages.push(page);
+            return page;
             
         }
         

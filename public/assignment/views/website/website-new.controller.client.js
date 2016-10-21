@@ -10,7 +10,12 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         vm.createWebsite = createWebsite;
-        vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+
+        function init() {
+            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+        }
+        init();
+
 
         function createWebsite(website) {
             website = WebsiteService.createWebsite(vm.userId, website);

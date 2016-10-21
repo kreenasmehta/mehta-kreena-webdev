@@ -56,10 +56,23 @@
         }
         
         function updatePage(pageId, page) {
+            for(i=0;i<pages.length;i++){
+                if(pages[i]._id === pageId){
+                    pages[i] = page;
+                    return page;
+                }
+            }
+            return null;
             
         }
         
         function deletePage(pageId) {
+            for(i=0;i<pages.length;i++){
+                if(pages[i]._id === pageId){
+                    pages.splice(i,1);
+                    break;
+                }
+            }
             
         }
     }

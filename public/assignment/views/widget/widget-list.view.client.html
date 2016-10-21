@@ -11,84 +11,53 @@
 </nav>
 
 <div class="container-fluid">
-	<div class="list-group">
+	<div ng-switch="widget.widgetType"
+	     ng-repeat="widget in model.widgets"
+	     class="list-group">
+		<!--right side cog and menu-->
 		<div class="relative-position">
-			<div class="container-fluid">
-				<h1>POPULAR PHOTOGRAPHY</h1>
-			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-			</div>
-
-		</div>
-
-		<div class="relative-position">
-			<div class="container-fluid">
-				<h5 class="text-justify">ColorWorks Will Turn Your Photos Into Mosaics Made Of Actual Crayons</h5>
-			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-			</div>
-
-		</div>
-
-		<div class="relative-position">
-			<div class="container-fluid">
-				<img src="http://www.popphoto.com/sites/popphoto.com/files/styles/large_1x_/public/images/2016/09/color_works_crayon_photo.jpg?itok=QF8qagZ5&fc=50,50" class="img-responsive">
-			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-image.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-			</div>
-
-		</div>
-
-		<div class="relative-position">
-			<div class="container-fluid">
-				<p class="text-justify">
-					There are lots of cool things you can do with your digital photos in the age of the internet, but converting them into full-fledged crayon mosaics has to be one of the coolest. For a fee, Color.Works will create an image of your photo up to 51.25 x 37.25-inches made completely out of real crayons.
-				</p>
-			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-			</div>
-
-		</div>
-
-		<div class="relative-position">
-			<div class="container-fluid">
-				<h5 class="text-justify">A GoPro Camera Went To Space, Got Lost, Came Back With Awesome Images Of Earth</h5>
-			</div>
 			<div class="absolute-position list-element-menu zero-right-padding">
 				<a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
 				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 			</div>
 		</div>
 
+		<!-- header -->
 		<div class="relative-position">
-			<div class="container-fluid">
-				<iframe src="https://www.youtube.com/embed/9CjjbauSvBE" frameborder="0" allowfullscreen class="youtube-video"></iframe>
-			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-youtube.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+			<div ng-switch="widget.size"
+			     ng-switch-when="HEADER"
+			     class="container-fluid">
+				<h1 ng-switch-when="1">{{widget.text}}</h1>
+				<h2 ng-switch-when="2">{{widget.text}}</h2>
+				<h3 ng-switch-when="3">{{widget.text}}</h3>
+				<h4 ng-switch-when="4">{{widget.text}}</h4>
+				<h5 ng-switch-when="5">{{widget.text}}</h5>
+				<h6 ng-switch-when="6">{{widget.text}}</h6>
 			</div>
 		</div>
 
+		<!-- html -->
 		<div class="relative-position">
-			<div class="container-fluid">
-				<p class="text-justify">
-					Sending a camera to space is something we have seen before, but with small cameras getting better image quality all the time, the prospect has become increasingly interesting. This camera-toting weather balloon, however, was launched way back in 2013, but wasn’t discovered until a hiker found the payload 50 miles from its original launch site several years later.
-				</p>
+			<div ng-switch-when="HTML"
+			     ng-bind-html="model.checkSafeHtml(widget.text)"
+			     class="container-fluid">
 			</div>
-			<div class="absolute-position list-element-menu zero-right-padding">
-				<a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-			</div>
+		</div>
 
+		<!-- image -->
+		<div class="relative-position">
+			<div ng-switch-when="IMAGE"
+			     class="container-fluid">
+				image
+			</div>
+		</div>
+
+		<!-- youtube -->
+		<div class="relative-position">
+			<div ng-switch-when="YOUTUBE"
+			     class="container-fluid">
+				<iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+			</div>
 		</div>
 	</div>
 </div>

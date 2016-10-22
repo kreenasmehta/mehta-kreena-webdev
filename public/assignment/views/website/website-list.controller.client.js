@@ -10,7 +10,12 @@
         var vm = this;
         var userId = $routeParams["uid"];
         vm.userId = userId;
-        vm.websites = WebsiteService.findWebsitesByUser(userId);
+
+        function init() {
+            vm.websites = WebsiteService.findWebsitesByUser(userId);
+        }
+        init();
+
 
     }
 })();

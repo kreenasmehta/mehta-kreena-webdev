@@ -48,7 +48,7 @@
 		<div class="relative-position">
 			<div ng-switch-when="IMAGE"
 			     class="container-fluid">
-				<img ng-src="{{model.checkSafeImage(widget.url)}}">
+				<img ng-src="{{model.checkSafeImage(widget.url)}}" class="img-responsive">
 			</div>
 		</div>
 
@@ -56,7 +56,7 @@
 		<div class="relative-position">
 			<div ng-switch-when="YOUTUBE"
 			     class="container-fluid">
-				<iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+				<iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen class="youtube-video"></iframe>
 			</div>
 		</div>
 	</div>

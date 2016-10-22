@@ -76,3 +76,7 @@ li.borderless {
 .boldFont{
     font-weight: bold;
 }
+
+.alertBoxTopMargin{
+    margin-top: 10px;
+}

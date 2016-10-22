@@ -13,7 +13,11 @@
         vm.pageId = $routeParams["pid"];
         vm.newWidget = newWidget;
         vm.widget = new Object();
-        
+
+        /**
+         * creates a new widget
+         * @param widgetType
+         */
         function newWidget(widgetType) {
             switch (widgetType){
                 case "header":

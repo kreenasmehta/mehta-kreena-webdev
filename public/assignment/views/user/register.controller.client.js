@@ -9,7 +9,13 @@
     function RegisterController($location, UserService) {
         var vm = this;
         vm.register = register;
-        
+
+        /**
+         * registers a new user if the given username is not already present in the database,
+         * and the password and verifyPassword match
+         * otherwise returns an appropriate error message
+         * @param user
+         */
         function register(user) {
             var userExist = UserService.userExists(user.username);
             if (!userExist) {

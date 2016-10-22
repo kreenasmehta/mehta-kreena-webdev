@@ -20,11 +20,17 @@
         }
         init();
 
+        /**
+         * updates a widget
+         */
         function updateWidget() {
             vm.widget = WidgetService.updateWidget(vm.widgetId, vm.widget);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
         }
 
+        /**
+         * deleletes a widget
+         */
         function deleteWidget() {
             vm.widget = WidgetService.deleteWidget(vm.widgetId);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");

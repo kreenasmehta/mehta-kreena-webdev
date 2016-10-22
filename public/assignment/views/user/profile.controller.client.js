@@ -18,6 +18,10 @@
             }
         }
 
+        /**
+         * updates the user profile
+         * @param user
+         */
         function updateProfile(user) {
             user = UserService.updateUser(user._id, user);
             $location.url("/user/" + user._id);

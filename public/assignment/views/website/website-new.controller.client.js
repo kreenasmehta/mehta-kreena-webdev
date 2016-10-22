@@ -17,6 +17,10 @@
         init();
 
 
+        /**
+         * creates a new website
+         * @param website
+         */
         function createWebsite(website) {
             if(website === undefined || website.name === undefined){
                 vm.error = "Name is required to create a new website";

@@ -20,6 +20,10 @@
         }
         init();
 
+        /**
+         * updates a given page
+         * @param page
+         */
         function updatePage(page) {
             if(page.name === undefined || page.name.length < 1){
                 vm.error = "Page name cannot be empty.";
@@ -30,6 +34,9 @@
 
         }
 
+        /**
+         * deletes a page
+         */
         function deletePage() {
             PageService.deletePage(vm.pageId);
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");

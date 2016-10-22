@@ -17,6 +17,10 @@
         }
         init();
 
+        /**
+         * creates a new page
+         * @param page
+         */
         function createPage(page) {
             if(page === undefined || page.name === undefined){
                 vm.error = "Name is required to create a new page";

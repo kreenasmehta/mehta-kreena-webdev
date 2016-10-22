@@ -19,6 +19,10 @@
         }
         init();
 
+        /**
+         * updates the given website
+         * @param website
+         */
         function updateWebsite(website) {
             if(website.name === undefined || website.name.length < 1){
                 vm.error = "Website name cannot be empty.";
@@ -29,6 +33,9 @@
 
         }
 
+        /**
+         * deletes a website
+         */
         function deleteWebsite() {
             WebsiteService.deleteWebsite(vm.websiteId);
             $location.url("/user/" + vm.userId + "/website");

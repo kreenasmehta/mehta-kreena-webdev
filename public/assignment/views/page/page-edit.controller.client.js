@@ -21,8 +21,13 @@
         init();
 
         function updatePage(page) {
-            page = PageService.updatePage(vm.pageId, page);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            if(page.name === undefined || page.name.length < 1){
+                vm.error = "Page name cannot be empty.";
+            } else{
+                page = PageService.updatePage(vm.pageId, page);
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            }
+
         }
 
         function deletePage() {

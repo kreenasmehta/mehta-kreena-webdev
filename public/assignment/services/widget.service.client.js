@@ -27,9 +27,17 @@
 
         return api;
 
+        function getNewId(){
+            // return parseInt(widgets[widgets.length - 1]._id) + 1;
+            return "790";
+        }
+
         var widget;
-        function createWidget(pageId, widgetId) {
-            
+        function createWidget(pageId, widget) {
+            widget.pageId  = pageId;
+            widget._id = getNewId();
+            widgets.push(widget);
+            return widget;
         }
         
         function findWidgetsByPageId(pageId) {

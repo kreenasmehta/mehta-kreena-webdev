@@ -35,7 +35,7 @@
         }
 
         function createUser(user) {
-            user._id = "567";
+            user._id = getNewId();
             users.push(user);
             return user;
 

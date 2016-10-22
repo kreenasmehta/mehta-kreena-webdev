@@ -35,7 +35,7 @@
 
         var website;
         function createWebsite(userId, website) {
-            website._id = "910";
+            website._id = getNewId();
             website.developerId = userId;
             websites.push(website);
             return website;

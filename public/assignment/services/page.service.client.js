@@ -24,7 +24,8 @@
         return api;
 
         function getNewId(){
-            return parseInt(pages[pages.length - 1]._id) + 1;
+            var newId = parseInt(pages[pages.length - 1]._id) + 1;
+            return newId.toString();
         }
 
         var page;

@@ -31,7 +31,8 @@
 
 
         function getNewId(){
-            return parseInt(users[users.length - 1]._id) + 1;
+            var newId = parseInt(users[users.length - 1]._id) + 1;
+            return newId.toString();
         }
 
         function createUser(user) {

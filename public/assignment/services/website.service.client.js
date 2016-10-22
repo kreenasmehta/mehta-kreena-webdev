@@ -30,7 +30,8 @@
         return api;
 
         function getNewId(){
-            return parseInt(websites[websites.length - 1]._id) + 1;
+            var newId = parseInt(websites[websites.length - 1]._id) + 1;
+            return newId.toString();
         }
 
         var website;

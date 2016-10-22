@@ -27,7 +27,7 @@
             })
             .when("/user/:uid/website/new", {
                 templateUrl: "views/website/website-new.view.client.html",
-                controller: "WebsiteNewController",
+                controller: "NewWebsiteController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid", {

@@ -18,9 +18,12 @@
         init();
 
         function createPage(page) {
-            page = PageService.createPage(vm.websiteId, page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page")
-
+            if(page === undefined || page.name === undefined){
+                vm.error = "Name is required to create a new page";
+            }else{
+                page = PageService.createPage(vm.websiteId, page);
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page")
+            }
         }
     }
 })();

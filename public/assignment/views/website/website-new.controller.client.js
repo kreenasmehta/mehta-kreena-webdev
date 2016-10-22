@@ -18,8 +18,13 @@
 
 
         function createWebsite(website) {
-            website = WebsiteService.createWebsite(vm.userId, website);
-            $location.url("/user/" + vm.userId + "/website");
+            if(website === undefined || website.name === undefined){
+                vm.error = "Name is required to create a new website";
+            }else{
+                website = WebsiteService.createWebsite(vm.userId, website);
+                $location.url("/user/" + vm.userId + "/website");
+            }
+
         }
     }
 })();

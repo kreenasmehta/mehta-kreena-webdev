@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/:uid/website/:wid/page/:pid/widget">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
 		</a>
 		<div class="navbar-header-fixed">
 			<p class="navbar-brand header boldFont">Edit Widget</p>
 		</div>
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right header" href="#/user/:uid/website/:wid/page/:pid/widget">
+		<a ng-click="model.updateWidget()" class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right header">
 		</a>
 	</div>
 </nav>
@@ -27,7 +27,7 @@
 
 <nav class="navbar navbar-default bg-primary navbar-fixed-bottom ">
 	<div class="container-fluid">
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon glyphicon-user pull-right" href="#/user/:uid">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon glyphicon-user pull-right" href="#/user/{{model.userId}}">
 		</a>
 	</div>
 </nav>

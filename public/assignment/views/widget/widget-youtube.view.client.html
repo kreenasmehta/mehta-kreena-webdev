@@ -1,22 +1,22 @@
 <div class="container-fluid">
 	<form>
 		<div class="form-group">
-			<label for="image-name">Name</label>
-			<input type="text" class="form-control" id="image-name">
+			<label for="youtube-name">Name</label>
+			<input type="text" ng-model="model.widget.name" class="form-control" id="youtube-name">
 		</div>
 		<div class="form-group">
-			<label for="image-text">Text</label>
-			<input type="text" class="form-control" id="image-text">
+			<label for="youtube-text">Text</label>
+			<input type="text" ng-model="model.widget.text" class="form-control" id="youtube-text">
 		</div>
 		<div class="form-group">
-			<label for="image-url">URL</label>
-			<input type="url" class="form-control" id="image-url" value="https://www.youtube.com/">
+			<label for="youtube-url">URL</label>
+			<input type="url" ng-model="model.widget.url" class="form-control" id="youtube-url">
 		</div>
 		<div class="form-group">
-			<label for="image-width">Width</label>
-			<input type="text" class="form-control" id="image-width">
+			<label for="youtube-width">Width</label>
+			<input type="text" ng-model="model.widget.width" class="form-control" id="youtube-width">
 		</div>
-		<a href="#/user/:uid/website/:wid/page/:pid/widget" class="btn btn-danger btn-block">Delete</a>
+		<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="btn btn-danger btn-block">Delete</a>
 	</form>
 </div>
 

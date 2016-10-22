@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/:uid/website/:wid/page">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
 		</a>
 		<div class="navbar-header-fixed">
 			<p class="navbar-brand header boldFont">Widgets</p>
 		</div>
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/:uid/website/:wid/page/:pid/widget/new">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
 		</a>
 	</div>
 </nav>

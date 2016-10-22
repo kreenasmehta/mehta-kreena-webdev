@@ -7,6 +7,7 @@
 			          class="form-control"
 			          id="widget-name"></textarea>
 		</div>
-		<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="btn btn-danger btn-block">Delete</a>
+		<a ng-click="model.deleteWidget()"
+		   class="btn btn-danger btn-block">Delete</a>
 	</form>
 </div>

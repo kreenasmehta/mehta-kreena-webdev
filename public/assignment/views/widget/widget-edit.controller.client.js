@@ -13,6 +13,7 @@
         vm.pageId = $routeParams["pid"];
         vm.widgetId = $routeParams["wgid"];
         vm.updateWidget = updateWidget;
+        vm.deleteWidget = deleteWidget;
 
         function init() {
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
@@ -21,7 +22,12 @@
 
         function updateWidget() {
             vm.widget = WidgetService.updateWidget(vm.widgetId, vm.widget);
-            $location.url("/user/vm.userId/website/vm.websiteId/page/vm.pageId/widget");
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+        }
+
+        function deleteWidget() {
+            vm.widget = WidgetService.deleteWidget(vm.widgetId);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
         }
     }
 })();

@@ -75,7 +75,12 @@
         }
         
         function deleteWidget(widgetId) {
-            
+            for(i=0;i<widgets.length;i++){
+                if(widgets[i]._id === widgetId){
+                    widgets.splice(i,1);
+                    break;
+                }
+            }
         }
     }
 })();

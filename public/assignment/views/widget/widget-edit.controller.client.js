@@ -16,5 +16,6 @@
         function init() {
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
+        init();
     }
 })();

@@ -24,16 +24,65 @@
          * updates a widget
          */
         function updateWidget() {
-            vm.widget = WidgetService.updateWidget(vm.widgetId, vm.widget);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+            if(canUpdateWidget(vm.widget)){
+                vm.widget = WidgetService.updateWidget(vm.widgetId, vm.widget);
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+            } else{
+                vm.error = getWidgetEditErrorMessage(vm.widget);
+            }
+
         }
 
         /**
-         * deleletes a widget
+         * deletes a widget
          */
         function deleteWidget() {
             vm.widget = WidgetService.deleteWidget(vm.widgetId);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+        }
+
+        /**
+         * returns true if the required fields of the widget are not undefined
+         * @param widget
+         * @returns {boolean}
+         */
+        function canUpdateWidget(widget) {
+            if(widget.widgetType === "HEADER"){
+                if(widget.text != undefined && widget.size != undefined){
+                    return true;
+                }
+            }
+            if(widget.widgetType === "HTML"){
+                if(widget.text != undefined){
+                    return true;
+                }
+            }
+            if(widget.widgetType === "IMAGE"){
+                if(widget.url != undefined){
+                    return true;
+                }
+            }
+            if(widget.widgetType === "YOUTUBE"){
+                if(widget.url != undefined){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function getWidgetEditErrorMessage(widget) {
+            if(widget.widgetType === "HEADER"){
+                return "Text and size are required fields.";
+            }
+            if(widget.widgetType === "HTML"){
+                return "Text is a required field.";
+            }
+            if(widget.widgetType === "IMAGE"){
+                return "URL is a required field.";
+            }
+            if(widget.widgetType === "YOUTUBE"){
+                return "URL is a required field.";
+            }
         }
     }
 })();

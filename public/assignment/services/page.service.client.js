@@ -23,9 +23,13 @@
 
         return api;
 
+        function getNewId(){
+            return parseInt(pages[pages.length - 1]._id) + 1;
+        }
+
         var page;
         function createPage(websiteId, page) {
-            page._id = "123";
+            page._id = getNewId();
             page.websiteId = websiteId;
             pages.push(page);
             return page;

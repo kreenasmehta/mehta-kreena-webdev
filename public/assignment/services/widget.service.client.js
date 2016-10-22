@@ -28,8 +28,7 @@
         return api;
 
         function getNewId(){
-            // return parseInt(widgets[widgets.length - 1]._id) + 1;
-            return "790";
+            return parseInt(widgets[widgets.length - 1]._id) + 1;
         }
 
         var widget;

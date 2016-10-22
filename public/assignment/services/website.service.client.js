@@ -29,6 +29,10 @@
 
         return api;
 
+        function getNewId(){
+            return parseInt(websites[websites.length - 1]._id) + 1;
+        }
+
         var website;
         function createWebsite(userId, website) {
             website._id = "910";

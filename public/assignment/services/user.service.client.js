@@ -30,6 +30,10 @@
         return api;
 
 
+        function getNewId(){
+            return parseInt(users[users.length - 1]._id) + 1;
+        }
+
         function createUser(user) {
             user._id = "567";
             users.push(user);

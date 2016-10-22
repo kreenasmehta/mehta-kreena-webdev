@@ -2,19 +2,19 @@
 	<form>
 		<div class="form-group">
 			<label for="youtube-name">Name</label>
-			<input type="text" ng-model="model.widget.name" class="form-control" id="youtube-name">
+			<input type="text" placeholder="YouTube video name" ng-model="model.widget.name" class="form-control" id="youtube-name">
 		</div>
 		<div class="form-group">
 			<label for="youtube-text">Text</label>
-			<input type="text" ng-model="model.widget.text" class="form-control" id="youtube-text">
+			<input type="text" placeholder="YouTube video text" ng-model="model.widget.text" class="form-control" id="youtube-text">
 		</div>
 		<div class="form-group">
 			<label for="youtube-url">URL</label>
-			<input type="url" ng-model="model.widget.url" class="form-control" id="youtube-url">
+			<input type="url" placeholder="YouTuve video URL" ng-model="model.widget.url" class="form-control" id="youtube-url">
 		</div>
 		<div class="form-group">
 			<label for="youtube-width">Width</label>
-			<input type="text" ng-model="model.widget.width" class="form-control" id="youtube-width">
+			<input type="text" placeholder="YouTube video width" ng-model="model.widget.width" class="form-control" id="youtube-width">
 		</div>
 		<a ng-click="model.deleteWidget()"
 		   class="btn btn-danger btn-block">Delete</a>

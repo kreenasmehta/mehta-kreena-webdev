@@ -12,6 +12,7 @@
         vm.websiteId = $routeParams["wid"];
         vm.pageId = $routeParams["pid"];
         vm.checkSafeHtml = checkSafeHtml;
+        vm.checkSafeImage = checkSafeImage;
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
 
         function init() {
@@ -21,6 +22,10 @@
         
         function checkSafeHtml(html) {
             return $sce.trustAsHtml(html);
+        }
+
+        function checkSafeImage(url) {
+            return $sce.trustAsResourceUrl(url);
         }
         
         function checkSafeYouTubeUrl(url) {

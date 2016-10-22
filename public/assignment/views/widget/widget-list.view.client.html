@@ -48,7 +48,7 @@
 		<div class="relative-position">
 			<div ng-switch-when="IMAGE"
 			     class="container-fluid">
-				image
+				<img ng-src="{{model.checkSafeImage(widget.url)}}">
 			</div>
 		</div>
 

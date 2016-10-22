@@ -29,12 +29,23 @@
 
         return api;
 
+        /**
+         * returns a new websiteId
+         * @returns {string}
+         */
         function getNewId(){
             var newId = parseInt(websites[websites.length - 1]._id) + 1;
             return newId.toString();
         }
 
         var website;
+
+        /**
+         * creates a new website
+         * @param userId
+         * @param website
+         * @returns {*}
+         */
         function createWebsite(userId, website) {
             website._id = getNewId();
             website.developerId = userId;
@@ -42,6 +53,11 @@
             return website;
         }
 
+        /**
+         * finds websites for a given user
+         * @param userId
+         * @returns {Array}
+         */
         function findWebsitesByUser(userId) {
             var resultWebsites = [];
             for (var w in websites) {
@@ -53,7 +69,12 @@
             return resultWebsites;
             
         }
-        
+
+        /**
+         * finds a website by given websiteId, returns null if not found
+         * @param websiteId
+         * @returns {*}
+         */
         function findWebsiteById(websiteId) {
             for(var w in websites){
                 website = websites[w];
@@ -63,7 +84,13 @@
             }
             return null;
         }
-        
+
+        /**
+         * updates a given website
+         * @param websiteId
+         * @param website
+         * @returns {*}
+         */
         function updateWebsite(websiteId, website) {
             for(i=0;i<websites.length;i++){
                 if(websites[i]._id === websiteId){
@@ -73,7 +100,11 @@
             }
             return null;
         }
-        
+
+        /**
+         * deletes a given website
+         * @param websiteId
+         */
         function deleteWebsite(websiteId) {
             for(i=0;i<websites.length;i++){
                 if(websites[i]._id === websiteId){
@@ -81,8 +112,6 @@
                     break;
                 }
             }
-            
         }
-
     }
 })();

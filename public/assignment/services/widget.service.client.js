@@ -27,19 +27,35 @@
 
         return api;
 
+        /**
+         * gets a new widgetId
+         * @returns {string}
+         */
         function getNewId(){
             var newId = parseInt(widgets[widgets.length - 1]._id) + 1;
             return newId.toString();
         }
 
         var widget;
+
+        /**
+         * creates a new widget
+         * @param pageId
+         * @param widget
+         * @returns {*}
+         */
         function createWidget(pageId, widget) {
             widget.pageId  = pageId;
             widget._id = getNewId();
             widgets.push(widget);
             return widget;
         }
-        
+
+        /**
+         * finds widgets for a given pageId
+         * @param pageId
+         * @returns {Array}
+         */
         function findWidgetsByPageId(pageId) {
             var resultWidgets = [];
             for(var w in widgets){
@@ -49,9 +65,13 @@
                 }
             }
             return resultWidgets;
-            
         }
-        
+
+        /**
+         * finds a widget by widgetId
+         * @param widgetId
+         * @returns {*}
+         */
         function findWidgetById(widgetId) {
             for(var w in widgets){
                 widget = widgets[w];
@@ -62,7 +82,13 @@
             return null;
             
         }
-        
+
+        /**
+         * updates a given widget
+         * @param widgetId
+         * @param widget
+         * @returns {*}
+         */
         function updateWidget(widgetId, widget) {
             for(var w in widgets){
                 if(widgets[w]._id === widgetId){
@@ -73,7 +99,11 @@
             return null;
             
         }
-        
+
+        /**
+         * deletes a given widget
+         * @param widgetId
+         */
         function deleteWidget(widgetId) {
             for(i=0;i<widgets.length;i++){
                 if(widgets[i]._id === widgetId){

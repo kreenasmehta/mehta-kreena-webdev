@@ -23,12 +23,23 @@
 
         return api;
 
+        /**
+         * returns a new pageID (String)
+         * @returns {string}
+         */
         function getNewId(){
             var newId = parseInt(pages[pages.length - 1]._id) + 1;
             return newId.toString();
         }
 
         var page;
+
+        /**
+         * creates a new page
+         * @param websiteId
+         * @param page
+         * @returns {*}
+         */
         function createPage(websiteId, page) {
             page._id = getNewId();
             page.websiteId = websiteId;
@@ -36,7 +47,12 @@
             return page;
             
         }
-        
+
+        /**
+         * finds pages by websiteId
+         * @param websiteId
+         * @returns {Array}
+         */
         function findPageByWebsiteId(websiteId) {
             var resultPages = [];
             for(var p in pages){
@@ -49,6 +65,11 @@
             
         }
 
+        /**
+         * finds page by pageId
+         * @param pageId
+         * @returns {*}
+         */
         function findPageById(pageId) {
             for(var p in pages){
                 page = pages[p];
@@ -59,7 +80,13 @@
             return null;
             
         }
-        
+
+        /**
+         * updates a the given page
+         * @param pageId
+         * @param page
+         * @returns {*}
+         */
         function updatePage(pageId, page) {
             for(i=0;i<pages.length;i++){
                 if(pages[i]._id === pageId){
@@ -70,7 +97,11 @@
             return null;
             
         }
-        
+
+        /**
+         * deletes a given page
+         * @param pageId
+         */
         function deletePage(pageId) {
             for(i=0;i<pages.length;i++){
                 if(pages[i]._id === pageId){

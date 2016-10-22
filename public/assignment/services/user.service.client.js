@@ -29,12 +29,20 @@
 
         return api;
 
-
+        /**
+         * returns a new userId (String)
+         * @returns {string}
+         */
         function getNewId(){
             var newId = parseInt(users[users.length - 1]._id) + 1;
             return newId.toString();
         }
 
+        /**
+         * creates a new user
+         * @param user
+         * @returns {*}
+         */
         function createUser(user) {
             user._id = getNewId();
             users.push(user);
@@ -42,6 +50,13 @@
 
         }
 
+        /**
+         * finds a user with the given credentials
+         * returns null if none found
+         * @param username
+         * @param password
+         * @returns {*}
+         */
         function findUserByCredentials(username, password) {
             for(var u in users){
                 user = users[u];
@@ -52,6 +67,11 @@
             return null;
         }
 
+        /**
+         * finds a user with given userId
+         * @param userId
+         * @returns {*}
+         */
         function findUserByID(userId) {
             for(var u in users){
                 user = users[u];
@@ -62,6 +82,11 @@
             return null;
         }
 
+        /**
+         * finds a user with a given username
+         * @param username
+         * @returns {*}
+         */
         function findUserByUserName(username) {
             for(var u in users){
                 user = users[u];
@@ -71,7 +96,13 @@
             }
             return null;
         }
-        
+
+        /**
+         * updates a given user
+         * @param userId
+         * @param user
+         * @returns {*}
+         */
         function updateUser(userId, user) {
             for(i=0; i<users.length;i++){
                 if(users[i]._id === userId){
@@ -81,7 +112,11 @@
             }
             return null;
         }
-        
+
+        /**
+         * deletes a given user
+         * @param userId
+         */
         function deleteUser(userId) {
             for(i=0; i<users.length;i++){
                 if(users[i]._id === userId){
@@ -92,6 +127,11 @@
             
         }
 
+        /**
+         * returns true if a user with a given username exists, else false
+         * @param username
+         * @returns {boolean}
+         */
         function userExists(username) {
             for(var u in users){
                 user = users[u];
@@ -102,13 +142,17 @@
             return false;
         }
 
+        /**
+         * returns true if password and verifyPassword matches, else false
+         * @param password
+         * @param verifyPassword
+         * @returns {boolean}
+         */
         function passwordMatches(password, verifyPassword) {
             if(password === verifyPassword){
                 return true;
             }
             return false;
         }
-
-
     }
 })();

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+		<a ng-click="model.checkIsWidgetIsValid()" class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header">
 		</a>
 		<div class="navbar-header-fixed">
 			<p class="navbar-brand header boldFont">Edit Widget</p>

@@ -14,6 +14,7 @@
         vm.widgetId = $routeParams["wgid"];
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        vm.checkIsWidgetIsValid = checkIsWidgetIsValid;
 
         function init() {
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
@@ -70,6 +71,11 @@
             return false;
         }
 
+        /**
+         * returns an error message for each widget if mandatory fields are missing
+         * @param widget
+         * @returns {*}
+         */
         function getWidgetEditErrorMessage(widget) {
             if(widget.widgetType === "HEADER"){
                 return "Text and size are required fields.";
@@ -84,5 +90,21 @@
                 return "URL is a required field.";
             }
         }
+
+
+        /**
+         * used when (left-chevron) os clicked from widget edit page
+         * checks if the current widget has all necessary items while creating
+         * if not, it deletes the current widget
+         */
+        function checkIsWidgetIsValid() {
+            if(canUpdateWidget(vm.widget)){
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+            }else{
+                deleteWidget();
+            }
+
+        }
+
     }
 })();

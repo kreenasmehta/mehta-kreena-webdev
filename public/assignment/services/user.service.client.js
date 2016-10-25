@@ -68,13 +68,8 @@
          * @returns {*}
          */
         function findUserByID(userId) {
-            for(var u in users){
-                user = users[u];
-                if(user._id === userId){
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user/'+userId;
+            return $http.get(url);
         }
 
         /**

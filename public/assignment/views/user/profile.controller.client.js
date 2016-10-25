@@ -12,10 +12,15 @@
         vm.updateProfile= updateProfile;
 
         function init() {
-            var user = UserService.findUserByID(userId);
-            if(user != null){
-                vm.user = user;
-            }
+            UserService.findUserByID(userId)
+                .success(function (user) {
+                    if(user != null){
+                        vm.user = user;
+                    }
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
         }
 
         /**

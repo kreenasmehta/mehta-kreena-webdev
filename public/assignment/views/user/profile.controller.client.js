@@ -12,7 +12,8 @@
         vm.updateProfile= updateProfile;
 
         function init() {
-            UserService.findUserByID(userId)
+            UserService
+                .findUserByID(userId)
                 .success(function (user) {
                     if(user != null){
                         vm.user = user;

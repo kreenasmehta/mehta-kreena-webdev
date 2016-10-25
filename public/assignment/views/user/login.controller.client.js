@@ -13,7 +13,8 @@
          * @param password
          */
         function login(username, password) {
-            UserService.findUserByCredentials(username, password)
+            UserService
+                .findUserByCredentials(username, password)
                 .success(function (user) {
                     if(user === '0'){
                         vm.error = "No such user."

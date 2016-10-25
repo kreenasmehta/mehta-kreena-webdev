@@ -13,17 +13,16 @@
          * @param password
          */
         function login(username, password) {
-            var promise = UserService.findUserByCredentials(username, password);
-            promise
+            UserService.findUserByCredentials(username, password)
                 .success(function (user) {
-                    if(user === null){
+                    if(user === '0'){
                         vm.error = "No such user."
                     } else{
                         $location.url("/user/" + user._id);
                     }
                 })
-                .error(function (bbb) {
-                    console.log(bbb);
+                .error(function (error) {
+                    console.log(error);
                 });
         }
     }

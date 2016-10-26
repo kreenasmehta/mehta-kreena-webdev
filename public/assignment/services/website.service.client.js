@@ -47,10 +47,8 @@
          * @returns {*}
          */
         function createWebsite(userId, website) {
-            website._id = getNewId();
-            website.developerId = userId;
-            websites.push(website);
-            return website;
+            var url = '/api/user/'+userId+'/website';
+            return $http.post(url, website);
         }
 
         /**

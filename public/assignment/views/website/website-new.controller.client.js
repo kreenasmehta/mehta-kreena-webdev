@@ -32,10 +32,17 @@
             if(website === undefined || website.name === undefined){
                 vm.error = "Name is required to create a new website";
             }else{
-                website = WebsiteService.createWebsite(vm.userId, website);
-                $location.url("/user/" + vm.userId + "/website");
-            }
+                WebsiteService
+                    .createWebsite(vm.userId, website)
+                    .success(function (website) {
+                        if(website != '0'){
+                            $location.url("/user/" + vm.userId + "/website");
+                        }
+                    })
+                    .error(function () {
 
+                    });
+            }
         }
     }
 })();

@@ -12,9 +12,19 @@ module.exports = function (app) {
         { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem Chess" }
     ];
 
+    app.post('/api/user/:uid/website', createWebsite);
     app.get('/api/user/:uid/website', findAllWebsitesForUser);
     app.get('/api/website/:wid', findWebsiteById);
 
+
+    function createWebsite(req, res) {
+        var userId = req.params.uid;
+        var website = req.body;
+        website._id = (new Date()).getTime().toString();
+        website.developerId = userId;
+        websites.push(website);
+        res.send(website);
+    }
 
     /**
      * finds websites for a given user
@@ -32,6 +42,11 @@ module.exports = function (app) {
         res.send(resultWebsites);
     }
 
+    /**
+     * finds a website by the given websiteId
+     * @param req
+     * @param res
+     */
     function findWebsiteById(req, res) {
         var websiteId = req.params.wid;
         for(var w in websites){

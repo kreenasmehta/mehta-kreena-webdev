@@ -58,8 +58,15 @@
          * deletes a widget
          */
         function deleteWidget() {
-            vm.widget = WidgetService.deleteWidget(vm.widgetId);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId +"/widget");
+                })
+                .error(function (error) {
+
+                });
+
         }
 
         /**

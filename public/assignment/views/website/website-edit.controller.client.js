@@ -17,7 +17,9 @@
             WebsiteService
                 .findWebsiteById(vm.websiteId)
                 .success(function (website) {
-                    vm.website = website;
+                    if(website != '0'){
+                        vm.website = website;
+                    }
                 })
                 .error(function () {
 
@@ -45,7 +47,9 @@
                 WebsiteService
                     .updateWebsite(vm.websiteId, website)
                     .success(function (website) {
-                        $location.url("/user/"+vm.userId+"/website");
+                        if(website != '0'){
+                            $location.url("/user/"+vm.userId+"/website");
+                        }
                     })
                     .error(function (error) {
 

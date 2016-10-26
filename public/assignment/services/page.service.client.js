@@ -64,14 +64,8 @@
          * @returns {*}
          */
         function findPageById(pageId) {
-            for(var p in pages){
-                page = pages[p];
-                if(page._id === pageId){
-                    return page;
-                }
-            }
-            return null;
-            
+            var url = '/api/page/'+pageId;
+            return $http.get(url);
         }
 
         /**

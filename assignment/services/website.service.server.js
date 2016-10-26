@@ -13,6 +13,7 @@ module.exports = function (app) {
     ];
 
     app.get('/api/user/:uid/website', findAllWebsitesForUser);
+    app.get('/api/website/:wid', findWebsiteById);
 
 
     /**
@@ -29,5 +30,16 @@ module.exports = function (app) {
             }
         }
         res.send(resultWebsites);
+    }
+
+    function findWebsiteById(req, res) {
+        var websiteId = req.params.wid;
+        for(var w in websites){
+            if(websites[w]._id === websiteId){
+                res.send(websites[w]);
+                return;
+            }
+        }
+        res.send('0');
     }
 };

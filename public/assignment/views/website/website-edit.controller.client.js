@@ -14,7 +14,14 @@
         vm.deleteWebsite = deleteWebsite;
 
         function init() {
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                })
+                .error(function () {
+
+                });
 
             WebsiteService
                 .findWebsitesByUser(vm.userId)

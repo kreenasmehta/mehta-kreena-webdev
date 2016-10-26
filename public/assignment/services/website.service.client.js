@@ -69,13 +69,15 @@
          * @returns {*}
          */
         function findWebsiteById(websiteId) {
-            for(var w in websites){
-                website = websites[w];
-                if(website._id === websiteId){
-                    return website;
-                }
-            }
-            return null;
+            var url = '/api/website/'+websiteId;
+            return $http.get(url);
+            // for(var w in websites){
+            //     website = websites[w];
+            //     if(website._id === websiteId){
+            //         return website;
+            //     }
+            // }
+            // return null;
         }
 
         /**

@@ -29,8 +29,17 @@
          * @param user
          */
         function updateProfile(user) {
-            user = UserService.updateUser(user._id, user);
-            $location.url("/user/" + user._id);
+            UserService
+                .updateUser(user._id, user)
+                .success(function (user) {
+                    if(user != '0'){
+                        $location.url("/user/" + user._id);
+                    }
+                })
+                .error(function (error) {
+
+                });
+
         }
 
         init();

@@ -22,9 +22,7 @@
             findUserByUserName: findUserByUserName,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            deleteUser: deleteUser,
-            userExists: userExists,
-            passwordMatches: passwordMatches
+            deleteUser: deleteUser
         };
 
         return api;
@@ -76,13 +74,8 @@
          * @returns {*}
          */
         function updateUser(userId, user) {
-            for(i=0; i<users.length;i++){
-                if(users[i]._id === userId){
-                    users[i] = user;
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user/'+userId;
+            return $http.put(url, user);
         }
 
         /**

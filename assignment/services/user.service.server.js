@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.post('/api/user', createUser);
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
+    app.put('/api/user/:uid', updateUser);
 
     /**
      * creates a new user
@@ -88,6 +89,19 @@ module.exports = function (app) {
         var userId = req.params.uid;
         for(var u in users){
             if(users[u]._id === userId){
+                res.send(users[u]);
+                return;
+            }
+        }
+        res.send('0');
+    }
+
+    function updateUser(req, res) {
+        var userId = req.params.uid;
+        var user = req.body;
+        for(var u in users){
+            if(users[u]._id === userId){
+                users[u] = user;
                 res.send(users[u]);
                 return;
             }

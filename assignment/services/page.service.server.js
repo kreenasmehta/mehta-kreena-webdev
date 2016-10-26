@@ -9,8 +9,24 @@ module.exports = function (app) {
         { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
     ];
 
+    app.post('/api/website/:wid/page', createPage);
     app.get('/api/website/:wid/page', findAllPagesForWebsite);
     app.get('/api/page/:pid', findPageById);
+
+
+    /**
+     * creates a new page for the given website
+     * @param res
+     * @param res
+     */
+    function createPage(req, res) {
+        var websiteId = req.params.wid;
+        var page = req.body;
+        page._id = (new Date()).getTime().toString();
+        page.websiteId = websiteId;
+        pages.push(page);
+        res.send(page);
+    }
 
     /**
      * finds all pages for a given websiteId

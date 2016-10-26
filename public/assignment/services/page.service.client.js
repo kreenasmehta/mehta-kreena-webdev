@@ -41,11 +41,8 @@
          * @returns {*}
          */
         function createPage(websiteId, page) {
-            page._id = getNewId();
-            page.websiteId = websiteId;
-            pages.push(page);
-            return page;
-            
+            var url = '/api/website/'+websiteId+'/page';
+            return $http.post(url, page);
         }
 
         /**

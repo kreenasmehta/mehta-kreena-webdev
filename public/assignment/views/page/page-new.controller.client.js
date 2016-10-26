@@ -32,8 +32,17 @@
             if(page === undefined || page.name === undefined){
                 vm.error = "Name is required to create a new page";
             }else{
-                page = PageService.createPage(vm.websiteId, page);
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page")
+                PageService
+                    .createPage(vm.websiteId, page)
+                    .success(function (page) {
+                        if(page != '0'){
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        }
+                    })
+                    .error(function (error) {
+
+                    });
+
             }
         }
     }

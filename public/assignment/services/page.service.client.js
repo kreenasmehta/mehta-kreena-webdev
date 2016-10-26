@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .factory("PageService", PageService);
 
-    function PageService() {
+    function PageService($http) {
         var pages = [
             { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
             { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
@@ -54,15 +54,8 @@
          * @returns {Array}
          */
         function findPageByWebsiteId(websiteId) {
-            var resultPages = [];
-            for(var p in pages){
-                page = pages[p];
-                if(page.websiteId === websiteId){
-                    resultPages.push(page);
-                }
-            }
-            return resultPages;
-            
+            var url = '/api/website/'+websiteId+'/page';
+            return $http.get(url);
         }
 
         /**

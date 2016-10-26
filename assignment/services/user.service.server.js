@@ -96,6 +96,11 @@ module.exports = function (app) {
         res.send('0');
     }
 
+    /**
+     * updates a given user
+     * @param req
+     * @param res
+     */
     function updateUser(req, res) {
         var userId = req.params.uid;
         var user = req.body;

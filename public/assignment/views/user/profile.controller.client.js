@@ -10,6 +10,7 @@
         var vm = this;
         var userId = $routeParams["uid"];
         vm.updateProfile= updateProfile;
+        vm.deleteUser = deleteUser;
 
         function init() {
             UserService
@@ -23,6 +24,8 @@
                     console.log(error);
                 });
         }
+
+        init();
 
         /**
          * updates the user profile
@@ -42,7 +45,18 @@
 
         }
 
-        init();
-
+        /**
+         * deletes the currently logged in user
+         */
+        function deleteUser() {
+            UserService
+                .deleteUser(userId)
+                .success(function () {
+                    $location.url("/login");
+                })
+                .error(function (error) {
+                    
+                });
+        }
     }
 })();

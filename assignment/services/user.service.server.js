@@ -14,6 +14,7 @@ module.exports = function (app) {
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
     app.put('/api/user/:uid', updateUser);
+    app.delete('/api/user/:uid', deleteUser);
 
     /**
      * creates a new user
@@ -33,7 +34,6 @@ module.exports = function (app) {
      * @param res
      */
     function findUser(req, res) {
-        var params = req.params;
         var query = req.query;
         if(query.password && query.username){
             findUserByCredentials(req, res);
@@ -112,6 +112,23 @@ module.exports = function (app) {
             }
         }
         res.send('0');
+    }
+
+    /**
+     * deletes the currently logged in user
+     * @param req
+     * @param res
+     */
+    function deleteUser(req, res) {
+        var userId = req.params.uid;
+        for(var u in users){
+            if(users[u]._id === userId){
+                users.splice(u, 1);
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
     }
 
 

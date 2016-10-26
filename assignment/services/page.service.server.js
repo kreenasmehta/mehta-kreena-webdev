@@ -12,11 +12,12 @@ module.exports = function (app) {
     app.post('/api/website/:wid/page', createPage);
     app.get('/api/website/:wid/page', findAllPagesForWebsite);
     app.get('/api/page/:pid', findPageById);
+    app.put('/api/page/:pid', updatePage);
 
 
     /**
      * creates a new page for the given website
-     * @param res
+     * @param req
      * @param res
      */
     function createPage(req, res) {
@@ -53,6 +54,24 @@ module.exports = function (app) {
         var pageId = req.params.pid;
         for(var p in pages){
             if(pages[p]._id === pageId){
+                res.send(pages[p]);
+                return;
+            }
+        }
+        res.send('0');
+    }
+
+    /**
+     * updates a given page
+     * @param req
+     * @param res
+     */
+    function updatePage(req, res) {
+        var pageId = req.params.pid;
+        var page = req.body;
+        for(var p in pages){
+            if(pages[p]._id === pageId){
+                pages[p] = page;
                 res.send(pages[p]);
                 return;
             }

@@ -45,8 +45,17 @@
             if(page.name === undefined || page.name.length < 1){
                 vm.error = "Page name cannot be empty.";
             } else{
-                page = PageService.updatePage(vm.pageId, page);
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                PageService
+                    .updatePage(vm.pageId, page)
+                    .success(function (page) {
+                        if(page != '0'){
+                            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                        }
+                    })
+                    .error(function (error) {
+
+                    });
+
             }
 
         }

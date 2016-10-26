@@ -10,29 +10,13 @@
         var vm = this;
         vm.register = register;
 
-        /**
-         * registers a new user if the given username is not already present in the database,
-         * and the password and verifyPassword match
-         * otherwise returns an appropriate error message
-         * @param user
-         */
-        // function register(user) {
-        //     var userExist = UserService.userExists(user.username);
-        //     if (!userExist) {
-        //         var passwordMatch = UserService.passwordMatches(
-        //             user.password, user.verifyPassword);
-        //         if (!passwordMatch) {
-        //             vm.error = "The password do not match."
-        //
-        //         } else {
-        //             user = UserService.createUser(user);
-        //             $location.url("/user/" + user._id);
-        //         }
-        //     } else {
-        //         vm.error = "The given username already exists."
-        //     }
-        // }
 
+        /**
+         * creates a new user
+         * @param username
+         * @param password
+         * @param verifyPassword
+         */
         function register(username, password, verifyPassword) {
             if(password != verifyPassword){
                 vm.error = "The passwords do not match";

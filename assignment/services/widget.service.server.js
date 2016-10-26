@@ -12,8 +12,19 @@ module.exports = function (app) {
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
 
+    app.post('/api/page/:pid/widget', createWidget);
     app.get('/api/page/:pid/widget', findAllWidgetsForPage);
     app.get('/api/widget/:wgid', findWidgetById);
+
+
+    function createWidget(req, res) {
+        var pageId = req.params.pid;
+        var widget = req.body;
+        widget._id = (new Date().getTime().toString());
+        widget.pageId = pageId;
+        widgets.push(widget);
+        res.send(widget);
+    }
 
     /**
      * finds widgets for a given pageId

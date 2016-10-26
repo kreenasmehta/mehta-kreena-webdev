@@ -45,10 +45,8 @@
          * @returns {*}
          */
         function createWidget(pageId, widget) {
-            widget.pageId  = pageId;
-            widget._id = getNewId();
-            widgets.push(widget);
-            return widget;
+            var url = '/api/page/'+pageId+'/widget';
+            return $http.post(url, widget);
         }
 
         /**

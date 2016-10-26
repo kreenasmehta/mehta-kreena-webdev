@@ -42,8 +42,14 @@
             if(website.name === undefined || website.name.length < 1){
                 vm.error = "Website name cannot be empty.";
             } else{
-                website = WebsiteService.updateWebsite(vm.websiteId, website);
-                $location.url("/user/"+vm.userId+"/website");
+                WebsiteService
+                    .updateWebsite(vm.websiteId, website)
+                    .success(function (website) {
+                        $location.url("/user/"+vm.userId+"/website");
+                    })
+                    .error(function (error) {
+
+                    });
             }
 
         }

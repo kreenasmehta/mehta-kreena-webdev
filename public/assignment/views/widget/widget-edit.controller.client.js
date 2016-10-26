@@ -17,7 +17,17 @@
         vm.checkIsWidgetIsValid = checkIsWidgetIsValid;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .success(function (widget) {
+                    if(widget != '0'){
+                        vm.widget = widget;
+                    }
+                })
+                .error(function (error) {
+
+                });
+
         }
         init();
 

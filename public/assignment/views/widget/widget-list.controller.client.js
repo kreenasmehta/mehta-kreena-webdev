@@ -16,8 +16,6 @@
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
-
             WidgetService
                 .findWidgetsByPageId(vm.pageId)
                 .success(function (widgets) {

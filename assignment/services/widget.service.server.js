@@ -13,6 +13,7 @@ module.exports = function (app) {
     ];
 
     app.get('/api/page/:pid/widget', findAllWidgetsForPage);
+    app.get('/api/widget/:wgid', findWidgetById);
 
     /**
      * finds widgets for a given pageId
@@ -28,5 +29,16 @@ module.exports = function (app) {
             }
         }
         res.send(resultWidget);
+    }
+
+    function findWidgetById(req, res) {
+        var widgetId = req.params.wgid;
+        for(var w in widgets){
+            if(widgets[w]._id === widgetId){
+                res.send(widgets[w]);
+                return;
+            }
+        }
+        res.send('0');
     }
 };

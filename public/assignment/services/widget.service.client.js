@@ -67,14 +67,8 @@
          * @returns {*}
          */
         function findWidgetById(widgetId) {
-            for(var w in widgets){
-                widget = widgets[w];
-                if(widget._id === widgetId){
-                    return widget;
-                }
-            }
-            return null;
-            
+            var url = '/api/widget/'+widgetId;
+            return $http.get(url);
         }
 
         /**

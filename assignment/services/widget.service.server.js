@@ -15,6 +15,7 @@ module.exports = function (app) {
     app.post('/api/page/:pid/widget', createWidget);
     app.get('/api/page/:pid/widget', findAllWidgetsForPage);
     app.get('/api/widget/:wgid', findWidgetById);
+    app.put('/api/widget/:wgid', updateWidget);
 
 
     function createWidget(req, res) {
@@ -46,6 +47,19 @@ module.exports = function (app) {
         var widgetId = req.params.wgid;
         for(var w in widgets){
             if(widgets[w]._id === widgetId){
+                res.send(widgets[w]);
+                return;
+            }
+        }
+        res.send('0');
+    }
+
+    function updateWidget(req, res) {
+        var widgetId = req.params.wgid;
+        var widget = req.body;
+        for(var w in widgets){
+            if(widgets[w]._id === widgetId){
+                widgets[w] = widget;
                 res.send(widgets[w]);
                 return;
             }

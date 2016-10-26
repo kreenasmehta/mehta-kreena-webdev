@@ -19,6 +19,11 @@ module.exports = function (app) {
     app.delete('/api/widget/:wgid', deleteWidget);
 
 
+    /**
+     * creates a new widget for the given pageId
+     * @param req
+     * @param res
+     */
     function createWidget(req, res) {
         var pageId = req.params.pid;
         var widget = req.body;
@@ -44,6 +49,11 @@ module.exports = function (app) {
         res.send(resultWidget);
     }
 
+    /**
+     * finds a widget by widgetId
+     * @param req
+     * @param res
+     */
     function findWidgetById(req, res) {
         var widgetId = req.params.wgid;
         for(var w in widgets){
@@ -55,6 +65,11 @@ module.exports = function (app) {
         res.send('0');
     }
 
+    /**
+     * updates the given widget
+     * @param req
+     * @param res
+     */
     function updateWidget(req, res) {
         var widgetId = req.params.wgid;
         var widget = req.body;
@@ -68,6 +83,11 @@ module.exports = function (app) {
         res.send('0');
     }
 
+    /**
+     * deletes the given widget
+     * @param req
+     * @param res
+     */
     function deleteWidget(req, res) {
         var widgetId = req.params.wgid;
         for(var w in widgets){

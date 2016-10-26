@@ -15,7 +15,7 @@
             UserService
                 .findUserByID(userId)
                 .success(function (user) {
-                    if(user != null){
+                    if(user != '0'){
                         vm.user = user;
                     }
                 })

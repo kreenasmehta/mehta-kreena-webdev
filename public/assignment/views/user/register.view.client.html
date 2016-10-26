@@ -4,23 +4,23 @@
 
     <label for="username">Username</label>
     <input type="text"
-           ng-model="model.user.username"
+           ng-model="username"
            class="form-control"
            id="username"
            placeholder="username"/>
     <label for="password">Password</label>
     <input type="password"
-           ng-model="model.user.password"
+           ng-model="password"
            class="form-control"
            id="password"
            placeholder="password"/>
     <label for="verify-password">Verify password</label>
     <input type="password"
-           ng-model="model.user.verifyPassword"
+           ng-model="verifyPassword"
            class="form-control"
            id="verify-password"
            placeholder="verify password"/>
-    <a ng-click="model.register(model.user)" class="btn btn-primary btn-block">Register</a>
+    <a ng-click="model.register(username, password, verifyPassword)" class="btn btn-primary btn-block">Register</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Cancel</a>
 </div>

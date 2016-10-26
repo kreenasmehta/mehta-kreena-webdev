@@ -50,6 +50,14 @@
 
         }
 
+        function createUser(username, password) {
+            var user ={
+                username: username,
+                password: password
+            };
+            return $http.post('/api/user', user);
+        }
+
         /**
          * finds a user with the given credentials
          * returns null if none found

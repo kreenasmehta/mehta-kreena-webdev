@@ -10,8 +10,16 @@ module.exports = function (app) {
 
     ];
 
+    app.post('/api/user', createUser);
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
+
+    function createUser(req, res) {
+        var user = req.body;
+        user._id = (new Date()).getTime().toString();
+        users.push(user);
+        res.send(user);
+    }
 
     function findUser(req, res) {
         var params = req.params;

@@ -16,6 +16,7 @@ module.exports = function (app) {
     app.get('/api/user/:uid/website', findAllWebsitesForUser);
     app.get('/api/website/:wid', findWebsiteById);
     app.put('/api/website/:wid', updateWebsite);
+    app.delete('/api/website/:wid', deleteWebsite);
 
 
     /**
@@ -80,5 +81,22 @@ module.exports = function (app) {
             }
         }
         res.send('0');
+    }
+
+    /**
+     * deletes the current website
+     * @param req
+     * @param res
+     */
+    function deleteWebsite(req, res) {
+        var websiteId = req.params.wid;
+        for(var w in websites){
+            if(websites[w]._id === websiteId){
+                websites.splice(w, 1);
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
     }
 };

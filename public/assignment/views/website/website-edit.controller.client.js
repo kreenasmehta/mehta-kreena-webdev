@@ -62,9 +62,14 @@
          * deletes a website
          */
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/" + vm.userId + "/website");
+            WebsiteService
+                .deleteWebsite(vm.websiteId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function () {
 
+                });
         }
 
 

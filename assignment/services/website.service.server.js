@@ -17,6 +17,11 @@ module.exports = function (app) {
     app.get('/api/website/:wid', findWebsiteById);
 
 
+    /**
+     * creates a new website for a given user
+     * @param req
+     * @param res
+     */
     function createWebsite(req, res) {
         var userId = req.params.uid;
         var website = req.body;

@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.get('/api/website/:wid/page', findAllPagesForWebsite);
     app.get('/api/page/:pid', findPageById);
     app.put('/api/page/:pid', updatePage);
+    app.delete('/api/page/:pid', deletePage);
 
 
     /**
@@ -77,6 +78,23 @@ module.exports = function (app) {
             }
         }
         res.send('0');
+    }
+
+    /**
+     * deletes the given page
+     * @param req
+     * @param res
+     */
+    function deletePage(req, res) {
+        var pageId = req.params.pid;
+        for(var p in pages){
+            if(pages[p]._id === pageId){
+                pages.splice(p, 1);
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
     }
 
 };

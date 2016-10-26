@@ -61,11 +61,18 @@
         }
 
         /**
-         * deletes a page
+         * deletes the current page
          */
         function deletePage() {
-            PageService.deletePage(vm.pageId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            PageService
+                .deletePage(vm.pageId)
+                .success(function () {
+                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                })
+                .error(function (error) {
+
+                });
+
         }
 
 

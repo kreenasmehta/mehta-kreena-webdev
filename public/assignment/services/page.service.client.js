@@ -7,11 +7,6 @@
         .factory("PageService", PageService);
 
     function PageService($http) {
-        var pages = [
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ];
 
         var api = {
             createPage: createPage,
@@ -22,17 +17,6 @@
         };
 
         return api;
-
-        /**
-         * returns a new pageID (String)
-         * @returns {string}
-         */
-        function getNewId(){
-            var newId = parseInt(pages[pages.length - 1]._id) + 1;
-            return newId.toString();
-        }
-
-        var page;
 
         /**
          * creates a new page
@@ -81,13 +65,8 @@
          * @param pageId
          */
         function deletePage(pageId) {
-            for(i=0;i<pages.length;i++){
-                if(pages[i]._id === pageId){
-                    pages.splice(i,1);
-                    break;
-                }
-            }
-            
+            var url = '/api/page/'+pageId;
+            return $http.delete(url);
         }
     }
 })();

@@ -14,6 +14,11 @@ module.exports = function (app) {
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
 
+    /**
+     * creates a new user
+     * @param req
+     * @param res
+     */
     function createUser(req, res) {
         var user = req.body;
         user._id = (new Date()).getTime().toString();
@@ -21,6 +26,11 @@ module.exports = function (app) {
         res.send(user);
     }
 
+    /**
+     * finds an existing user by username or credentials
+     * @param req
+     * @param res
+     */
     function findUser(req, res) {
         var params = req.params;
         var query = req.query;
@@ -31,10 +41,17 @@ module.exports = function (app) {
         }
     }
 
+    /**
+     * finds an existing user by username
+     * returns '0' if not found
+     * @param req
+     * @param res
+     */
     function findUserByUsername(req, res) {
         var username = req.query.username;
         for(var u in users){
             if(users[u].username === username){
+                var temp = users[u];
                 res.send(users[u]);
                 return;
             }
@@ -42,6 +59,12 @@ module.exports = function (app) {
         res.send('0');
     }
 
+    /**
+     * finds an existing user by credentials
+     * returns '0' if not found
+     * @param req
+     * @param res
+     */
     function findUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
@@ -55,6 +78,12 @@ module.exports = function (app) {
         res.send('0');
     }
 
+    /**
+     * finds an existing user by userId
+     * returns '0' if not found
+     * @param req
+     * @param res
+     */
     function findUserById(req, res) {
         var userId = req.params.uid;
         for(var u in users){

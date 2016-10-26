@@ -29,27 +29,6 @@
 
         return api;
 
-        /**
-         * returns a new userId (String)
-         * @returns {string}
-         */
-        function getNewId(){
-            var newId = parseInt(users[users.length - 1]._id) + 1;
-            return newId.toString();
-        }
-
-        /**
-         * creates a new user
-         * @param user
-         * @returns {*}
-         */
-        function createUser(user) {
-            user._id = getNewId();
-            users.push(user);
-            return user;
-
-        }
-
         function createUser(username, password) {
             var user ={
                 username: username,
@@ -86,13 +65,8 @@
          * @returns {*}
          */
         function findUserByUserName(username) {
-            for(var u in users){
-                user = users[u];
-                if(user.username === username){
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user?username=' + username;
+            return $http.get(url);
         }
 
         /**
@@ -123,34 +97,6 @@
                 }
             }
             
-        }
-
-        /**
-         * returns true if a user with a given username exists, else false
-         * @param username
-         * @returns {boolean}
-         */
-        function userExists(username) {
-            for(var u in users){
-                user = users[u];
-                if(user.username === username){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * returns true if password and verifyPassword matches, else false
-         * @param password
-         * @param verifyPassword
-         * @returns {boolean}
-         */
-        function passwordMatches(password, verifyPassword) {
-            if(password === verifyPassword){
-                return true;
-            }
-            return false;
         }
     }
 })();

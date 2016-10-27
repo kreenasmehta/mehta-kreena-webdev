@@ -25,6 +25,9 @@
 
                 });
 
+            var allWidget = $(".wam-widget");
+            alert(allWidget.length);
+
         }
         init();
 

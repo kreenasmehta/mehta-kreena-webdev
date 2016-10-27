@@ -41,7 +41,7 @@
                     .success(function (widget) {
                         if(widget != '0'){
                             vm.widget = widget;
-                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + " /page/" + vm.pageId +"/widget");
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId +"/widget");
                         }
                     })
                     .error(function (error) {
@@ -79,6 +79,9 @@
                 if(widget.text != undefined && widget.size != undefined){
                     return true;
                 }
+                if(widget.size < 1 || widget.size > 6){
+                    return true;
+                }
             }
             if(widget.widgetType === "HTML"){
                 if(widget.text != undefined){
@@ -105,7 +108,7 @@
          */
         function getWidgetEditErrorMessage(widget) {
             if(widget.widgetType === "HEADER"){
-                return "Text and size are required fields.";
+                return "Text and size [1-6] are required fields.";
             }
             if(widget.widgetType === "HTML"){
                 return "Text is a required field.";

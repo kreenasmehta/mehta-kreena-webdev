@@ -77,10 +77,9 @@
         function canUpdateWidget(widget) {
             if(widget.widgetType === "HEADER"){
                 if(widget.text != undefined && widget.size != undefined){
-                    return true;
-                }
-                if(widget.size < 1 || widget.size > 6){
-                    return true;
+                    if(widget.size >= 1 && widget.size <= 6){
+                        return true;
+                    }
                 }
             }
             if(widget.widgetType === "HTML"){

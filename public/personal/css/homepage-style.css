@@ -2,3 +2,22 @@
     margin-top: 50px;
 }
 
+.homepage-background{
+    background: url("../images/homepage.jpg") no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.8;
+
+}
+
+.homepage-message{
+    position: relative;
+    padding-top: 23%;
+    padding-bottom: 20%;
+    color: black;
+    font-family: "Lucida Bright", Serif;
+    font-size: 70px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+

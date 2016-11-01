@@ -2,6 +2,11 @@
  * Created by kreenamehta on 10/26/16.
  */
 module.exports = function (app) {
+
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
+
+
     var widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -17,6 +22,7 @@ module.exports = function (app) {
     app.get('/api/widget/:wgid', findWidgetById);
     app.put('/api/widget/:wgid', updateWidget);
     app.delete('/api/widget/:wgid', deleteWidget);
+    app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
 
     /**
@@ -99,4 +105,23 @@ module.exports = function (app) {
         }
         res.send(400);
     }
+
+    function uploadImage(req, res) {
+
+
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        res.send(myFile);
+    }
+
 };

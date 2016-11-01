@@ -7,7 +7,6 @@
         .directive("jgaSortable", jgaSortable); // .jga-sortable
     
     function jgaSortable() {
-        console.log("Hello from jga sortable");
         $(".jga-sortable").sortable({
             axis: 'y'
         });

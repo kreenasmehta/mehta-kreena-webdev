@@ -1,0 +1,12 @@
+.homepage-background{
+    background: url("../images/project-homepage.png") no-repeat left center fixed;
+    background-size: cover;
+    text-align: center;
+}
+
+.homepage-intro{
+    font-family: "American Typewriter";
+    font-size: 38px;
+    padding-top: 50px;
+    color: black;
+}

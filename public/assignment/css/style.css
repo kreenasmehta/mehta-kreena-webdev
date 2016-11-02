@@ -77,6 +77,17 @@ li.borderless {
     font-weight: bold;
 }
 
-.alertBoxTopMargin{
+.boxTopMargin {
     margin-top: 10px;
+}
+
+.boxBottomMargin{
+    margin-bottom: 10px;
+}
+
+.previewBox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: medium;
 }

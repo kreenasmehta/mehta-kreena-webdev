@@ -37,10 +37,17 @@
 			<input name="myFile" type="file" class="form-control" id="image-upload">
 			<input name="width" value="{{model.widget.width}}" style="display: none">
 			<input name="widgetId" value="{{model.widgetId}}" style="display: none">
+			<input name="userId" value="{{model.userId}}" style="display: none">
+			<input name="websiteId" value="{{model.websiteId}}" style="display: none">
+			<input name="pageId" value="{{model.pageId}}" style="display: none">
 		</div>
-		<button type="submit" ng-click="model.updateWidget()" class="btn btn-primary btn-block">Upload Image</button>
+		<div ng-show="model.widget.url" class="alert alert-success previewBox" role="alert">
+			<p>Preview</p>
+		</div>
+		<img ng-src="{{model.widget.url}}" width="{{model.widget.width}}" class="boxBottomMargin"/>
+		<button type="submit" class="btn btn-primary btn-block">Upload Image</button>
 		<a ng-click="model.deleteWidget()"
 		   class="btn btn-danger btn-block">Delete</a>
-		<div ng-show="model.error" class="alert alert-danger alertBoxTopMargin" role="alert">{{model.error}}</div>
+		<div ng-show="model.error" class="alert alert-danger boxTopMargin" role="alert">{{model.error}}</div>
 	</form>
 </div>

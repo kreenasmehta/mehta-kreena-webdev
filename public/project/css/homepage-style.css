@@ -8,8 +8,9 @@
 
 .homepage-intro{
     font-family: "American Typewriter";
-    font-size: 35px;
+    font-size: 30px;
     padding-top: 50px;
+    text-align: center;
     color: black;
     overflow: auto; /* Ensures the content is not revealed until the animation */
     /*border-right: .115em solid transparent; !* The typwriter cursor *!*/

@@ -23,6 +23,7 @@ module.exports = function (app) {
     app.put('/api/widget/:wgid', updateWidget);
     app.delete('/api/widget/:wgid', deleteWidget);
     app.post ("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/api/page/:pageId/widget", updateWidgetIndices);
 
 
     /**
@@ -138,5 +139,11 @@ module.exports = function (app) {
             }
         }
         res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
+    }
+
+    function updateWidgetIndices(req, res) {
+        var initial = req.query.initial;
+        var final = req.query.final;
+        widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
     }
 };

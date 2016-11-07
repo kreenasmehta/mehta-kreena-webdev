@@ -5,7 +5,11 @@
     angular
         .module("jgaDirectives", [])
         .directive("jgaSortable", jgaSortable); // .jga-sortable
-    
+
+    /**
+     * sorts the widgets
+     * @returns {{scope: {}, link: linker, controller: sortableController, controllerAs: string}}
+     */
     function jgaSortable() {
 
         function linker(scope, element, attributes) {
@@ -31,12 +35,26 @@
         }
     }
 
-    function sortableController(WidgetService) {
+
+    function sortableController($routeParams, WidgetService) {
         var vm = this;
         vm.sort = sort;
+        var pageId = $routeParams.pid;
 
+        /**
+         * sorts the widgets based on the initial and final index
+         * @param start
+         * @param end
+         */
         function sort(start, end) {
-            WidgetService.sort(start, end);
+            WidgetService
+                .sort(start, end, pageId)
+                .success(function (success) {
+                    
+                })
+                .error(function (error) {
+                    
+                });
         }
 
     }

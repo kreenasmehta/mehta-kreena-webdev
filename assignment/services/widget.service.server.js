@@ -107,6 +107,11 @@ module.exports = function (app) {
         res.send(400);
     }
 
+    /**
+     * uploads an image
+     * @param req
+     * @param res
+     */
     function uploadImage(req, res) {
 
 
@@ -133,7 +138,6 @@ module.exports = function (app) {
                 widgets[w].name = originalname;
                 widgets[w].width = width;
                 widgets[w].url = '/assignment/uploads/'+filename;
-//                res.send(widgets[w]);
                 res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
                 return;
             }
@@ -141,9 +145,34 @@ module.exports = function (app) {
         res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
     }
 
+
+    /**
+     * updates the index of the widget in the array to maintain the order of widgets
+     * while sorting them
+     * @param req
+     * @param res
+     */
     function updateWidgetIndices(req, res) {
         var initial = req.query.initial;
         var final = req.query.final;
-        widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
+        var pageId = req.params.pageId;
+
+        var realInitial = -1;
+        var realFinal = -1;
+        var loopInCurrentPage = -1;
+
+        for(var w in widgets){
+            if(widgets[w].pageId === pageId){
+                loopInCurrentPage++;
+                if(loopInCurrentPage === parseInt(initial)){
+                    realInitial = w;
+                }else if(loopInCurrentPage === parseInt(final)){
+                    realFinal = w;
+                }
+            }
+        }
+
+        widgets.splice(realFinal, 0, widgets.splice(realInitial, 1)[0]);
+        res.send(200);
     }
 };

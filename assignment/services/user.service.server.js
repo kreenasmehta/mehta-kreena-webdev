@@ -1,7 +1,7 @@
 /**
  * Created by kreenamehta on 10/24/16.
  */
-module.exports = function (app) {
+module.exports = function (app, model) {
     var users =[
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -23,9 +23,18 @@ module.exports = function (app) {
      */
     function createUser(req, res) {
         var user = req.body;
-        user._id = (new Date()).getTime().toString();
-        users.push(user);
-        res.send(user);
+        // user._id = (new Date()).getTime().toString();
+        // users.push(user);
+        model.userModel
+            .createUser(user)
+            .then(
+                function (newUser) {
+                    res.send(newUser);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

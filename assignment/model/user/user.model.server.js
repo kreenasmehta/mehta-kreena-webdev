@@ -72,8 +72,7 @@ module.exports = function () {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            phone: user.phone,
-            websites: user.websites
+            phone: user.phone
         });
     }
 
@@ -94,6 +93,10 @@ module.exports = function () {
      */
     function updateUserWebsite(user, website) {
         user.websites.push(website._id);
-        return UserModel.update(user);
+        return UserModel.update({
+            _id:user._id
+        }, {
+            websites: user.websites
+        });
     }
 };

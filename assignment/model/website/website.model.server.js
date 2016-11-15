@@ -12,7 +12,8 @@ module.exports = function () {
         findAllWebsitesForUser: findAllWebsitesForUser,
         findWebsiteById: findWebsiteById,
         updateWebsite: updateWebsite,
-        deleteWebsite: deleteWebsite
+        deleteWebsite: deleteWebsite,
+        updateWebsitePages: updateWebsitePages
     };
     return api;
 
@@ -71,5 +72,20 @@ module.exports = function () {
      */
     function deleteWebsite(websiteId) {
         return WebsiteModel.remove({_id: websiteId});
+    }
+
+    /**
+     * Adds a new page to the array of pages for a given website
+     * @param website
+     * @param page
+     * @returns {Query|*}
+     */
+    function updateWebsitePages(website, page) {
+        website.pages.push(page._id);
+        return WebsiteModel.update({
+            _id: website._id
+        }, {
+            pages: website.pages
+        });
     }
 };

@@ -1,7 +1,7 @@
 /**
  * Created by kreenamehta on 10/26/16.
  */
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     var pages = [
         { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -24,10 +24,40 @@ module.exports = function (app) {
     function createPage(req, res) {
         var websiteId = req.params.wid;
         var page = req.body;
-        page._id = (new Date()).getTime().toString();
-        page.websiteId = websiteId;
-        pages.push(page);
-        res.send(page);
+        //create page
+        // find website by ID
+        // add page to the page array of website
+        model.pageModel
+            .createPage(websiteId, page)
+            .then(
+                function (page) {
+                    model.websiteModel
+                        .findWebsiteById(websiteId)
+                        .then(
+                            function (website) {
+                                console.log(page);
+                                model.websiteModel
+                                    .updateWebsitePages(website, page)
+                                    .then(
+                                        function (status) {
+                                            console.log(website);
+                                            console.log(page);
+                                            res.send(page);
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

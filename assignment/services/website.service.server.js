@@ -67,13 +67,16 @@ module.exports = function (app, model) {
      */
     function findAllWebsitesForUser(req, res) {
         var userId = req.params.uid;
-        var resultWebsites = [];
-        for(var w in websites){
-            if(websites[w].developerId === userId){
-                resultWebsites.push(websites[w]);
-            }
-        }
-        res.send(resultWebsites);
+        model.websiteModel
+            .findAllWebsitesForUser(userId)
+            .then(
+                function (websites) {
+                    res.send(websites);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

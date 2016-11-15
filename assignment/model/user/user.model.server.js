@@ -93,7 +93,7 @@ module.exports = function () {
      * @returns {Query|*}
      */
     function updateUserWebsite(user, website) {
-        user.websites.push(website);
+        user.websites.push(website._id);
         return UserModel.update(user);
     }
 };

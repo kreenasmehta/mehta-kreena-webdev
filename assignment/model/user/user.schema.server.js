@@ -4,7 +4,7 @@
 module.exports = function () {
 
     var mongoose = require('mongoose');
-    var websites = require('../website/website.schema.server.js')();
+    // var websites = require('../website/website.schema.server.js')();
 
     /**
      * Implementation of a Mongoose User Schema
@@ -16,7 +16,7 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone: String,
-        websites: {type: [websites], default: []},
+        websites: {type:[mongoose.Schema.Types.ObjectId], default: []},
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "user"});
 

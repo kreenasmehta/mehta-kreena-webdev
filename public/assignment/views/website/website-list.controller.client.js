@@ -16,8 +16,8 @@
                 .success(function (websites) {
                     vm.websites = websites;
                 })
-                .error(function () {
-
+                .error(function (error) {
+                    console.log(error);
                 });
 
         }

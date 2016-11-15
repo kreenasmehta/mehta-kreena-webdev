@@ -8,12 +8,21 @@ module.exports = function () {
     var WebsiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
 
     var api = {
-        createWebsite: createWebsite
+        createWebsite: createWebsite,
+        findAllWebsitesForUser: findAllWebsitesForUser
     };
     return api;
     
     function createWebsite(userId, website) {
         website._user = userId;
         return WebsiteModel.create(website);
+    }
+
+    function findAllWebsitesForUser(userId) {
+        return WebsiteModel.find(
+            {
+                _user: userId
+            }
+        );
     }
 };

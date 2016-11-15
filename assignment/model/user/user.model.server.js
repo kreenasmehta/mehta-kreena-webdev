@@ -10,7 +10,8 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        updateUserWebsite: updateUserWebsite
     };
     return api;
 
@@ -71,7 +72,8 @@ module.exports = function () {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            phone: user.phone
+            phone: user.phone,
+            websites: user.websites
         });
     }
 
@@ -82,5 +84,16 @@ module.exports = function () {
      */
     function deleteUser(userId) {
         return UserModel.remove({_id: userId});
+    }
+
+    /**
+     * Adds a new website to the array of websites for a given user
+     * @param user
+     * @param website
+     * @returns {Query|*}
+     */
+    function updateUserWebsite(user, website) {
+        user.websites.push(website);
+        return UserModel.update(user);
     }
 };

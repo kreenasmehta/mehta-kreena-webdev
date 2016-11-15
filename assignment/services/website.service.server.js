@@ -1,7 +1,7 @@
 /**
  * Created by kreenamehta on 10/26/16.
  */
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem Facebook" },
@@ -27,10 +27,37 @@ module.exports = function (app) {
     function createWebsite(req, res) {
         var userId = req.params.uid;
         var website = req.body;
-        website._id = (new Date()).getTime().toString();
-        website.developerId = userId;
-        websites.push(website);
-        res.send(website);
+        //create website
+            // find user by ID
+                // add website to the website array of user
+        model.websiteModel
+            .createWebsite(userId, website)
+            .then(
+                function (website) {
+                    model.userModel
+                        .findUserById(userId)
+                        .then(
+                            function (user) {
+                                model.userModel
+                                    .updateUserWebsite(user, website)
+                                    .then(
+                                        function (status) {
+                                            res.send(website);
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

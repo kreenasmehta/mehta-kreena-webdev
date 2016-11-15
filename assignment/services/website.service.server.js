@@ -110,14 +110,16 @@ module.exports = function (app, model) {
     function updateWebsite(req, res) {
         var websiteId = req.params.wid;
         var website = req.body;
-        for(var w in websites){
-            if(websites[w]._id === websiteId){
-                websites[w] = website;
-                res.send(websites[w]);
-                return;
-            }
-        }
-        res.send('0');
+        model.websiteModel
+            .updateWebsite(websiteId, website)
+            .then(
+                function (status) {
+                    res.send(website);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

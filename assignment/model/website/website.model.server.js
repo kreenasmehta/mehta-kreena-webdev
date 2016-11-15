@@ -10,7 +10,8 @@ module.exports = function () {
     var api = {
         createWebsite: createWebsite,
         findAllWebsitesForUser: findAllWebsitesForUser,
-        findWebsiteById: findWebsiteById
+        findWebsiteById: findWebsiteById,
+        updateWebsite: updateWebsite
     };
     return api;
     
@@ -29,5 +30,14 @@ module.exports = function () {
     
     function findWebsiteById(websiteId) {
         return WebsiteModel.findById(websiteId);
+    }
+    
+    function updateWebsite(websiteId, website) {
+        return WebsiteModel.update({
+            _id: websiteId
+        }, {
+            name: website.name,
+            description: website.description
+        });
     }
 };

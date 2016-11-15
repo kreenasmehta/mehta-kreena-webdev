@@ -86,13 +86,20 @@ module.exports = function (app, model) {
      */
     function findWebsiteById(req, res) {
         var websiteId = req.params.wid;
-        for(var w in websites){
-            if(websites[w]._id === websiteId){
-                res.send(websites[w]);
-                return;
-            }
-        }
-        res.send('0');
+        model.websiteModel
+            .findWebsiteById(websiteId)
+            .then(
+                function (website) {
+                    if(website){
+                        res.send(website)
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

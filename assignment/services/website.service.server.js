@@ -129,13 +129,15 @@ module.exports = function (app, model) {
      */
     function deleteWebsite(req, res) {
         var websiteId = req.params.wid;
-        for(var w in websites){
-            if(websites[w]._id === websiteId){
-                websites.splice(w, 1);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+        model.websiteModel
+            .deleteWebsite(websiteId)
+            .then(
+                function () {
+                    res.sendStatus(200);
+                },
+                function () {
+                    res.sendStatus(400);
+                }
+            );
     }
 };

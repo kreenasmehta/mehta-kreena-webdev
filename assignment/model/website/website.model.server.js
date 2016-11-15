@@ -11,7 +11,8 @@ module.exports = function () {
         createWebsite: createWebsite,
         findAllWebsitesForUser: findAllWebsitesForUser,
         findWebsiteById: findWebsiteById,
-        updateWebsite: updateWebsite
+        updateWebsite: updateWebsite,
+        deleteWebsite: deleteWebsite
     };
     return api;
     
@@ -39,5 +40,9 @@ module.exports = function () {
             name: website.name,
             description: website.description
         });
+    }
+
+    function deleteWebsite(websiteId) {
+        return WebsiteModel.remove({_id: websiteId});
     }
 };

@@ -59,14 +59,20 @@ module.exports = function (app, model) {
      */
     function findUserByUsername(req, res) {
         var username = req.query.username;
-        for(var u in users){
-            if(users[u].username === username){
-                var temp = users[u];
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        model.userModel
+            .findUserByUsername(username)
+            .then(
+                function (user) {
+                    if(user){
+                        res.send(user);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**
@@ -102,13 +108,20 @@ module.exports = function (app, model) {
      */
     function findUserById(req, res) {
         var userId = req.params.uid;
-        for(var u in users){
-            if(users[u]._id === userId){
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        model.userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    if(user){
+                        res.send(user);
+                    } else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**
@@ -119,14 +132,16 @@ module.exports = function (app, model) {
     function updateUser(req, res) {
         var userId = req.params.uid;
         var user = req.body;
-        for(var u in users){
-            if(users[u]._id === userId){
-                users[u] = user;
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        model.userModel
+            .updateUser(userId, user)
+            .then(
+                function (status) {
+                    res.send(user);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**
@@ -136,14 +151,16 @@ module.exports = function (app, model) {
      */
     function deleteUser(req, res) {
         var userId = req.params.uid;
-        for(var u in users){
-            if(users[u]._id === userId){
-                users.splice(u, 1);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+        model.userModel
+            .deleteUser(userId)
+            .then(
+                function () {
+                    res.sendStatus(200);
+                },
+                function () {
+                    res.sendStatus(400);
+                }
+            );
     }
 
 

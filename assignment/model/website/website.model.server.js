@@ -15,12 +15,23 @@ module.exports = function () {
         deleteWebsite: deleteWebsite
     };
     return api;
-    
+
+    /**
+     * Creates a new website instance for user whose _id is userId
+     * @param userId
+     * @param website
+     * @returns {website}
+     */
     function createWebsite(userId, website) {
         website._user = userId;
         return WebsiteModel.create(website);
     }
 
+    /**
+     * Retrieves all website instances for user whose  _id is userId
+     * @param userId
+     * @returns {*|{}|Query}
+     */
     function findAllWebsitesForUser(userId) {
         return WebsiteModel.find(
             {
@@ -28,11 +39,22 @@ module.exports = function () {
             }
         );
     }
-    
+
+    /**
+     * Retrieves single website instance whose _id is websiteId
+     * @param websiteId
+     * @returns {*}
+     */
     function findWebsiteById(websiteId) {
         return WebsiteModel.findById(websiteId);
     }
-    
+
+    /**
+     * Updates website instance whose _id is websiteId
+     * @param websiteId
+     * @param website
+     * @returns {Query|*}
+     */
     function updateWebsite(websiteId, website) {
         return WebsiteModel.update({
             _id: websiteId
@@ -42,6 +64,11 @@ module.exports = function () {
         });
     }
 
+    /**
+     * Removes website instance whose _id is websiteId
+     * @param websiteId
+     * @returns {Promise}
+     */
     function deleteWebsite(websiteId) {
         return WebsiteModel.remove({_id: websiteId});
     }

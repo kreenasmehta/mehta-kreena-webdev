@@ -78,14 +78,20 @@ module.exports = function (app, model) {
     function findUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        for(var u in users){
-            if(users[u].username === username &&
-                users[u].password === password){
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        model.userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function (user) {
+                    if(user){
+                        res.send(user);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

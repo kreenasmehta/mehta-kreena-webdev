@@ -83,13 +83,20 @@ module.exports = function (app, model) {
      */
     function findPageById(req, res) {
         var pageId = req.params.pid;
-        for(var p in pages){
-            if(pages[p]._id === pageId){
-                res.send(pages[p]);
-                return;
-            }
-        }
-        res.send('0');
+        model.pageModel
+            .findPageById(pageId)
+            .then(
+                function (page) {
+                    if(page){
+                        res.send(page);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

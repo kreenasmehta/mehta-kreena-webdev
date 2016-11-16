@@ -9,7 +9,8 @@ module.exports = function () {
 
     var api = {
         createPage: createPage,
-        findAllPagesForWebsite: findAllPagesForWebsite
+        findAllPagesForWebsite: findAllPagesForWebsite,
+        findPageById: findPageById
     };
     return api;
     
@@ -24,5 +25,9 @@ module.exports = function () {
                 _website: websiteId
             }
         );
+    }
+    
+    function findPageById(pageId) {
+        return PageModel.findById(pageId);
     }
 };

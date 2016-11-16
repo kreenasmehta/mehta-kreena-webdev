@@ -91,7 +91,7 @@ module.exports = function (app, model) {
             .then(
                 function (website) {
                     if(website){
-                        res.send(website)
+                        res.send(website);
                     }else{
                         res.send('0');
                     }

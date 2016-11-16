@@ -15,12 +15,23 @@ module.exports = function () {
         deletePage: deletePage
     };
     return api;
-    
+
+    /**
+     * Creates a new page instance for website whose _id is websiteId
+     * @param websiteId
+     * @param page
+     * @returns {page}
+     */
     function createPage(websiteId, page) {
         page._website = websiteId;
         return PageModel.create(page);
     }
-    
+
+    /**
+     * Retrieves all page instances for website whose  _id is websiteId
+     * @param websiteId
+     * @returns {*|{}|Query}
+     */
     function findAllPagesForWebsite(websiteId) {
         return PageModel.find(
             {
@@ -28,11 +39,22 @@ module.exports = function () {
             }
         );
     }
-    
+
+    /**
+     * Retrieves single page instance whose _id is pageId
+     * @param pageId
+     * @returns {*}
+     */
     function findPageById(pageId) {
         return PageModel.findById(pageId);
     }
-    
+
+    /**
+     * Updates page instance whose _id is pageId
+     * @param pageId
+     * @param page
+     * @returns {*|Query}
+     */
     function updatePage(pageId, page) {
         return PageModel.update({
             _id: pageId
@@ -42,7 +64,12 @@ module.exports = function () {
             description: page.description
         });
     }
-    
+
+    /**
+     * Removes page instance whose _id is pageId
+     * @param pageId
+     * @returns {Promise}
+     */
     function deletePage(pageId) {
         return PageModel.remove({_id: pageId});
     }

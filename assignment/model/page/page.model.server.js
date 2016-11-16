@@ -12,7 +12,8 @@ module.exports = function () {
         findAllPagesForWebsite: findAllPagesForWebsite,
         findPageById: findPageById,
         updatePage: updatePage,
-        deletePage: deletePage
+        deletePage: deletePage,
+        updatePageWidgets: updatePageWidgets
     };
     return api;
 
@@ -72,5 +73,14 @@ module.exports = function () {
      */
     function deletePage(pageId) {
         return PageModel.remove({_id: pageId});
+    }
+
+    function updatePageWidgets(page, widget) {
+        page.widgets.push(widget._id);
+        return PageModel.update({
+            _id: page._id
+        }, {
+            widgets: page.widgets
+        });
     }
 };

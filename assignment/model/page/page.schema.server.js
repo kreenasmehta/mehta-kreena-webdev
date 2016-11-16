@@ -10,6 +10,7 @@ module.exports = function () {
         name: String,
         title: String,
         description: String,
+        widgets: {type:[mongoose.Schema.Types.ObjectId], default: []},
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "page"});
 

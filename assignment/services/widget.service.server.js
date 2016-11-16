@@ -1,7 +1,7 @@
 /**
  * Created by kreenamehta on 10/26/16.
  */
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     var multer = require('multer'); // npm install multer --save
     var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
@@ -34,10 +34,37 @@ module.exports = function (app) {
     function createWidget(req, res) {
         var pageId = req.params.pid;
         var widget = req.body;
-        widget._id = (new Date().getTime().toString());
-        widget.pageId = pageId;
-        widgets.push(widget);
-        res.send(widget);
+        //create widget
+        // find page by ID
+        // add widget to the widgets array of page
+        model.widgetModel
+            .createWidget(pageId, widget)
+            .then(
+                function (widget) {
+                    model.pageModel
+                        .findPageById(pageId)
+                        .then(
+                            function (page) {
+                                model.pageModel
+                                    .updatePageWidgets(page, widget)
+                                    .then(
+                                        function (status) {
+                                            res.send(widget);
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

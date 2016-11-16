@@ -7,15 +7,15 @@ module.exports = function () {
 
     var WidgetSchema = mongoose.Schema({
         _page: {type: mongoose.Schema.Types.ObjectId, ref: 'Page'},
-        type: {type: String, enum:['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT']},
+        widgetType: {type: String, enum:['HEADER', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT']},
         name: String,
         text: String,
         placeholder: String,
         description: String,
         url: String,
         width: String,
-        rows: Number,
-        size: Number,
+        rows: {type: Number, default: 0},
+        size: {type: Number, default: 0},
         class: String,
         icon: String,
         deletable: Boolean,

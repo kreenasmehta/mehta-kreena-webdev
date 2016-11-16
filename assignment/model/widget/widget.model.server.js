@@ -13,7 +13,8 @@ module.exports = function () {
         findAllWidgetsForPage: findAllWidgetsForPage,
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
-        deleteWidget: deleteWidget
+        deleteWidget: deleteWidget,
+        uploadImage: uploadImage
 
     };
     return api;
@@ -83,5 +84,23 @@ module.exports = function () {
      */
     function deleteWidget(widgetId) {
         return WidgetModel.remove({_id: widgetId});
+    }
+
+    /**
+     * Uploads an image
+     * @param widgetId
+     * @param originalName
+     * @param width
+     * @param url
+     * @returns {*|Query}
+     */
+    function uploadImage(widgetId, originalName, width, url) {
+        return WidgetModel.update({
+            _id: widgetId
+        }, {
+            name: originalName,
+            width: width,
+            url: url
+        });
     }
 };

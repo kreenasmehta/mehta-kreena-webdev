@@ -179,17 +179,18 @@ module.exports = function (app, model) {
 
         filename += originalname;
         fs.renameSync(path, destination + "/" + filename);
+        var url = '/assignment/uploads/'+filename;
 
-        for(var w in widgets){
-            if(widgets[w]._id === widgetId){
-                widgets[w].name = originalname;
-                widgets[w].width = width;
-                widgets[w].url = '/assignment/uploads/'+filename;
-                res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
-                return;
-            }
-        }
-        res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
+        model.widgetModel
+            .uploadImage(widgetId, originalname, width, url)
+            .then(
+                function (status) {
+                    res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
 

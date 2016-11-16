@@ -8,12 +8,21 @@ module.exports = function () {
     var PageModel = mongoose.model("PageModel", PageSchema);
 
     var api = {
-        createPage: createPage
+        createPage: createPage,
+        findAllPagesForWebsite: findAllPagesForWebsite
     };
     return api;
     
     function createPage(websiteId, page) {
         page._website = websiteId;
         return PageModel.create(page);
+    }
+    
+    function findAllPagesForWebsite(websiteId) {
+        return PageModel.find(
+            {
+                _website: websiteId
+            }
+        );
     }
 };

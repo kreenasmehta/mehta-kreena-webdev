@@ -35,13 +35,10 @@ module.exports = function (app, model) {
                         .findWebsiteById(websiteId)
                         .then(
                             function (website) {
-                                console.log(page);
                                 model.websiteModel
                                     .updateWebsitePages(website, page)
                                     .then(
                                         function (status) {
-                                            console.log(website);
-                                            console.log(page);
                                             res.send(page);
                                         },
                                         function (error) {
@@ -67,13 +64,16 @@ module.exports = function (app, model) {
      */
     function findAllPagesForWebsite(req, res) {
         var websiteId = req.params.wid;
-        var resultPages = [];
-        for(var p in pages){
-            if(pages[p].websiteId === websiteId){
-                resultPages.push(pages[p]);
-            }
-        }
-        res.send(resultPages);
+        model.pageModel
+            .findAllPagesForWebsite(websiteId)
+            .then(
+                function (pages) {
+                    res.send(pages);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

@@ -126,14 +126,16 @@ module.exports = function (app, model) {
      */
     function deletePage(req, res) {
         var pageId = req.params.pid;
-        for(var p in pages){
-            if(pages[p]._id === pageId){
-                pages.splice(p, 1);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+        model.pageModel
+            .deletePage(pageId)
+            .then(
+                function () {
+                    res.sendStatus(200);
+                },
+                function () {
+                    res.sendStatus(400);
+                }
+            );
     }
 
 };

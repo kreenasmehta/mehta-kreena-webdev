@@ -11,7 +11,8 @@ module.exports = function () {
         createPage: createPage,
         findAllPagesForWebsite: findAllPagesForWebsite,
         findPageById: findPageById,
-        updatePage: updatePage
+        updatePage: updatePage,
+        deletePage: deletePage
     };
     return api;
     
@@ -40,5 +41,9 @@ module.exports = function () {
             title: page.title,
             description: page.description
         });
+    }
+    
+    function deletePage(pageId) {
+        return PageModel.remove({_id: pageId});
     }
 };

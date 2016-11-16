@@ -10,7 +10,8 @@ module.exports = function () {
     var api = {
         createPage: createPage,
         findAllPagesForWebsite: findAllPagesForWebsite,
-        findPageById: findPageById
+        findPageById: findPageById,
+        updatePage: updatePage
     };
     return api;
     
@@ -29,5 +30,15 @@ module.exports = function () {
     
     function findPageById(pageId) {
         return PageModel.findById(pageId);
+    }
+    
+    function updatePage(pageId, page) {
+        return PageModel.update({
+            _id: pageId
+        },{
+            name: page.name,
+            title: page.title,
+            description: page.description
+        });
     }
 };

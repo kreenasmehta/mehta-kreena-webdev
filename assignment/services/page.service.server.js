@@ -107,14 +107,16 @@ module.exports = function (app, model) {
     function updatePage(req, res) {
         var pageId = req.params.pid;
         var page = req.body;
-        for(var p in pages){
-            if(pages[p]._id === pageId){
-                pages[p] = page;
-                res.send(pages[p]);
-                return;
-            }
-        }
-        res.send('0');
+        model.pageModel
+            .updatePage(pageId, page)
+            .then(
+                function (status) {
+                    res.send(page);
+                },
+                function (error) {
+                   res.sendStatus(400).message(error);
+                }
+            );
     }
 
     /**

@@ -116,7 +116,7 @@ hr.small {
 
 .sidebar-nav > .sidebar-brand {
     height: 55px;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 55px;
 }
 
@@ -181,6 +181,31 @@ hr.small {
     padding: 10px 0;
 }
 
+/* Register */
+.register {
+    padding: 50px 0;
+    /*text-align: center;*/
+}
+
+.register-button{
+    padding: 10px 0;
+}
+
+/* Profile */
+.profile {
+    padding: 50px 0;
+    /*text-align: center;*/
+}
+
+.profile-button{
+    padding: 10px 0;
+}
+
+.back-button{
+    margin: 5px 0 0 5px;
+    padding: 10px 12px;
+}
+
 /* Searches */
 
 .search {
@@ -190,6 +215,54 @@ hr.small {
 
 .service-item {
     margin-bottom: 30px;
+}
+
+/* Searches By Title*/
+
+.search-by {
+    padding-top: 50px;
+    padding-bottom: 200px;
+}
+
+/*Book Shelf*/
+
+.bookshelf{
+    padding: 20px 0;
+}
+
+.bookshelf-poster{
+    width: 100px;
+    height: 150px;
+}
+
+/*Book Detail*/
+
+.book-detail-poster{
+    padding-top: 20px;
+    width:300px;
+    height: 450px;
+}
+
+.book-info{
+    padding-top: 30px;
+}
+
+.book-reviews{
+    padding-top: 20px;
+}
+
+.book-individual-review{
+    border: none;
+    margin: 5px;
+    text-align: justify;
+}
+
+.add-to-book-shelf{
+    margin: 10px;
+}
+
+.submit-review-button{
+    margin-top: 10px;
 }
 
 
@@ -205,6 +278,8 @@ hr.small {
 
 .img-portfolio {
     margin: 0 auto;
+    width: 210px;
+    height: 300px;
 }
 
 .img-portfolio:hover {

@@ -97,6 +97,9 @@
                     return true;
                 }
             }
+            if(widget.widgetType === "TEXT"){
+                return true;
+            }
             return false;
         }
 

@@ -36,6 +36,9 @@
                     vm.widget.widgetType = "YOUTUBE";
                     // vm.widget = WidgetService.createWidget(vm.pageId, vm.widget);
                     break;
+                case "text":
+                    vm.widget.widgetType = "TEXT";
+                    break;
             }
             WidgetService
                 .createWidget(vm.pageId, vm.widget)

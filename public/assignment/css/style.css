@@ -28,10 +28,6 @@ li.borderless {
     padding-bottom: 20px;
 }
 
-.youtube-video{
-    width: 100%;
-}
-
 .navbar-brand.header{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -90,4 +86,18 @@ li.borderless {
     margin-bottom: 10px;
     text-align: center;
     font-size: medium;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

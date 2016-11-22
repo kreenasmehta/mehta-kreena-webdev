@@ -55,8 +55,8 @@
 		<!-- youtube -->
 		<div class="relative-position">
 			<div ng-switch-when="YOUTUBE"
-			     class="container-fluid">
-				<iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen class="youtube-video"></iframe>
+			     class="container-fluid youtube-widget">
+				<iframe ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</div>

@@ -2,16 +2,23 @@
 <html lang="en" ng-app="BooksApp">
 
     <head>
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
 
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!--angular core library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+
+        <script src="app.js"></script>
+        <script src="config.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <!--angular core library-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
 
         <title>Kreeative Minds</title>
         <link rel="icon" href="img/homepage.jpg">
@@ -33,16 +40,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <!--app.js-->
-        <script src="app.js"></script>
-
     </head>
 
     <body>
-        <div class="container">
-            <a href="views/user/main.view.client.html">
-                <h1>Link to Project</h1>
-            </a>
+        <div ng-view>
+
         </div>
     </body>
 

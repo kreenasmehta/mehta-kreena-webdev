@@ -1,0 +1,55 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Apple Braille",sans-serif;
+    font-weight: 500;
+}
+
+.carousal-images{
+    width: 100%;
+    height: auto;
+}
+
+.main-page-heading{
+    text-align: center;
+}
+
+/* Portfolio */
+
+.portfolio {
+    padding: 50px 0;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.img-portfolio {
+    margin: 0 auto;
+    width: 210px;
+    height: 300px;
+}
+
+.img-portfolio:hover {
+    opacity: 0.8;
+}
+
+.content-padding{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.footer-message{
+    padding-top: 5px;
+    color: darkgrey;
+}

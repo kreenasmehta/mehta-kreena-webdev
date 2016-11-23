@@ -1,3 +1,4 @@
+/*Body*/
 body,
 html {
     width: 100%;
@@ -15,16 +16,26 @@ h6 {
     font-weight: 500;
 }
 
+/* Carousal */
 .carousal-images{
     width: 100%;
     height: auto;
 }
 
+
+/* Main page */
 .main-page-heading{
     text-align: center;
 }
 
-/* Portfolio */
+
+.main-content-padding{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+
+/* Portfolio - for main page 'New Release' and 'Reviews' */
 
 .portfolio {
     padding: 50px 0;
@@ -44,12 +55,78 @@ h6 {
     opacity: 0.8;
 }
 
-.content-padding{
-    padding-top: 20px;
-    padding-bottom: 40px;
-}
-
+/* Footer */
 .footer-message{
     padding-top: 5px;
     color: darkgrey;
+}
+
+/* About page */
+
+.about-content-padding{
+    padding-top: 100px;
+}
+
+/* Search page */
+
+.search-content-padding{
+    padding-top: 50px;
+}
+
+/* Login */
+
+.login-content-padding{
+    padding-top: 50px;
+}
+
+.login-button{
+    padding: 10px 0;
+}
+
+/* Register */
+
+.register-content-padding{
+    padding-top: 50px;
+}
+
+.register-button{
+    padding: 10px 0;
+}
+
+/* Profile */
+
+.profile-content-padding{
+    padding-top: 50px;
+}
+
+.profile-button{
+    padding: 10px 0;
+}
+
+/* Book */
+
+.book-content-padding{
+    padding-top: 50px;
+}
+
+.book-info{
+    padding-top: 30px;
+}
+
+.book-reviews{
+    padding-top: 20px;
+}
+
+.book-individual-review{
+    border: none;
+    margin: 5px;
+    text-align: justify;
+}
+
+.add-to-book-shelf{
+    margin: 10px;
+}
+
+.submit-review-button{
+    margin-top: 10px;
 }

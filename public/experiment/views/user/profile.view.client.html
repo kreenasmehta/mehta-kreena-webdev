@@ -30,4 +30,35 @@
 	<!-- /.container -->
 </nav>
 
-<h1>Profile</h1>
+<div class="container profile-content-padding">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="text-center">Profile</h2>
+			<form class="form-group">
+				<!--Username-->
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" placeholder="alice" value="alice">
+				<!--Password-->
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" placeholder="password" value="password">
+				<!--Verify Password-->
+				<label for="verify-password">Verfiy Password</label>
+				<input type="password" class="form-control" id="verify-password" placeholder="verify password" value="password">
+				<!--First Name-->
+				<label for="first-name">First Name</label>
+				<input type="text" class="form-control" id="first-name" placeholder="Alice" value="Alice">
+				<!--Last Name-->
+				<label for="last-name">Last Name</label>
+				<input type="text" class="form-control" id="last-name" placeholder="Wonderland" value="Alice">
+				<!--Email-->
+				<label for="email">Email Address</label>
+				<input type="text" class="form-control" id="email" placeholder="alice@wonderland.com" value="alice@wonderland.com">
+				<div class="profile-button">
+					<a class="btn btn-primary btn-block">Update Profile</a>
+					<a href="#/bookshelf" class="btn btn-info btn-block">Go to Bookshelf</a>
+					<a href="#/login" class="btn btn-danger btn-block">Log out</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,5 +1,5 @@
 /**
- * Created by kreenamehta on 11/17/16.
+ * Created by kreenamehta on 11/22/16.
  */
 (function () {
     angular
@@ -9,10 +9,41 @@
     function Config($routeProvider) {
         $routeProvider
             .when("/main", {
-                templateUrl: "views/user/main.view.client.html"
+                templateUrl: "views/user/main.view.client.html",
+                controller: "LoginController",
+                controllerAs : "model"
+            })
+            .when("/about", {
+                templateUrl: "views/user/about.view.client.html"
+            })
+            .when("/login", {
+                templateUrl: "views/user/login.view.client.html"
             })
             .when("/register", {
                 templateUrl: "views/user/register.view.client.html"
+            })
+            .when("/profile", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs : "model"
+            })
+            .when("/search", {
+                templateUrl: "views/search/search.view.client.html"
+            })
+            .when("/title", {
+                templateUrl: "views/search/title.view.client.html"
+            })
+            .when("/author", {
+                templateUrl: "views/search/author.view.client.html"
+            })
+            .when("/genre", {
+                templateUrl: "views/search/genre.view.client.html"
+            })
+            .when("/bookshelf", {
+                templateUrl: "views/user/bookshelf.view.client.html"
+            })
+            .when("/book", {
+                templateUrl: "views/book/book.view.client.html"
             })
             .otherwise({
                 redirectTo: "/main"

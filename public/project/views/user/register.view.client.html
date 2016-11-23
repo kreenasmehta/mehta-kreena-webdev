@@ -34,27 +34,28 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<h2 class="text-center">Register</h2>
+			<div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
 			<form class="form-group">
 				<!--Username-->
 				<label for="username">Username</label>
-				<input type="text" class="form-control" id="username" placeholder="alice">
+				<input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="alice">
 				<!--Password-->
 				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password" placeholder="password">
+				<input ng-model="model.user.password" type="password" class="form-control" id="password" placeholder="password">
 				<!--Verify Password-->
 				<label for="verify-password">Verfiy Password</label>
-				<input type="password" class="form-control" id="verify-password" placeholder="verify password">
+				<input ng-model="model.user.verifypassword" type="password" class="form-control" id="verify-password" placeholder="verify password">
 				<!--First Name-->
 				<label for="first-name">First Name</label>
-				<input type="text" class="form-control" id="first-name" placeholder="Alice">
+				<input ng-model="model.user.firstname" type="text" class="form-control" id="first-name" placeholder="Alice">
 				<!--Last Name-->
 				<label for="last-name">Last Name</label>
-				<input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+				<input ng-model="model.user.lastname" type="text" class="form-control" id="last-name" placeholder="Wonderland">
 				<!--Email-->
 				<label for="email">Email Address</label>
-				<input type="text" class="form-control" id="email" placeholder="alice@wonderland.com">
+				<input ng-model="model.user.email" type="text" class="form-control" id="email" placeholder="alice@wonderland.com">
 				<div class="register-button">
-					<a href="#/profile" class="btn btn-success btn-block">Register</a>
+					<a ng-click="model.register(model.user)" class="btn btn-success btn-block">Register</a>
 					<a href="#/login" class="btn btn-danger btn-block">Cancel</a>
 				</div>
 			</form>

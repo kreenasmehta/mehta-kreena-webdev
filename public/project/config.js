@@ -15,15 +15,19 @@
                 templateUrl: "views/home/about.view.client.html"
             })
             .when("/login", {
-                templateUrl: "views/user/login.view.client.html"
+                templateUrl: "views/user/login.view.client.html",
+                controller: "LoginController",
+                controllerAs: "model"
             })
             .when("/register", {
                 templateUrl: "views/user/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/profile/:pid", {
-                templateUrl: "views/user/profile.view.client.html"
+            .when("/user/:uid", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model"
             })
             .when("/search", {
                 templateUrl: "views/search/search.view.client.html"
@@ -46,7 +50,7 @@
             .when("/search/genre/:genre", {
                 templateUrl: "views/search/genre.view.client.html"
             })
-            .when("/profile/:pid/bookshelf", {
+            .when("/user/:uid/bookshelf", {
                 templateUrl: "views/bookshelf/bookshelf.view.client.html"
             })
             .when("/book/:bid", {

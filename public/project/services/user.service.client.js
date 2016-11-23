@@ -6,14 +6,7 @@
         .module("BooksApp")
         .factory("UserService", UserService);
 
-    function UserService() {
-
-        var users =[
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@wonderland.com", loggedIn: false, bookshelfID: "1111"},
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob@marley.com", loggedIn: false, bookshelfID: "2222"},
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia", email: "charly@garcia.com", loggedIn: false, bookshelfID: "3333"},
-            {_id: "456", username: "kreena", password: "kreena", firstName: "Kreena",   lastName: "Mehta", email: "kreena@mehta.com", loggedIn: false, bookshelfID: "4444"}
-        ];
+    function UserService($http) {
 
         var api = {
 
@@ -28,37 +21,67 @@
 
         return api;
 
+        /**
+         * creates a new user
+         * @param user
+         * @returns {*}
+         */
         function createUser(user) {
-            user._id = "567";
-            user.loggedIn = true;
-            users.push(user);
-            return user;
+            console.log(user);
+            return $http.post('/api/user', user);
         }
 
-        function findUserByID() {
-
+        /**
+         * finds user by id
+         * @param userId
+         * @returns {*}
+         */
+        function findUserByID(userId) {
+            var url = '/api/user/'+userId;
+            return $http.get(url);
         }
 
+        /**
+         * finds user by username
+         * @param username
+         * @returns {*}
+         */
         function findUserByUserName(username) {
-            for(var u in users){
-                user = users[u];
-                if(user.username === username){
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user?username=' + username;
+            return $http.get(url);
         }
 
-        function findUserByCredentials() {
-
+        /**
+         * finds user by credentials
+         * @param username
+         * @param password
+         * @returns {*}
+         */
+        function findUserByCredentials(username, password) {
+            var url = '/api/user?username=' + username + '&password=' +password;
+            return $http.get(url);
         }
 
-        function updateUser() {
 
+        /**
+         * updates the user
+         * @param userId
+         * @param user
+         * @returns {*}
+         */
+        function updateUser(userId, user) {
+            var url = '/api/user/'+userId;
+            return $http.put(url, user);
         }
 
-        function deleteUser() {
-
+        /**
+         * deletes the user
+         * @param userId
+         * @returns {*}
+         */
+        function deleteUser(userId) {
+            var url = '/api/user/'+userId;
+            return $http.delete(url);
         }
     }
 })();

@@ -9,10 +9,10 @@
     function Config($routeProvider) {
         $routeProvider
             .when("/main", {
-                templateUrl: "views/user/main.view.client.html"
+                templateUrl: "views/home/main.view.client.html"
             })
             .when("/about", {
-                templateUrl: "views/user/about.view.client.html"
+                templateUrl: "views/home/about.view.client.html"
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html"
@@ -36,7 +36,7 @@
                 templateUrl: "views/search/genre.view.client.html"
             })
             .when("/bookshelf", {
-                templateUrl: "views/user/bookshelf.view.client.html"
+                templateUrl: "views/bookshelf/bookshelf.view.client.html"
             })
             .when("/book", {
                 templateUrl: "views/book/book.view.client.html"

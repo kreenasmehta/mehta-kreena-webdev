@@ -22,25 +22,34 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/profile", {
+            .when("/profile/:pid", {
                 templateUrl: "views/user/profile.view.client.html"
             })
             .when("/search", {
                 templateUrl: "views/search/search.view.client.html"
             })
-            .when("/title", {
+            .when("/search/title", {
                 templateUrl: "views/search/title.view.client.html"
             })
-            .when("/author", {
+            .when("/search/title/:title", {
+                templateUrl: "views/search/title.view.client.html"
+            })
+            .when("/search/author", {
                 templateUrl: "views/search/author.view.client.html"
             })
-            .when("/genre", {
+            .when("/search/author/:author", {
+                templateUrl: "views/search/author.view.client.html"
+            })
+            .when("/search/genre", {
                 templateUrl: "views/search/genre.view.client.html"
             })
-            .when("/bookshelf", {
+            .when("/search/genre/:genre", {
+                templateUrl: "views/search/genre.view.client.html"
+            })
+            .when("/profile/:pid/bookshelf", {
                 templateUrl: "views/bookshelf/bookshelf.view.client.html"
             })
-            .when("/book", {
+            .when("/book/:bid", {
                 templateUrl: "views/book/book.view.client.html"
             })
             .otherwise({

@@ -27,7 +27,6 @@
          * @returns {*}
          */
         function createUser(user) {
-            console.log(user);
             return $http.post('/api/user', user);
         }
 

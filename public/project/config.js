@@ -9,7 +9,9 @@
     function Config($routeProvider) {
         $routeProvider
             .when("/main", {
-                templateUrl: "views/home/main.view.client.html"
+                templateUrl: "views/home/main.view.client.html",
+                controller: "MainController",
+                controllerAs: "model"
             })
             .when("/about", {
                 templateUrl: "views/home/about.view.client.html"

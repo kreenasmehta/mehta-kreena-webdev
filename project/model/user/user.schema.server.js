@@ -12,7 +12,7 @@ module.exports = function () {
         lastName: String,
         email: String,
         dateCreated: {type: Date, default: Date.now()}
-    }, {collection: "user"});
+    }, {collection: "kmuser"});
 
     return UserSchema;
 };

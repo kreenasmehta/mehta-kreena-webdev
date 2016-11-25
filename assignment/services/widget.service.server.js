@@ -64,12 +64,6 @@ module.exports = function (app, model) {
      */
     function findAllWidgetsForPage(req, res) {
         var pageId = req.params.pid;
-        // var resultWidget = [];
-        // for(var w in widgets){
-        //     if(widgets[w].pageId === pageId){
-        //         resultWidget.push(widgets[w]);
-        //     }
-        // }
         model.widgetModel
             .findAllWidgetsForPage(pageId)
             .then(

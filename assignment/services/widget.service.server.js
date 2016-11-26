@@ -127,13 +127,40 @@ module.exports = function (app, model) {
     function deleteWidget(req, res) {
         var widgetId = req.params.wgid;
         model.widgetModel
-            .deleteWidget(widgetId)
+            .findWidgetById(widgetId)
             .then(
-                function () {
-                    res.sendStatus(200);
+                function (widget) {
+                    model.widgetModel
+                        .deleteWidget(widgetId)
+                        .then(
+                            function () {
+                                model.pageModel
+                                    .findPageById(widget._page)
+                                    .then(
+                                        function (page) {
+                                            model.pageModel
+                                                .deleteWidgetFromPage(page, widgetId)
+                                                .then(
+                                                    function (status) {
+                                                        res.sendStatus(200);
+                                                    },
+                                                    function (error) {
+                                                        res.sendStatus(400).message(error);
+                                                    }
+                                                );
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
                 },
-                function () {
-                    res.sendStatus(400);
+                function (error) {
+                    res.sendStatus(400).message(error);
                 }
             );
     }

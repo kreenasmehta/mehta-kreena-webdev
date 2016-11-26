@@ -13,7 +13,8 @@ module.exports = function () {
         findPageById: findPageById,
         updatePage: updatePage,
         deletePage: deletePage,
-        updatePageWidgets: updatePageWidgets
+        updatePageWidgets: updatePageWidgets,
+        deleteWidgetFromPage: deleteWidgetFromPage
     };
     return api;
 
@@ -80,6 +81,15 @@ module.exports = function () {
         return PageModel.update({
             _id: page._id
         }, {
+            widgets: page.widgets
+        });
+    }
+
+    function deleteWidgetFromPage(page, widgetId) {
+        page.widgets.pull(widgetId);
+        return PageModel.update({
+            _id: page._id
+        },{
             widgets: page.widgets
         });
     }

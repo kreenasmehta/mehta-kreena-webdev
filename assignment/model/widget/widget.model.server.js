@@ -66,6 +66,7 @@ module.exports = function () {
             name: widget.name,
             text: widget.text,
             size: widget.size,
+            rows: widget.rows,
             placeholder: widget.placeholder,
             description: widget.description,
             url: widget.url,

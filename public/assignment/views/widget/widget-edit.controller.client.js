@@ -83,7 +83,7 @@
                 }
             }
             if(widget.widgetType === "HTML"){
-                if(widget.text != undefined){
+                if(widget.text != undefined && widget.text.length != 2){
                     return true;
                 }
             }

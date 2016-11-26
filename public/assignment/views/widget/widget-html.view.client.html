@@ -5,17 +5,7 @@
         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
         ['indent','outdent'],['html']]">
 	</div>
-	<form>
-		<div class="form-group">
-			<label for="widget-name">HTML content</label>
-			<textarea rows="5"
-			          ng-model="model.widget.text"
-			          class="form-control"
-			          placeholder="HTML content"
-			          id="widget-name"></textarea>
-		</div>
-		<a ng-click="model.deleteWidget()"
-		   class="btn btn-danger btn-block">Delete</a>
-		<div ng-show="model.error" class="alert alert-danger boxTopMargin" role="alert">{{model.error}}</div>
-	</form>
+	<a ng-click="model.deleteWidget()"
+	   class="btn btn-danger btn-block">Delete</a>
+	<div ng-show="model.error" class="alert alert-danger boxTopMargin" role="alert">{{model.error}}</div>
 </div>

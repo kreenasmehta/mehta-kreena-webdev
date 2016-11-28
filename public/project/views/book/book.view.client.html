@@ -32,31 +32,40 @@
 
 <div class="container book-content-padding">
 	<div class="row">
-		<h2 class="text-center">The Alchemist</h2>
-		<div class="col-md-4">
-			<img src="../../img/the-alchemist.jpg" class="book-detail-poster">
-		</div>
-		<div class="col-md-8  book-info">
+		<h2 class="text-center">{{model.book.volumeInfo.title}}</h2>
+		<div class="col-md-12  book-info">
 			<table class="table">
 				<tr>
+					<th>Front Cover</th>
+					<td><img ng-src="{{model.book.volumeInfo.imageLinks.thumbnail}}" class="book-detail-poster"></td>
+				</tr>
+				<tr>
 					<th>Author</th>
-					<td>Paulo Coelho</td>
+					<td>
+						<ul class="list-unstyled">
+							<li ng-repeat="author in model.book.volumeInfo.authors">
+								{{author}}
+							</li>
+						</ul>
+					</td>
 				</tr>
 				<tr>
 					<th>Publisher</th>
-					<td>HarperOne</td>
+					<td>{{model.book.volumeInfo.publisher}}</td>
 				</tr>
 				<tr>
 					<th>Published date</th>
-					<td>1993-04-16</td>
+					<td>{{model.book.volumeInfo.publishedDate}}</td>
 				</tr>
-				<tr>
+				<tr ng-show="model.book.volumeInfo.description">
 					<th>Description</th>
-					<td>A fable about undauntingly following one's dreams, listening to one's heart, and reading life's omens features dialogue between a boy and an unnamed being. 50,000 first printing. $50,000 ad/promo.</td>
+					<td><div ng-bind-html="model.checkSafeHtml(model.book.volumeInfo.description)">
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<th>Average rating</th>
-					<td>4.5</td>
+					<td>{{model.book.volumeInfo.averageRating}}</td>
 				</tr>
 			</table>
 			<a class="btn btn-block btn-primary add-to-book-shelf">Add to your bookshelf</a>

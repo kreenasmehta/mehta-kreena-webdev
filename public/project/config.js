@@ -35,19 +35,25 @@
                 templateUrl: "views/search/search.view.client.html"
             })
             .when("/search/title", {
-                templateUrl: "views/search/title.view.client.html"
+                templateUrl: "views/search/title.view.client.html",
+                controller: "TitleSearchController",
+                controllerAs: "model"
             })
             .when("/search/title/:title", {
                 templateUrl: "views/search/title.view.client.html"
             })
             .when("/search/author", {
-                templateUrl: "views/search/author.view.client.html"
+                templateUrl: "views/search/author.view.client.html",
+                controller: "AuthorSearchController",
+                controllerAs: "model"
             })
             .when("/search/author/:author", {
                 templateUrl: "views/search/author.view.client.html"
             })
             .when("/search/genre", {
-                templateUrl: "views/search/genre.view.client.html"
+                templateUrl: "views/search/genre.view.client.html",
+                controller: "GenreSearchController",
+                controllerAs: "model"
             })
             .when("/search/genre/:genre", {
                 templateUrl: "views/search/genre.view.client.html"
@@ -56,7 +62,9 @@
                 templateUrl: "views/bookshelf/bookshelf.view.client.html"
             })
             .when("/book/:bid", {
-                templateUrl: "views/book/book.view.client.html"
+                templateUrl: "views/book/book.view.client.html",
+                controller: "BookDetailsController",
+                controllerAs: "model"
             })
             .otherwise({
                 redirectTo: "/main"

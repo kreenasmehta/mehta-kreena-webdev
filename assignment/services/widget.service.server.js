@@ -216,22 +216,24 @@ module.exports = function (app, model) {
         var final = req.query.final;
         var pageId = req.params.pageId;
 
-        var realInitial = -1;
-        var realFinal = -1;
-        var loopInCurrentPage = -1;
-
-        for(var w in widgets){
-            if(widgets[w].pageId === pageId){
-                loopInCurrentPage++;
-                if(loopInCurrentPage === parseInt(initial)){
-                    realInitial = w;
-                }else if(loopInCurrentPage === parseInt(final)){
-                    realFinal = w;
+        model.pageModel
+            .findPageById(pageId)
+            .then(
+                function (page) {
+                    model.pageModel
+                        .reorderWidgetsForPage(page, initial, final)
+                        .then(
+                            function (status) {
+                                res.sendStatus(200);
+                            },
+                            function (error) {
+                                res.sendStatus(400);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400);
                 }
-            }
-        }
-
-        widgets.splice(realFinal, 0, widgets.splice(realInitial, 1)[0]);
-        res.send(200);
+            );
     }
 };

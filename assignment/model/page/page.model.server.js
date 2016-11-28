@@ -14,7 +14,8 @@ module.exports = function () {
         updatePage: updatePage,
         deletePage: deletePage,
         updatePageWidgets: updatePageWidgets,
-        deleteWidgetFromPage: deleteWidgetFromPage
+        deleteWidgetFromPage: deleteWidgetFromPage,
+        reorderWidgetsForPage: reorderWidgetsForPage,
     };
     return api;
 
@@ -93,4 +94,14 @@ module.exports = function () {
             widgets: page.widgets
         });
     }
+
+    function reorderWidgetsForPage(page, start, end) {
+        page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
+        return PageModel.update({
+            _id: page._id
+        }, {
+            widgets: page.widgets
+        });
+    }
+
 };

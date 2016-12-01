@@ -8,9 +8,14 @@ module.exports = function () {
     var UserSchema = mongoose.Schema({
         username: String,
         password: String,
+        dob: Date,
         firstName: String,
         lastName: String,
+        phone: {type: Number},
+        address: String,
         email: String,
+        role:{type:String, enum:["READER", "ADMIN"], default:"READER"},
+        follows: {type: [mongoose.Schema.Types.ObjectId], ref:"UserModel", default:[]},
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "kmuser"});
 

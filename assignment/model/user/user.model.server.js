@@ -7,6 +7,8 @@ module.exports = function () {
     var api = {
         createUser: createUser,
         findUserById: findUserById,
+        findUserByGoogleId: findUserByGoogleId,
+        findUserByFacebookId: findUserByFacebookId,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
@@ -98,5 +100,15 @@ module.exports = function () {
         }, {
             websites: user.websites
         });
+    }
+
+    function findUserByGoogleId(googleId) {
+        return UserModel
+            .findOne({"google.id": googleId});
+    }
+    
+    function findUserByFacebookId(facebookId) {
+        return UserModel
+            .findOne({'facebook.id': facebookId});
     }
 };

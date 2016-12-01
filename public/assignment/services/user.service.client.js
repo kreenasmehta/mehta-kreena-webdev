@@ -17,7 +17,9 @@
             deleteUser: deleteUser,
             login: login,
             checkLogin: checkLogin,
-            logout: logout
+            logout: logout,
+            findCurrentUser: findCurrentUser,
+            checkAdmin: checkAdmin
         };
 
         return api;
@@ -97,6 +99,15 @@
         
         function logout() {
             return $http.post("/api/logout");
+        }
+
+        function findCurrentUser() {
+            var url = '/api/user';
+            return $http.get(url);
+        }
+
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
         }
     }
 })();

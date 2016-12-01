@@ -30,7 +30,7 @@
                     .success(function (user) {
                         if(user === '0'){
                             UserService
-                                .createUser(username, password)
+                                .register(username, password)
                                 .success(function (user) {
                                     $location.url("/user/" + user._id);
                                 })

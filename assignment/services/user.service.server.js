@@ -35,6 +35,7 @@ module.exports = function (app, model) {
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/checkAdmin', checkAdmin);
     app.post('/api/logout', logout);
+    app.post ('/api/register', register);
     app.get('/auth/google/callback',
         passport.authenticate('google', {
             successRedirect: '/#/user',
@@ -47,12 +48,12 @@ module.exports = function (app, model) {
         }));
 
 
-    // var googleConfig = {
-    //     clientID     : process.env.GOOGLE_CLIENT_ID,
-    //     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    //     callbackURL  : process.env.GOOGLE_CALLBACK_URL
-    // };
-    // passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+    var googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    };
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -210,6 +211,27 @@ module.exports = function (app, model) {
         var user = req.user;
         res.json(user);
     }
+
+
+    function register (req, res) {
+        var user = req.body;
+        model.userModel
+            .createUser(user)
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                 }
+            );
+    }
+
 
     /**
      * creates a new user

@@ -29,7 +29,10 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve:{
+                    checkLogin: checkLogin
+                }
             })
             .when("/search", {
                 templateUrl: "views/search/search.view.client.html"
@@ -69,5 +72,27 @@
             .otherwise({
                 redirectTo: "/main"
             });
+
+        /**
+         * check login
+         * @param $q
+         * @param UserService
+         * @returns {promise.promise|jQuery.promise|d.promise|promise|*}
+         */
+        function checkLogin($q, UserService) {
+            var deferred = $q.defer();
+            UserService
+                .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0'){
+                            deferred.resolve();
+                        } else{
+                            deferred.reject();
+                        }
+                    }
+                );
+            return deferred.promise;
+        }
     }
 })();

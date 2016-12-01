@@ -17,7 +17,8 @@
          */
         function login(username, password) {
             UserService
-                .findUserByCredentials(username, password)
+                // .findUserByCredentials(username, password)
+                .login(username, password)
                 .success(function (user) {
                     if(user === '0'){
                         vm.error = "No such user."

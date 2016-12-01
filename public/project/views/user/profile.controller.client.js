@@ -12,6 +12,7 @@
         vm.updateProfile = updateProfile;
         vm.openBookshelf = openBookshelf;
         vm.deleteProfile = deleteProfile;
+        vm.logout = logout;
 
         function init() {
             UserService
@@ -64,6 +65,20 @@
                 })
                 .error(function (error) {
 
+                });
+        }
+
+        /**
+         * logout
+         */
+        function logout() {
+            UserService
+                .logout()
+                .success(function () {
+                    $location.url("/login");
+                })
+                .error(function () {
+                    
                 });
         }
     }

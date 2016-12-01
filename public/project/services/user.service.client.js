@@ -15,7 +15,10 @@
             findUserByUserName: findUserByUserName,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            login: login,
+            checkLogin: checkLogin,
+            logout: logout
 
         };
 
@@ -82,5 +85,37 @@
             var url = '/api/user/'+userId;
             return $http.delete(url);
         }
+
+        /**
+         * login
+         * @param username
+         * @param password
+         * @returns {*}
+         */
+        function login(username, password) {
+            var user ={
+                username: username,
+                password: password
+            };
+            return $http.post("/api/login", user);
+        }
+
+        /**
+         * check login
+         * @returns {*}
+         */
+        function checkLogin() {
+            return $http.post("/api/checkLogin");
+        }
+
+        /**
+         * logout
+         * @returns {*}
+         */
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+
     }
 })();

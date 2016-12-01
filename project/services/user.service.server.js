@@ -3,11 +3,114 @@
  */
 module.exports = function (app, model) {
 
+
+    var passport      = require('passport');
+    var LocalStrategy    = require('passport-local').Strategy;
+    var cookieParser  = require('cookie-parser');
+    var session       = require('express-session');
+    app.use(session({
+        secret: 'this is the secret',
+        resave: true,
+        saveUninitialized: true
+    }));
+    app.use(cookieParser());
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
     app.post('/api/user', createUser);
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
+    app.post('/api/login', passport.authenticate('local'), login);
+    app.post('/api/checkLogin', checkLogin);
+    app.post('/api/logout', logout);
+
+
+    /**
+     * serialize user
+     * @param user
+     * @param done
+     */
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    /**
+     * deserialize user
+     * @param user
+     * @param done
+     */
+    function deserializeUser(user, done) {
+        model.userModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
+
+    /**
+     * local strategy
+     * @param username
+     * @param password
+     * @param done
+     */
+    function localStrategy(username, password, done) {
+        model.userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function (user) {
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
+    }
+
+
+    /**
+     * login
+     * @param req
+     * @param res
+     */
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
+
+    /**
+     * check login
+     * @param req
+     * @param res
+     */
+    function checkLogin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    /**
+     * logout
+     * @param req
+     * @param res
+     */
+    function logout(req, res) {
+        req.logout();
+        res.send(200);
+    }
+
 
     /**
      * creates a new user

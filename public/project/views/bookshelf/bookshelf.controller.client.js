@@ -48,7 +48,7 @@
                     init();
                 })
                 .error(function () {
-                    console.log("error");
+
                 });
         }
     }

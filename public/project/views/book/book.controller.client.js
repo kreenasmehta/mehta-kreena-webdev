@@ -53,22 +53,6 @@
                 });
         }
 
-        // function checkIfBookIsInBookshelf() {
-        //     BookshelfService
-        //         .getBookFromBookshelf(vm.currentUser._id, bookId)
-        //         .success(function (bookshelfEntry) {
-        //             if(bookshelfEntry){
-        //                 return true;
-        //             } else{
-        //                 return false;
-        //             }
-        //         })
-        //         .error(function () {
-        //
-        //         });
-        //
-        // }
-
         function addToBookshelf() {
             if(vm.loggedIn==false){
                 vm.error = "Please login/register to add '" + vm.book.volumeInfo.title + "' to your bookshelf.";
@@ -80,7 +64,7 @@
                             vm.info = "'"+vm.book.volumeInfo.title+"' is already added to your bookshelf."
                         } else{
                             BookshelfService
-                                .addToBookshelf(vm.currentUser._id, bookId)
+                                .addToBookshelf(vm.currentUser._id, vm.book)
                                 .success(function (bookshelfEntry) {
                                     if(bookshelfEntry){
                                         vm.successfulAdd = "'"+vm.book.volumeInfo.title+"' has been added to your bookshelf."
@@ -99,30 +83,6 @@
             }
         }
 
-
-
-        // function addToBookshelf() {
-        //     if(vm.loggedIn==false){
-        //         vm.error = "Please login/register to add '" + vm.book.volumeInfo.title + "' to your bookshelf.";
-        //     } else{
-        //         if(checkIfBookIsInBookshelf()){
-        //             vm.info = "'"+vm.book.volumeInfo.title+"' is already added to your bookshelf."
-        //         } else{
-        //             BookshelfService
-        //                 .addToBookshelf(vm.currentUser._id, bookId)
-        //                 .success(function (bookshelfEntry) {
-        //                     if(bookshelfEntry){
-        //                         vm.successfulAdd = "'"+vm.book.volumeInfo.title+"' has been added to your bookshelf."
-        //                     }else{
-        //                         console.log("error in adding");
-        //                     }
-        //                 })
-        //                 .error(function (error) {
-        //
-        //                 });
-        //         }
-        //     }
-        // }
 
 
     }

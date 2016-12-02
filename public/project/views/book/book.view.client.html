@@ -79,9 +79,15 @@
 			</div>
 			<div ng-show="model.info" class="alert alert-info add-to-book-shelf" role="alert">
 				{{model.info}}
+				<br>
+				<br>
+				<a href="#/user/{{model.currentUser._id}}/bookshelf">Go to your bookshelf</a>
 			</div>
 			<div ng-show="model.successfulAdd" class="alert alert-success add-to-book-shelf" role="alert">
 				{{model.successfulAdd}}
+				<br>
+				<br>
+				<a href="#/user/{{model.currentUser._id}}/bookshelf">Go to your bookshelf</a>
 			</div>
 			<a ng-click="model.addToBookshelf()" class="btn btn-block btn-primary add-to-book-shelf">Add to your bookshelf</a>
 		</div>

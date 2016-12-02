@@ -9,14 +9,18 @@ module.exports = function () {
 
     var api = {
         addToBookshelf: addToBookshelf,
-        getBookFromBookshelf: getBookFromBookshelf
+        getBookFromBookshelf: getBookFromBookshelf,
+        getBookshelfForUser: getBookshelfForUser
     };
     return api;
 
-    function addToBookshelf(userId, bookId) {
+    function addToBookshelf(userId, bookId, title, authors, frontCover) {
         var bookshelfEntry ={
             _user: userId,
-            _book: bookId
+            _book: bookId,
+            title: title,
+            authors: authors,
+            frontCover: frontCover
         };
         return BookshelfModel.create(bookshelfEntry);
     }
@@ -26,6 +30,14 @@ module.exports = function () {
             {
                 _user: userId,
                 _book: bookId
+            }
+        );
+    }
+
+    function getBookshelfForUser(userId) {
+        return BookshelfModel.find(
+            {
+                _user: userId
             }
         );
     }

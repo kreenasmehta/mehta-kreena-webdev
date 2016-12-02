@@ -66,7 +66,9 @@
                 templateUrl: "views/search/genre.view.client.html"
             })
             .when("/user/:uid/bookshelf", {
-                templateUrl: "views/bookshelf/bookshelf.view.client.html"
+                templateUrl: "views/bookshelf/bookshelf.view.client.html",
+                controller: "BookshelfController",
+                controllerAs: "model"
             })
             .when("/book/:bid", {
                 templateUrl: "views/book/book.view.client.html",

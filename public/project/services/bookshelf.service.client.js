@@ -10,18 +10,24 @@
 
         var api = {
             addToBookshelf: addToBookshelf,
-            getBookFromBookshelf: getBookFromBookshelf
+            getBookFromBookshelf: getBookFromBookshelf,
+            getBookshelfForUser: getBookshelfForUser
         };
 
         return api;
 
-        function addToBookshelf(userId, bookId) {
-            var url = "/api/user/"+userId+"/bookshelf/book/"+bookId;
-            return $http.post(url)
+        function addToBookshelf(userId, book) {
+            var url = "/api/user/"+userId+"/bookshelf/book/"+book.id;
+            return $http.post(url, book)
         }
 
         function getBookFromBookshelf(userId, bookId) {
             var url = "/api/user/"+userId+"/bookshelf/book/"+bookId;
+            return $http.get(url);
+        }
+
+        function getBookshelfForUser(userId) {
+            var url = "/api/user/"+userId+"/bookshelf";
             return $http.get(url);
         }
     }

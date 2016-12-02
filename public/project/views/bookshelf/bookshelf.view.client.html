@@ -20,7 +20,13 @@
 				<li>
 					<a href="#/search">Search books</a>
 				</li>
-				<li>
+				<li ng-show="model.loggedIn">
+					<a href="#/searchReaders">Search readers</a>
+				</li>
+				<li ng-show="model.loggedIn">
+					<a href="#/user/{{model.currentUser._id}}">{{model.currentUser.firstName}}</a>
+				</li>
+				<li ng-show="model.loggedIn==false">
 					<a href="#/login">Login/Register</a>
 				</li>
 			</ul>
@@ -33,9 +39,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 class="text-center">Alice Wonderland's Bookshelf</h2>
+			<h2 class="text-center">{{model.currentUser.firstName}}'s Bookshelf</h2>
 			<div>
-				<table class="table table-striped">
+				<div class="alert alert-info" role="alert" ng-show="model.bookShelfEntries==false">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					You have no books on your bookshelf.
+				</div>
+
+				<table ng-show="model.bookShelfEntries" class="table table-striped">
 					<thead>
 						<tr>
 							<th>Book</th>
@@ -44,30 +55,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><img ng-src="http://lorempixel.com/400/200/" class="bookshelf-poster"></td>
-							<td><a href="#/book/:bid">The Alchemist</a></td>
-							<td>Paulo Coelho</td>
-						</tr>
-						<tr>
-							<td><img ng-src="http://lorempixel.com/400/200/" class="bookshelf-poster"></td>
-							<td>The Alchemist</td>
-							<td>Paulo Coelho</td>
-						</tr>
-						<tr>
-							<td><img ng-src="http://lorempixel.com/400/200/" class="bookshelf-poster"></td>
-							<td>The Alchemist</td>
-							<td>Paulo Coelho</td>
-						</tr>
-						<tr>
-							<td><img ng-src="http://lorempixel.com/400/200/" class="bookshelf-poster"></td>
-							<td>The Alchemist</td>
-							<td>Paulo Coelho</td>
-						</tr>
-						<tr>
-							<td><img src="http://lorempixel.com/400/200/" class="bookshelf-poster"></td>
-							<td>The Alchemist</td>
-							<td>Paulo Coelho</td>
+						<tr ng-repeat="book in model.bookShelfEntries">
+							<td>
+								<img ng-src="{{book.frontCover}}">
+							</td>
+							<td><a href="#/book/{{book._book}}">{{book.title}}</a></td>
+							<td>
+								<ul class="list-unstyled">
+									<li ng-repeat="author in book.authors">
+										{{author}}
+									</li>
+								</ul>
+
+							</td>
 						</tr>
 					</tbody>
 				</table>

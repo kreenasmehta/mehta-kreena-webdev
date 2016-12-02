@@ -8,6 +8,9 @@ module.exports = function () {
     var BookshelfSchema = mongoose.Schema({
         _user : {type: mongoose.Schema.Types.ObjectId, ref:'User'},
         _book : String,
+        title: String,
+        authors : {type: Array, default:[]},
+        frontCover : String,
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "bookshelf"});
 

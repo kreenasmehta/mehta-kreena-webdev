@@ -18,8 +18,8 @@
             deleteUser: deleteUser,
             login: login,
             checkLogin: checkLogin,
-            logout: logout
-
+            logout: logout,
+            register: register
         };
 
         return api;
@@ -115,6 +115,11 @@
         function logout() {
             return $http.post("/api/logout");
         }
+
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
+
 
 
     }

@@ -29,6 +29,7 @@ module.exports = function (app, model) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/logout', logout);
+    app.post ('/api/register', register);
 
 
     /**
@@ -110,6 +111,26 @@ module.exports = function (app, model) {
         req.logout();
         res.send(200);
     }
+
+    function register (req, res) {
+        var user = req.body;
+        model.userModel
+            .createUser(user)
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                }
+            );
+    }
+
 
 
     /**

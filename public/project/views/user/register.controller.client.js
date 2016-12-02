@@ -31,7 +31,8 @@
                         .success(function (existingUser) {
                             if(existingUser === '0'){
                                 UserService
-                                    .createUser(user)
+                                    // .createUser(user)
+                                    .register(user)
                                     .success(function (newUser) {
                                         $location.url("/user/" + newUser._id);
                                     })

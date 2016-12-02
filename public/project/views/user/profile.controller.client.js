@@ -16,6 +16,19 @@
 
         function init() {
             UserService
+                .checkLogin()
+                .success(function (user) {
+                    if(user != '0'){
+                        vm.loggedIn = true;
+                        vm.currentUser = user;
+                    } else{
+                        vm.loggedIn = false;
+                    }
+                })
+                .error(function (error) {
+
+                });
+            UserService
                 .findUserByID(userId)
                 .success(function (user) {
                     if(user != '0'){

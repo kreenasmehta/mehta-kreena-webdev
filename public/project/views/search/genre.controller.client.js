@@ -6,11 +6,24 @@
         .module("BooksApp")
         .controller("GenreSearchController", GenreSearchController);
 
-    function GenreSearchController(GoogleBooksService) {
+    function GenreSearchController(GoogleBooksService, UserService) {
         var vm = this;
         vm.searchBookByGenre = searchBookByGenre;
 
         function init() {
+            UserService
+                .checkLogin()
+                .success(function (user) {
+                    if(user != '0'){
+                        vm.loggedIn = true;
+                        vm.currentUser = user;
+                    } else{
+                        vm.loggedIn = false;
+                    }
+                })
+                .error(function (error) {
+
+                });
         }
         init();
 

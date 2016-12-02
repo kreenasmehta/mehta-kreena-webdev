@@ -20,7 +20,13 @@
 				<li>
 					<a href="#/search">Search books</a>
 				</li>
-				<li>
+				<li ng-show="model.loggedIn">
+					<a href="#/searchReaders">Search readers</a>
+				</li>
+				<li ng-show="model.loggedIn">
+					<a href="#/user/{{model.currentUser._id}}">{{model.currentUser.firstName}}</a>
+				</li>
+				<li ng-show="model.loggedIn==false">
 					<a href="#/login">Login/Register</a>
 				</li>
 			</ul>
@@ -48,15 +54,15 @@
 			</div>
 
 			<div class="item">
-				<img ng-src="project/img/project-homepage.jpg" class="carousal-images">
+				<img ng-src="/project/img/project-homepage.jpg" class="carousal-images">
 			</div>
 
 			<div class="item">
-				<img ng-src="project/img/project-homepage.jpg" class="carousal-images">
+				<img ng-src="/project/img/project-homepage.jpg" class="carousal-images">
 			</div>
 
 			<div class="item">
-				<img ng-src="project/img/project-homepage.jpg" class="carousal-images">
+				<img ng-src="/project/img/project-homepage.jpg" class="carousal-images">
 			</div>
 		</div>
 

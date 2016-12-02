@@ -14,7 +14,9 @@
                 controllerAs: "model"
             })
             .when("/about", {
-                templateUrl: "views/home/about.view.client.html"
+                templateUrl: "views/home/about.view.client.html",
+                controller: "MainController",
+                controllerAs: "model"
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
@@ -35,7 +37,9 @@
                 }
             })
             .when("/search", {
-                templateUrl: "views/search/search.view.client.html"
+                templateUrl: "views/search/search.view.client.html",
+                controller: "MainController",
+                controllerAs: "model"
             })
             .when("/search/title", {
                 templateUrl: "views/search/title.view.client.html",

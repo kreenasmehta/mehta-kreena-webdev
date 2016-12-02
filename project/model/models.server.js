@@ -9,9 +9,11 @@ module.exports = function () {
     mongoose.connect(connectionString);
 
     var userModel = require("./user/user.model.server.js")();
+    var bookshelfModel = require("./bookshelf/bookshelf.model.server.js")();
 
     var model = {
-        userModel: userModel
+        userModel: userModel,
+        bookshelfModel: bookshelfModel
     };
     return model;
 };

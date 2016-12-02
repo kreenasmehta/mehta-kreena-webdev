@@ -20,7 +20,13 @@
 				<li>
 					<a href="#/search">Search books</a>
 				</li>
-				<li>
+				<li ng-show="model.loggedIn">
+					<a href="#/searchReaders">Search readers</a>
+				</li>
+				<li ng-show="model.loggedIn">
+					<a href="#/user/{{model.currentUser._id}}">{{model.currentUser.firstName}}</a>
+				</li>
+				<li ng-show="model.loggedIn==false">
 					<a href="#/login">Login/Register</a>
 				</li>
 			</ul>
@@ -68,7 +74,16 @@
 					<td>{{model.book.volumeInfo.averageRating}}</td>
 				</tr>
 			</table>
-			<a class="btn btn-block btn-primary add-to-book-shelf">Add to your bookshelf</a>
+			<div ng-show="model.error" class="alert alert-danger add-to-book-shelf" role="alert">
+				{{model.error}}
+			</div>
+			<div ng-show="model.info" class="alert alert-info add-to-book-shelf" role="alert">
+				{{model.info}}
+			</div>
+			<div ng-show="model.successfulAdd" class="alert alert-success add-to-book-shelf" role="alert">
+				{{model.successfulAdd}}
+			</div>
+			<a ng-click="model.addToBookshelf()" class="btn btn-block btn-primary add-to-book-shelf">Add to your bookshelf</a>
 		</div>
 	</div>
 	<div class="row">

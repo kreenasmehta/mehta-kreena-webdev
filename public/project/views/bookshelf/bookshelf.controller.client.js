@@ -6,9 +6,10 @@
         .module("BooksApp")
         .controller("BookshelfController", BookshelfController);
 
-    function BookshelfController($routeParams, BookshelfService, UserService) {
+    function BookshelfController($routeParams, BookshelfService, UserService, $location) {
         var vm = this;
         var userId = $routeParams['uid'];
+        vm.removeFromBookshelf = removeFromBookshelf;
 
         function init() {
             UserService
@@ -39,5 +40,16 @@
                 });
         }
         init();
+
+        function removeFromBookshelf(bookshelfEntryId) {
+            BookshelfService
+                .removeFromBookshelf(bookshelfEntryId)
+                .success(function () {
+                    init();
+                })
+                .error(function () {
+                    console.log("error");
+                });
+        }
     }
 })();

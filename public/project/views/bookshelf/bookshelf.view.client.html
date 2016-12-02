@@ -52,6 +52,7 @@
 							<th>Book</th>
 							<th>Title</th>
 							<th>Author</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,7 +60,7 @@
 							<td>
 								<img ng-src="{{book.frontCover}}">
 							</td>
-							<td><a href="#/book/{{book._book}}">{{book.title}}</a></td>
+							<td>{{book.title}}</td>
 							<td>
 								<ul class="list-unstyled">
 									<li ng-repeat="author in book.authors">
@@ -67,6 +68,10 @@
 									</li>
 								</ul>
 
+							</td>
+							<td>
+								<a href="#/book/{{book._book}}" class="btn btn-success">See details</a>
+								<a ng-click="model.removeFromBookshelf(book._id)" class="btn btn-primary">Remove</a>
 							</td>
 						</tr>
 					</tbody>

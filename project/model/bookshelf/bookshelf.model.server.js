@@ -10,7 +10,8 @@ module.exports = function () {
     var api = {
         addToBookshelf: addToBookshelf,
         getBookFromBookshelf: getBookFromBookshelf,
-        getBookshelfForUser: getBookshelfForUser
+        getBookshelfForUser: getBookshelfForUser,
+        removeFromBookshelf: removeFromBookshelf
     };
     return api;
 
@@ -40,5 +41,9 @@ module.exports = function () {
                 _user: userId
             }
         );
+    }
+
+    function removeFromBookshelf(bookshelfEntryId) {
+        return BookshelfModel.remove({_id: bookshelfEntryId});
     }
 };

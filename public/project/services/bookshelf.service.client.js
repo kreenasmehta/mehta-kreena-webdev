@@ -11,7 +11,8 @@
         var api = {
             addToBookshelf: addToBookshelf,
             getBookFromBookshelf: getBookFromBookshelf,
-            getBookshelfForUser: getBookshelfForUser
+            getBookshelfForUser: getBookshelfForUser,
+            removeFromBookshelf: removeFromBookshelf
         };
 
         return api;
@@ -29,6 +30,11 @@
         function getBookshelfForUser(userId) {
             var url = "/api/user/"+userId+"/bookshelf";
             return $http.get(url);
+        }
+
+        function removeFromBookshelf(bookshelfEntryId) {
+            var url = "/api/bookshelf/book/"+bookshelfEntryId;
+            return $http.delete(url);
         }
     }
 })();

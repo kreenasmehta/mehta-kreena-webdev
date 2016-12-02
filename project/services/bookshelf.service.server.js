@@ -6,6 +6,7 @@ module.exports = function (app, model) {
     app.post('/api/user/:uid/bookshelf/book/:bid', addToBookshelf);
     app.get('/api/user/:uid/bookshelf/book/:bid', getBookFromBookshelf);
     app.get('/api/user/:uid/bookshelf', getBookshelfForUser);
+    app.delete('/api/bookshelf/book/:bseid', removeFromBookshelf);
 
     function addToBookshelf(req, res) {
         var userId = req.params.uid;
@@ -55,5 +56,20 @@ module.exports = function (app, model) {
                     res.sendStatus(400);
                 }
             );
+    }
+
+    function removeFromBookshelf(req, res) {
+        var bookshelfEntryId = req.params.bseid;
+        model.bookshelfModel
+            .removeFromBookshelf(bookshelfEntryId)
+            .then(
+                function () {
+                    res.sendStatus(200);
+                },
+                function () {
+                    res.sendStatus(400);
+                }
+            );
+
     }
 };

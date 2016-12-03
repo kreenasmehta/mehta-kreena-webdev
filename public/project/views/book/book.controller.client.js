@@ -16,6 +16,7 @@
         vm.addReview = addReview;
         vm.showEditButton = showEditButton;
         vm.editReview = editReview;
+        vm.deleteReview = deleteReview;
 
         /**
          * checklogin, get reviews of a book on loading the page
@@ -45,6 +46,8 @@
                     
                 });
             vm.review = "";
+            vm.enableEdit = false;
+            vm.reviewError = false;
 
         }
         init();
@@ -167,6 +170,31 @@
                 .error(function () {
                     
                 });
+        }
+
+        /**
+         * delete a review if the current user has permissions to delete it, else show appropriate error message.
+         * @param review
+         */
+        function deleteReview(review) {
+            if(vm.loggedIn == false){
+                vm.reviewError = "Please login/register to delete a review on '" + vm.book.volumeInfo.title +"'";
+            } else {
+                if(review._user != vm.currentUser._id){
+                    vm.reviewError = "You cannot delete other reader's review."
+                } else{
+                    vm.reviewError = false;
+                    ReviewService
+                        .deleteReview(review._id)
+                        .success(function () {
+                            init();
+                        })
+                        .error(function () {
+
+                        });
+                }
+            }
+
         }
     }
 })();

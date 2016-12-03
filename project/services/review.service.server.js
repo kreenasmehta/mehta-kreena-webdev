@@ -6,6 +6,7 @@ module.exports = function (app, model) {
     app.post('/api/user/:uid/book/:bid/review', addReview);
     app.get('/api/book/:bid/review', getReviewsOfBook);
     app.put('/api/review/:rid', editReview);
+    app.delete('/api/review/:rid', deleteReview);
 
     /**
      * add a review for a given book
@@ -64,5 +65,25 @@ module.exports = function (app, model) {
                     res.sendStatus(400);
                 }
             );
+    }
+
+    /**
+     * delete a review
+     * @param req
+     * @param res
+     */
+    function deleteReview(req, res) {
+        var reviewId = req.params.rid;
+        model.reviewModel
+            .deleteReview(reviewId)
+            .then(
+                function () {
+                    res.send(200);
+                },
+                function () {
+                    res.send(400);
+                }
+            );
+
     }
 };

@@ -12,7 +12,8 @@
 
             addReview: addReview,
             getReviewsOfBook: getReviewsOfBook,
-            editReview: editReview
+            editReview: editReview,
+            deleteReview: deleteReview
 
         };
 
@@ -60,6 +61,16 @@
             };
             var url = "/api/review/"+reviewId;
             return $http.put(url, editedReview);
+        }
+
+        /**
+         * delete a review
+         * @param reviewId
+         * @returns {*}
+         */
+        function deleteReview(reviewId) {
+            var url = "/api/review/"+reviewId;
+            return $http.delete(url);
         }
 
     }

@@ -10,7 +10,8 @@ module.exports = function () {
     var api = {
         addReview: addReview,
         getReviewsOfBook: getReviewsOfBook,
-        editReview: editReview
+        editReview: editReview,
+        deleteReview: deleteReview
     };
     return api;
 
@@ -50,6 +51,15 @@ module.exports = function () {
                 review: review
             }
         );
+    }
+
+    /**
+     * delete a review with the given reviewId
+     * @param reviewId
+     * @returns {Promise}
+     */
+    function deleteReview(reviewId) {
+        return ReviewModel.remove({_id: reviewId});
     }
 
 };

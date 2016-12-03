@@ -11,7 +11,8 @@
         var api = {
 
             addReview: addReview,
-            getReviewsOfBook: getReviewsOfBook
+            getReviewsOfBook: getReviewsOfBook,
+            editReview: editReview
 
         };
 
@@ -21,6 +22,7 @@
             var newReview = {
                 _book: book.id,
                 title: book.volumeInfo.title,
+                _user: reviewer._id,
                 firstName: reviewer.firstName,
                 lastName: reviewer.lastName,
                 review: review
@@ -33,5 +35,14 @@
             var url = "/api/book/"+bookId+"/review";
             return $http.get(url);
         }
+
+        function editReview(reviewId, review) {
+            var editedReview = {
+              review: review
+            };
+            var url = "/api/review/"+reviewId;
+            return $http.put(url, editedReview);
+        }
+
     }
 })();

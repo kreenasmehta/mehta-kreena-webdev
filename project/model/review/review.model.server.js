@@ -9,7 +9,8 @@ module.exports = function () {
 
     var api = {
         addReview: addReview,
-        getReviewsOfBook: getReviewsOfBook
+        getReviewsOfBook: getReviewsOfBook,
+        editReview: editReview
     };
     return api;
 
@@ -21,6 +22,16 @@ module.exports = function () {
         return ReviewModel.find(
             {
                 _book: bookId
+            }
+        );
+    }
+
+    function editReview(reviewId, review) {
+        return ReviewModel.update(
+            {
+                _id: reviewId
+            }, {
+                review: review
             }
         );
     }

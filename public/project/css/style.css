@@ -128,6 +128,10 @@ h6 {
     font-weight: bold;
 }
 
+.review-edit-button{
+    padding-right: 20px;
+}
+
 .book-individual-review{
     border: none;
     margin: 5px;

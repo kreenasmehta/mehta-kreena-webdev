@@ -101,6 +101,8 @@
 			<ul class="list-group">
 				<li ng-repeat="review in model.reviews" class="list-group-item book-individual-review">
 					<p class="list-group-item-heading reviewer">by {{review.firstName}} {{review.lastName}}</p>
+					<a class="pull-right"><i class="fa fa-trash" aria-hidden="true"></i></i></a>
+					<a ng-click="model.showEditButton(review._id, review._user, review.review)" class="pull-right review-edit-button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 					<p class="list-group-item-text">{{review.review}}</p>
 				</li>
 			</ul>
@@ -109,8 +111,9 @@
 			</div>
 			<form class="form-group">
 				<label for="book-review">Write a review!</label>
-				<textarea ng-model="review" id="book-review" rows="5" class="form-control"></textarea>
-				<a ng-click="model.addReview(review)" class="btn btn-block btn-primary submit-review-button">Submit</a>
+				<textarea ng-model="model.review" id="book-review" rows="5" class="form-control"></textarea>
+				<a ng-click="model.addReview(model.review)" class="btn btn-block btn-primary submit-review-button">Submit</a>
+				<a ng-show="model.enableEdit" ng-click="model.editReview(model.reviewId, model.review)" class="btn btn-block btn-info submit-review-button">Edit</a>
 			</form>
 		</div>
 	</div>

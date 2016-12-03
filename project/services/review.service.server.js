@@ -5,6 +5,7 @@ module.exports = function (app, model) {
 
     app.post('/api/user/:uid/book/:bid/review', addReview);
     app.get('/api/book/:bid/review', getReviewsOfBook);
+    app.put('/api/review/:rid', editReview);
 
     function addReview(req, res) {
         var newReview = req.body;
@@ -33,5 +34,20 @@ module.exports = function (app, model) {
                 }
             );
 
+    }
+
+    function editReview(req, res) {
+        var reviewId = req.params.rid;
+        var review = req.body.review;
+        model.reviewModel
+            .editReview(reviewId, review)
+            .then(
+                function (status) {
+                    res.send(review);
+                },
+                function (error) {
+                    res.sendStatus(400);
+                }
+            );
     }
 };

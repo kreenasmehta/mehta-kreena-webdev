@@ -14,6 +14,8 @@
         vm.addToBookshelf = addToBookshelf;
         checkLogin = checkLogin;
         vm.addReview = addReview;
+        vm.showEditButton = showEditButton;
+        vm.editReview = editReview;
 
         function init() {
             checkLogin();
@@ -39,6 +41,8 @@
                 .error(function (error) {
                     
                 });
+            vm.review = "";
+
         }
         init();
 
@@ -111,6 +115,34 @@
 
                     });
             }
+        }
+
+        function showEditButton(reviewId, reviewerId, review) {
+            if(vm.loggedIn == false){
+                vm.reviewError = "Please login/register to edit a review on '" + vm.book.volumeInfo.title +"'";
+            } else{
+                if(reviewerId != vm.currentUser._id){
+                    vm.enableEdit = false;
+                    vm.reviewError = "You cannot edit other reader's review."
+                }else{
+                    vm.reviewId = reviewId;
+                    vm.reviewError = false;
+                    vm.review = review;
+                    vm.enableEdit = true;
+                }
+            }
+
+        }
+
+        function editReview(reviewId, review) {
+            ReviewService
+                .editReview(reviewId, review)
+                .success(function (review) {
+                    init();
+                })
+                .error(function () {
+                    
+                });
         }
 
 

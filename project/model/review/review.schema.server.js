@@ -8,6 +8,7 @@ module.exports = function () {
     var ReviewSchema = mongoose.Schema({
         _book: String,
         title: String,
+        _user : {type: mongoose.Schema.Types.ObjectId, ref:'User'},
         firstName: String,
         lastName: String,
         review: String,

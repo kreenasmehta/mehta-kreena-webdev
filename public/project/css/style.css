@@ -110,6 +110,18 @@ h6 {
     height: 150px;
 }
 
+.see-details-button{
+    align-content: center;
+    font-size: large;
+    color: green;
+}
+
+.remove-button{
+    align-content: center;
+    font-size: large;
+    color: crimson;
+}
+
 /* Book */
 
 .book-content-padding{

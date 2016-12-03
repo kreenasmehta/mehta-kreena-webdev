@@ -55,7 +55,7 @@
 							<th>Book</th>
 							<th>Title</th>
 							<th>Author</th>
-							<th>Action</th>
+							<!--<th>Action</th>-->
 						</tr>
 					</thead>
 					<tbody>
@@ -63,7 +63,19 @@
 							<td>
 								<img ng-src="{{book.frontCover}}">
 							</td>
-							<td>{{book.title}}</td>
+							<td>
+								<div>
+									{{book.title}}
+								</div>
+								<br>
+								<div>
+									<a href="#/book/{{book._book}}" class="see-details-button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+								</div>
+								<br>
+								<div>
+									<a ng-click="model.removeFromBookshelf(book._id, model.bookshelfOwner._id)" class="remove-button"><i class="fa fa-minus-circle" aria-hidden="true"></i></a>
+								</div>
+							</td>
 							<td>
 								<ul class="list-unstyled">
 									<li ng-repeat="author in book.authors">
@@ -72,10 +84,16 @@
 								</ul>
 
 							</td>
-							<td>
-								<a href="#/book/{{book._book}}" class="btn btn-success">See details</a>
-								<a ng-click="model.removeFromBookshelf(book._id, model.bookshelfOwner._id)" class="btn btn-primary">Remove</a>
-							</td>
+							<!--<td>-->
+								<!--<ul class="list-unstyled">-->
+									<!--<li>-->
+										<!--<a href="#/book/{{book._book}}" class="btn btn-success">See details</a>-->
+									<!--</li>-->
+									<!--<li>-->
+										<!--<a ng-click="model.removeFromBookshelf(book._id, model.bookshelfOwner)" class="btn btn-primary">Remove</a>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</td>-->
 						</tr>
 					</tbody>
 				</table>

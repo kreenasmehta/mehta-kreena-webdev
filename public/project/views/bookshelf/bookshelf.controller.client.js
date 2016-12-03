@@ -38,6 +38,14 @@
                 .error(function (error) {
 
                 });
+            UserService
+                .findUserByID(userId)
+                .success(function (bookShelfOwner) {
+                    vm.bookshelfOwner = bookShelfOwner;
+                })
+                .error(function (error) {
+
+                });
         }
         init();
 

@@ -100,9 +100,9 @@
 			</div>
 			<ul class="list-group">
 				<li ng-repeat="review in model.reviews" class="list-group-item book-individual-review">
-					<p class="list-group-item-heading reviewer">by {{review.firstName}} {{review.lastName}}</p>
 					<a ng-click="model.deleteReview(review)" class="pull-right"><i class="fa fa-trash" aria-hidden="true"></i></i></a>
 					<a ng-click="model.showEditButton(review._id, review._user, review.review)" class="pull-right review-edit-button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+					<p class="list-group-item-heading reviewer">by {{review.firstName}} {{review.lastName}}</p>
 					<p class="list-group-item-text">{{review.review}}</p>
 				</li>
 			</ul>

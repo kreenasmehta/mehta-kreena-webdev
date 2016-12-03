@@ -36,6 +36,7 @@
                 .success(function (user) {
                     if(user != '0'){
                         vm.user = user;
+                        vm.user.dob = new Date(user.dob);
                     }
                 })
                 .error(function (error) {

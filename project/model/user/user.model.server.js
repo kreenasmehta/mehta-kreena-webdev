@@ -75,7 +75,9 @@ module.exports = function () {
             password: user.password,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email
+            email: user.email,
+            dob: user.dob,
+            phone: user.phone
         });
     }
 

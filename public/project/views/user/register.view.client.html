@@ -37,23 +37,30 @@
 			<div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
 			<form class="form-group">
 				<!--Username-->
-				<label for="username">Username</label>
+				<label  class="register-element" for="username">Username *</label>
 				<input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="alice">
 				<!--Password-->
-				<label for="password">Password</label>
+				<label class="register-element" for="password">Password *</label>
 				<input ng-model="model.user.password" type="password" class="form-control" id="password" placeholder="password">
 				<!--Verify Password-->
-				<label for="verify-password">Verfiy Password</label>
+				<label class="register-element" for="verify-password">Verfiy Password *</label>
 				<input ng-model="model.user.verifypassword" type="password" class="form-control" id="verify-password" placeholder="verify password">
 				<!--First Name-->
-				<label for="first-name">First Name</label>
+				<label class="register-element" for="first-name">First Name *</label>
 				<input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
 				<!--Last Name-->
-				<label for="last-name">Last Name</label>
+				<label class="register-element" for="last-name">Last Name *</label>
 				<input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
 				<!--Email-->
-				<label for="email">Email Address</label>
+				<label class="register-element" for="email">Email Address *</label>
 				<input ng-model="model.user.email" type="text" class="form-control" id="email" placeholder="alice@wonderland.com">
+				<!--Date of birth-->
+				<label class="profile-element" for="dob">Date of birth *</label>
+				<input ng-model="model.user.dob" type="date" id="dob" class="form-control ui-datepicker">
+				<!--Phone number-->
+				<label class="register-element" for="phone">Phone number *</label>
+				<input ng-model="model.user.phone" type="number" id="phone" class="form-control">
+				<label class="register-element">Fields marked with * are mandatory.</label>
 				<div class="register-button">
 					<a ng-click="model.register(model.user)" class="btn btn-success btn-block">Register</a>
 					<a href="#/login" class="btn btn-danger btn-block">Cancel</a>

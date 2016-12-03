@@ -93,6 +93,11 @@ h6 {
     padding: 10px 0;
 }
 
+.register-element{
+    margin-bottom: 0px;
+    margin-top: 7px;
+}
+
 /* Profile */
 
 .profile-content-padding{
@@ -101,6 +106,11 @@ h6 {
 
 .profile-button{
     padding: 10px 0;
+}
+
+.profile-element{
+    margin-bottom: 0px;
+    margin-top: 7px;
 }
 
 

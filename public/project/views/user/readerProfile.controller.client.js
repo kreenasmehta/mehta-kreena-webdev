@@ -29,6 +29,7 @@
                 .findUserByID(vm.readerProfileId)
                 .success(function (readerProfile) {
                     vm.readerProfile = readerProfile;
+                    vm.readerProfile.dob = readerProfile.dob.split("T")[0];
                 })
                 .error(function (error) {
 

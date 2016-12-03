@@ -10,10 +10,12 @@ module.exports = function () {
 
     var userModel = require("./user/user.model.server.js")();
     var bookshelfModel = require("./bookshelf/bookshelf.model.server.js")();
+    var reviewModel = require("./review/review.model.server")();
 
     var model = {
         userModel: userModel,
-        bookshelfModel: bookshelfModel
+        bookshelfModel: bookshelfModel,
+        reviewModel: reviewModel
     };
     return model;
 };

@@ -124,6 +124,10 @@ h6 {
     padding-top: 20px;
 }
 
+.reviewer{
+    font-weight: bold;
+}
+
 .book-individual-review{
     border: none;
     margin: 5px;

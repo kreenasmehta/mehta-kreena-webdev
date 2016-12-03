@@ -6,13 +6,14 @@
         .module("BooksApp")
         .controller("BookDetailsController", BookDetailsController);
 
-    function BookDetailsController($routeParams, GoogleBooksService, $sce, UserService, BookshelfService) {
+    function BookDetailsController($routeParams, GoogleBooksService, $sce,
+                                   UserService, BookshelfService, ReviewService) {
         var vm = this;
         var bookId = $routeParams['bid'];
         vm.checkSafeHtml = checkSafeHtml;
         vm.addToBookshelf = addToBookshelf;
         checkLogin = checkLogin;
-        // checkIfBookIsInBookshelf = checkIfBookIsInBookshelf;
+        vm.addReview = addReview;
 
         function init() {
             checkLogin();
@@ -23,6 +24,20 @@
                 })
                 .error(function () {
 
+                });
+            ReviewService
+                .getReviewsOfBook(bookId)
+                .success(function (bookReviews) {
+                    if(bookReviews.length == 0){
+                        vm.firstReviewer = "Be first one to review!"
+                    } else{
+                        vm.firstReviewer = false;
+                        vm.reviews = bookReviews;
+                    }
+
+                })
+                .error(function (error) {
+                    
                 });
         }
         init();
@@ -76,6 +91,21 @@
 
                                 });
                         }
+                    })
+                    .error(function () {
+
+                    });
+            }
+        }
+
+        function addReview(review) {
+            if(vm.loggedIn == false){
+                vm.reviewError = "Please login/register to write a review on '" + vm.book.volumeInfo.title +"'";
+            }else{
+                ReviewService
+                    .addReview(review, vm.currentUser, vm.book)
+                    .success(function (review) {
+                        init();
                     })
                     .error(function () {
 

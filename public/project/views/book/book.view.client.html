@@ -95,24 +95,22 @@
 	<div class="row">
 		<div class="col-lg-12 book-reviews">
 			<h3>Reviews from readers</h3>
+			<div ng-show="model.firstReviewer" class="alert alert-info add-to-book-shelf" role="alert">
+				{{model.firstReviewer}}
+			</div>
 			<ul class="list-group">
-				<li class="list-group-item book-individual-review">
-					<em class="list-group-item-heading">Reader 1</em>
-					<p class="list-group-item-text">Paulo Coelho's enchanting novel has inspired a devoted following around the world. This story, dazzling in its powerful simplicity and inspiring wisdom, is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried in the Pyramids. Along the way he meets a Gypsy woman, a man who calls himself king, and an alchemist, all of whom point Santiago in the direction of his quest. No one knows what the treasure is, or if Santiago will be able to surmount the obstacles along the way. But what starts out as a journey to find worldly goods turns into a discovery of the treasure found within. Lush, evocative, and deeply humane, the story of Santiago is an eternal testament to the transforming power of our dreams and the importance of listening to our hearts.</p>
-				</li>
-				<li class="list-group-item book-individual-review">
-					<em class="list-group-item-heading">Reader 2</em>
-					<p class="list-group-item-text">Paulo Coelho's enchanting novel has inspired a devoted following around the world. This story, dazzling in its powerful simplicity and inspiring wisdom, is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried in the Pyramids. Along the way he meets a Gypsy woman, a man who calls himself king, and an alchemist, all of whom point Santiago in the direction of his quest. No one knows what the treasure is, or if Santiago will be able to surmount the obstacles along the way. But what starts out as a journey to find worldly goods turns into a discovery of the treasure found within. Lush, evocative, and deeply humane, the story of Santiago is an eternal testament to the transforming power of our dreams and the importance of listening to our hearts.</p>
-				</li>
-				<li class="list-group-item book-individual-review">
-					<em class="list-group-item-heading">Reader 3</em>
-					<p class="list-group-item-text">Paulo Coelho's enchanting novel has inspired a devoted following around the world. This story, dazzling in its powerful simplicity and inspiring wisdom, is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried in the Pyramids. Along the way he meets a Gypsy woman, a man who calls himself king, and an alchemist, all of whom point Santiago in the direction of his quest. No one knows what the treasure is, or if Santiago will be able to surmount the obstacles along the way. But what starts out as a journey to find worldly goods turns into a discovery of the treasure found within. Lush, evocative, and deeply humane, the story of Santiago is an eternal testament to the transforming power of our dreams and the importance of listening to our hearts.</p>
+				<li ng-repeat="review in model.reviews" class="list-group-item book-individual-review">
+					<p class="list-group-item-heading reviewer">by {{review.firstName}} {{review.lastName}}</p>
+					<p class="list-group-item-text">{{review.review}}</p>
 				</li>
 			</ul>
+			<div ng-show="model.reviewError" class="alert alert-danger add-to-book-shelf" role="alert">
+				{{model.reviewError}}
+			</div>
 			<form class="form-group">
 				<label for="book-review">Write a review!</label>
-				<textarea id="book-review" rows="5" class="form-control"></textarea>
-				<a class="btn btn-block btn-primary submit-review-button">Submit</a>
+				<textarea ng-model="review" id="book-review" rows="5" class="form-control"></textarea>
+				<a ng-click="model.addReview(review)" class="btn btn-block btn-primary submit-review-button">Submit</a>
 			</form>
 		</div>
 	</div>

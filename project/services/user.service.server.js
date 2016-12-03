@@ -112,6 +112,11 @@ module.exports = function (app, model) {
         res.send(200);
     }
 
+    /**
+     * register a user
+     * @param req
+     * @param res
+     */
     function register (req, res) {
         var user = req.body;
         model.userModel
@@ -130,8 +135,6 @@ module.exports = function (app, model) {
                 }
             );
     }
-
-
 
     /**
      * creates a new user

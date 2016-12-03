@@ -18,20 +18,41 @@ module.exports = function () {
 
     return api;
 
+    /**
+     * create user
+     * @param user
+     * @returns {user}
+     */
     function createUser(user) {
         return UserModel.create(user);
     }
 
+    /**
+     * find user by userId
+     * @param userId
+     * @returns {*}
+     */
     function findUserById(userId) {
         return UserModel.findById(userId);
     }
 
+    /**
+     * find user by username
+     * @param username
+     * @returns {*|Query}
+     */
     function findUserByUsername(username) {
         return UserModel.findOne({
             username: username
         });
     }
 
+    /**
+     * find user by credentials
+     * @param username
+     * @param password
+     * @returns {*|Query}
+     */
     function findUserByCredentials(username, password) {
         return UserModel.findOne({
             username: username,
@@ -39,6 +60,12 @@ module.exports = function () {
         });
     }
 
+    /**
+     * update user
+     * @param userId
+     * @param user
+     * @returns {*|Query}
+     */
     function updateUser(userId, user) {
         return UserModel.update({
             _id:userId
@@ -51,6 +78,11 @@ module.exports = function () {
         });
     }
 
+    /**
+     * delete user
+     * @param userId
+     * @returns {Promise}
+     */
     function deleteUser(userId) {
         return UserModel.remove({_id: userId});
     }

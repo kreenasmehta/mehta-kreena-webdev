@@ -14,6 +14,9 @@
         vm.deleteProfile = deleteProfile;
         vm.logout = logout;
 
+        /**
+         * check login on loading the page and find user by userId
+         */
         function init() {
             UserService
                 .checkLogin()

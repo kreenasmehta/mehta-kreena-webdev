@@ -14,10 +14,20 @@ module.exports = function () {
     };
     return api;
 
+    /**
+     * add review
+     * @param newReview
+     * @returns {newReview}
+     */
     function addReview(newReview) {
         return ReviewModel.create(newReview);
     }
 
+    /**
+     * get all reviews of a given bookId
+     * @param bookId
+     * @returns {Query|*|{}}
+     */
     function getReviewsOfBook(bookId) {
         return ReviewModel.find(
             {
@@ -26,6 +36,12 @@ module.exports = function () {
         );
     }
 
+    /**
+     * edit a review
+     * @param reviewId
+     * @param review
+     * @returns {*|Query}
+     */
     function editReview(reviewId, review) {
         return ReviewModel.update(
             {

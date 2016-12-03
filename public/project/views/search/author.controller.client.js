@@ -10,6 +10,9 @@
         var vm = this;
         vm.searchBookByAuthor = searchBookByAuthor;
 
+        /**
+         * check login on loading the page
+         */
         function init() {
             UserService
                 .checkLogin()

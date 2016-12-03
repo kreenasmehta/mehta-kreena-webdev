@@ -11,6 +11,9 @@
         var userId = $routeParams['uid'];
         vm.removeFromBookshelf = removeFromBookshelf;
 
+        /**
+         * check login, get a bookshelf for a user, find the bookshelf owner on loading the page
+         */
         function init() {
             UserService
                 .checkLogin()
@@ -49,6 +52,11 @@
         }
         init();
 
+        /**
+         * remove a book from bookshelf if the currently logged in user if the bookshelf owner
+         * @param bookshelfEntryId
+         * @param bookshelfOwnerId
+         */
         function removeFromBookshelf(bookshelfEntryId, bookshelfOwnerId) {
             if(vm.loggedIn == false){
                 vm.removeError = "Please login/regiter to remove a book from the bookshelf.";

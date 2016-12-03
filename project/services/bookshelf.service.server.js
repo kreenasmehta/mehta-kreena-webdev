@@ -8,6 +8,11 @@ module.exports = function (app, model) {
     app.get('/api/user/:uid/bookshelf', getBookshelfForUser);
     app.delete('/api/bookshelf/book/:bseid', removeFromBookshelf);
 
+    /**
+     * add book to bookshelf
+     * @param req
+     * @param res
+     */
     function addToBookshelf(req, res) {
         var userId = req.params.uid;
         var bookId = req.params.bid;
@@ -29,6 +34,11 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * get book from bookshelf
+     * @param req
+     * @param res
+     */
     function getBookFromBookshelf(req, res) {
         var userId = req.params.uid;
         var bookId = req.params.bid;
@@ -44,6 +54,11 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * get a bookshelf of a given user
+     * @param req
+     * @param res
+     */
     function getBookshelfForUser(req, res) {
         var userId = req.params.uid;
         model.bookshelfModel
@@ -58,6 +73,11 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * remove a book from bookshelf
+     * @param req
+     * @param res
+     */
     function removeFromBookshelf(req, res) {
         var bookshelfEntryId = req.params.bseid;
         model.bookshelfModel

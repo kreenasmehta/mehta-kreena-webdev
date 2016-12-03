@@ -17,6 +17,9 @@
         vm.showEditButton = showEditButton;
         vm.editReview = editReview;
 
+        /**
+         * checklogin, get reviews of a book on loading the page
+         */
         function init() {
             checkLogin();
             GoogleBooksService
@@ -55,6 +58,9 @@
             return $sce.trustAsHtml(html);
         }
 
+        /**
+         * check login
+         */
         function checkLogin() {
             UserService
                 .checkLogin()
@@ -72,6 +78,9 @@
                 });
         }
 
+        /**
+         * add a book to bookshelf
+         */
         function addToBookshelf() {
             if(vm.loggedIn==false){
                 vm.error = "Please login/register to add '" + vm.book.volumeInfo.title + "' to your bookshelf.";
@@ -102,6 +111,10 @@
             }
         }
 
+        /**
+         * add a review
+         * @param review
+         */
         function addReview(review) {
             if(vm.loggedIn == false){
                 vm.reviewError = "Please login/register to write a review on '" + vm.book.volumeInfo.title +"'";
@@ -117,6 +130,12 @@
             }
         }
 
+        /**
+         * show edit button if the user has permissions to edit the review
+         * @param reviewId
+         * @param reviewerId
+         * @param review
+         */
         function showEditButton(reviewId, reviewerId, review) {
             if(vm.loggedIn == false){
                 vm.reviewError = "Please login/register to edit a review on '" + vm.book.volumeInfo.title +"'";
@@ -134,6 +153,11 @@
 
         }
 
+        /**
+         * edit a review
+         * @param reviewId
+         * @param review
+         */
         function editReview(reviewId, review) {
             ReviewService
                 .editReview(reviewId, review)
@@ -144,8 +168,5 @@
                     
                 });
         }
-
-
-
     }
 })();

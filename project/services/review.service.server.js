@@ -7,6 +7,11 @@ module.exports = function (app, model) {
     app.get('/api/book/:bid/review', getReviewsOfBook);
     app.put('/api/review/:rid', editReview);
 
+    /**
+     * add a review for a given book
+     * @param req
+     * @param res
+     */
     function addReview(req, res) {
         var newReview = req.body;
         model.reviewModel
@@ -21,6 +26,11 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * get reviews of a book
+     * @param req
+     * @param res
+     */
     function getReviewsOfBook(req, res) {
         var bookId = req.params.bid;
         model.reviewModel
@@ -36,6 +46,11 @@ module.exports = function (app, model) {
 
     }
 
+    /**
+     * edit a review
+     * @param req
+     * @param res
+     */
     function editReview(req, res) {
         var reviewId = req.params.rid;
         var review = req.body.review;

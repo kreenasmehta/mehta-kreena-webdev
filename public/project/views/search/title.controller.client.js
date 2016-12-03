@@ -11,6 +11,9 @@
         vm.searchBookByTitle = searchBookByTitle;
 
 
+        /**
+         * check login on loading the page
+         */
         function init() {
             UserService
                 .checkLogin()

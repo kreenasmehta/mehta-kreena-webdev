@@ -18,6 +18,13 @@
 
         return api;
 
+        /**
+         * add a review
+         * @param review
+         * @param reviewer
+         * @param book
+         * @returns {*}
+         */
         function addReview(review, reviewer, book) {
             var newReview = {
                 _book: book.id,
@@ -31,11 +38,22 @@
             return $http.post(url, newReview);
         }
 
+        /**
+         * get reviews of a book
+         * @param bookId
+         * @returns {*}
+         */
         function getReviewsOfBook(bookId) {
             var url = "/api/book/"+bookId+"/review";
             return $http.get(url);
         }
 
+        /**
+         * edit a review
+         * @param reviewId
+         * @param review
+         * @returns {*}
+         */
         function editReview(reviewId, review) {
             var editedReview = {
               review: review

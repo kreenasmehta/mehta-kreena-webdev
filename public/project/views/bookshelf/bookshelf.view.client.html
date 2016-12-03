@@ -45,6 +45,9 @@
 					<i class="fa fa-book" aria-hidden="true"></i>
 					You have no books on your bookshelf.
 				</div>
+				<div ng-show="model.removeError" class="alert alert-danger add-to-book-shelf" role="alert">
+					{{model.removeError}}
+				</div>
 
 				<table ng-show="model.bookShelfEntries" class="table table-striped">
 					<thead>
@@ -71,7 +74,7 @@
 							</td>
 							<td>
 								<a href="#/book/{{book._book}}" class="btn btn-success">See details</a>
-								<a ng-click="model.removeFromBookshelf(book._id)" class="btn btn-primary">Remove</a>
+								<a ng-click="model.removeFromBookshelf(book._id, model.bookshelfOwner._id)" class="btn btn-primary">Remove</a>
 							</td>
 						</tr>
 					</tbody>

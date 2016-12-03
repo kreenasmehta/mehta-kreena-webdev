@@ -49,15 +49,25 @@
         }
         init();
 
-        function removeFromBookshelf(bookshelfEntryId) {
-            BookshelfService
-                .removeFromBookshelf(bookshelfEntryId)
-                .success(function () {
-                    init();
-                })
-                .error(function () {
+        function removeFromBookshelf(bookshelfEntryId, bookshelfOwnerId) {
+            if(vm.loggedIn == false){
+                vm.removeError = "Please login/regiter to remove a book from the bookshelf.";
+            } else{
+                if(bookshelfOwnerId != vm.currentUser._id){
+                    vm.removeError = "You cannot remove books from another reader's bookshelf."
+                } else{
+                    BookshelfService
+                        .removeFromBookshelf(bookshelfEntryId)
+                        .success(function () {
+                            init();
+                        })
+                        .error(function () {
 
-                });
+                        });
+                }
+
+            }
+
         }
     }
 })();

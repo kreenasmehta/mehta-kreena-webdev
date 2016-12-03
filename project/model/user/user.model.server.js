@@ -13,7 +13,8 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        findUserByName: findUserByName
     };
 
     return api;
@@ -85,6 +86,14 @@ module.exports = function () {
      */
     function deleteUser(userId) {
         return UserModel.remove({_id: userId});
+    }
+
+    function findUserByName(readerName) {
+        return UserModel.find(
+            {
+                firstName: new RegExp(readerName, 'i')
+            }
+        );
     }
 
 };

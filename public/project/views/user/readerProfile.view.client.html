@@ -39,38 +39,35 @@
 <div class="container search-content-padding">
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 class="text-center">Search book by title name</h2>
 			<div>
-				<div class="input-group">
-					<input ng-model="model.title" type="text" class="form-control" placeholder="Search for...">
-					<span class="input-group-btn">
-                                    <button  ng-click="model.searchBookByTitle(model.title)" class="btn btn-default" type="button">Go!</button>
-                                </span>
-				</div><!-- /input-group -->
-			</div>
-			<div>
-				<table class="table table-striped" ng-show="model.books">
-					<thead>
-						<tr>
-							<th>Book Cover</th>
-							<th>Book Title</th>
-							<th>Author</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="book in model.books">
-							<td><img ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}"></td>
-							<td><a href="#/book/{{book.id}}">{{book.volumeInfo.title}}</a></td>
-							<td>
-								<ul class="list-unstyled">
-									<li ng-repeat="author in book.volumeInfo.authors">
-										{{author}}
-									</li>
-								</ul>
-							</td>
-						</tr>
-					</tbody>
+				<h2 class="reader-name">{{model.readerProfile.firstName}} {{model.readerProfile.lastName}}</h2>
+				<table class="table table-striped">
+					<tr>
+						<th>Username</th>
+						<td>
+							{{model.readerProfile.username}}
+						</td>
+					</tr>
+					<tr>
+						<th>E-mail address</th>
+						<td>
+							{{model.readerProfile.email}}
+						</td>
+					</tr>
+					<tr>
+						<th>Role</th>
+						<td>
+							{{model.readerProfile.role}}
+						</td>
+					</tr>
+					<tr>
+						<th>Following</th>
+						<td>
+							{{model.readerProfile.follows}}
+						</td>
+					</tr>
 				</table>
+				<a class="btn btn-block btn-primary">Follow</a>
 			</div>
 		</div>
 	</div>

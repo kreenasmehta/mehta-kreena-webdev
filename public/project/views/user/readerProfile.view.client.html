@@ -73,13 +73,24 @@
 						</td>
 					</tr>
 					<tr>
-						<th>Following</th>
+						<th>Books on bookshelf</th>
 						<td>
-							{{model.readerProfile.follows}}
+							<ul class="list-unstyled">
+								<li ng-repeat="book in model.readerBookshelf">
+									<a href="#/book/{{book._book}}">{{book.title}}</a>
+								</li>
+							</ul>
 						</td>
 					</tr>
 				</table>
-				<a class="btn btn-block btn-primary">Follow</a>
+				<div ng-show="model.info" class="alert alert-info add-to-book-shelf" role="alert">
+					{{model.info}}
+				</div>
+				<div ng-show="model.success" class="alert alert-success add-to-book-shelf" role="alert">
+					{{model.success}}
+				</div>
+
+				<a ng-show="model.canFollow" ng-click="model.followReader()" class="btn btn-block btn-primary">Follow</a>
 			</div>
 		</div>
 	</div>

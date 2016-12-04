@@ -77,7 +77,8 @@ module.exports = function () {
             lastName: user.lastName,
             email: user.email,
             dob: user.dob,
-            phone: user.phone
+            phone: user.phone,
+            follows: user.follows
         });
     }
 

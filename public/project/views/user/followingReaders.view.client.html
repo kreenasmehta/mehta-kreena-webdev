@@ -48,11 +48,14 @@
 				<a href="#/search/readers">Start following readers!</a>
 			</div>
 			<h1 ng-hide="model.noFollows" class="text-center">You are following:</h1>
-			<table class="table table-striped">
+			<table  ng-hide="model.noFollows" class="table table-striped">
 				<tr ng-repeat="follow in model.follows">
 					<td>
 						<ul class="list-unstyled">
 							<li>
+								<a ng-click="model.unfollowReader(follow._id)" class="pull-right reader-profile-button">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</a>
 								<a ng-click="model.viewReaderProfile(follow._id)" class="pull-right reader-profile-button">
 									<i class="fa fa-address-card" aria-hidden="true"></i>
 								</a>

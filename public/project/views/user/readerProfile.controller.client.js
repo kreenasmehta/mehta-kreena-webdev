@@ -11,6 +11,8 @@
         vm.readerProfileId = $routeParams['pid'];
         vm.followReader = followReader;
         vm.showFollowingReaders = showFollowingReaders;
+        vm.back = back;
+        var readerName = $routeParams['readerName'];
 
         /**
          * check login, find the reader profile, find the reader bookshelf on loading the page
@@ -87,6 +89,15 @@
 
         function showFollowingReaders() {
             $location.url("/user/"+vm.currentUser._id+"/follows");
+        }
+
+        function back() {
+            if(readerName){
+                $location.url("/search/readers/"+readerName);
+            } else{
+                $location.url("/user/" +vm.currentUser._id + "/follows");
+            }
+
         }
     }
 })();

@@ -6,12 +6,18 @@
         .module("BooksApp")
         .controller("ReaderSearchController", ReaderSearchController);
 
-    function ReaderSearchController(UserService, $location, ReaderService) {
+    function ReaderSearchController(UserService, $location, ReaderService, $routeParams) {
         var vm = this;
         vm.searchReadersByName = searchReadersByName;
         vm.viewReaderProfile = viewReaderProfile;
+        var readerName = $routeParams['readerName'];
 
         function init() {
+            if(readerName){
+                vm.readerName=readerName;
+                $location.url("/search/readers/"+readerName);
+                searchReadersByName(readerName)
+            }
             UserService
                 .checkLogin()
                 .success(function (user) {
@@ -30,6 +36,7 @@
         init();
 
         function searchReadersByName(readerName) {
+            $location.url("/search/readers/"+readerName);
             ReaderService
                 .searchReadersByName(readerName)
                 .success(function (readers) {
@@ -41,7 +48,7 @@
         }
 
         function viewReaderProfile(readerUserId) {
-            $location.url('/user/'+vm.currentUser._id +'/profile/' + readerUserId);
+            $location.url('/user/'+vm.currentUser._id +'/profile/' + readerUserId + "/search/" + readerName);
         }
     }
 

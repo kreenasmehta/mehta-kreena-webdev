@@ -101,7 +101,17 @@
                 controller: "ReaderSearchController",
                 controllerAs: "model"
             })
+            .when("/search/readers/:readerName", {
+                templateUrl: "views/search/readers.view.client.html",
+                controller: "ReaderSearchController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/profile/:pid", {
+                templateUrl: "views/user/readerProfile.view.client.html",
+                controller: "ReaderProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/profile/:pid/search/:readerName", {
                 templateUrl: "views/user/readerProfile.view.client.html",
                 controller: "ReaderProfileController",
                 controllerAs: "model"

@@ -9,6 +9,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+			<a class="navbar-brand" href="#/search"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 			<a class="navbar-brand" href="#/main">Kreeative Minds</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,7 +61,7 @@
 					<tbody>
 						<tr ng-repeat="book in model.books">
 							<td><img ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}"></td>
-							<td><a href="#/book/{{book.id}}">{{book.volumeInfo.title}}</a></td>
+							<td><a href="#/book/{{book.id}}/author/{{model.author}}">{{book.volumeInfo.title}}</a></td>
 							<td>
 								<ul class="list-unstyled">
 									<li ng-repeat="author in book.volumeInfo.authors">

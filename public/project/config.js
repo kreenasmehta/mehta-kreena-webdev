@@ -47,7 +47,9 @@
                 controllerAs: "model"
             })
             .when("/search/title/:title", {
-                templateUrl: "views/search/title.view.client.html"
+                templateUrl: "views/search/title.view.client.html",
+                controller: "TitleSearchController",
+                controllerAs: "model"
             })
             .when("/search/author", {
                 templateUrl: "views/search/author.view.client.html",
@@ -55,7 +57,9 @@
                 controllerAs: "model"
             })
             .when("/search/author/:author", {
-                templateUrl: "views/search/author.view.client.html"
+                templateUrl: "views/search/author.view.client.html",
+                controller: "AuthorSearchController",
+                controllerAs: "model"
             })
             .when("/search/genre", {
                 templateUrl: "views/search/genre.view.client.html",
@@ -63,7 +67,9 @@
                 controllerAs: "model"
             })
             .when("/search/genre/:genre", {
-                templateUrl: "views/search/genre.view.client.html"
+                templateUrl: "views/search/genre.view.client.html",
+                controller: "GenreSearchController",
+                controllerAs: "model"
             })
             .when("/user/:uid/bookshelf", {
                 templateUrl: "views/bookshelf/bookshelf.view.client.html",
@@ -71,6 +77,21 @@
                 controllerAs: "model"
             })
             .when("/book/:bid", {
+                templateUrl: "views/book/book.view.client.html",
+                controller: "BookDetailsController",
+                controllerAs: "model"
+            })
+            .when("/book/:bid/title/:title", {
+                templateUrl: "views/book/book.view.client.html",
+                controller: "BookDetailsController",
+                controllerAs: "model"
+            })
+            .when("/book/:bid/author/:author", {
+                templateUrl: "views/book/book.view.client.html",
+                controller: "BookDetailsController",
+                controllerAs: "model"
+            })
+            .when("/book/:bid/genre/:genre", {
                 templateUrl: "views/book/book.view.client.html",
                 controller: "BookDetailsController",
                 controllerAs: "model"

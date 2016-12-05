@@ -6,15 +6,21 @@
         .module("BooksApp")
         .controller("TitleSearchController", TitleSearchController);
 
-    function TitleSearchController(GoogleBooksService, UserService) {
+    function TitleSearchController(GoogleBooksService, UserService, $routeParams, $location) {
         var vm = this;
         vm.searchBookByTitle = searchBookByTitle;
+        var title = $routeParams['title'];
 
 
         /**
          * check login on loading the page
          */
         function init() {
+            if(title){
+                vm.title = title;
+                $location.url("/search/title/"+title);
+                searchBookByTitle(title);
+            }
             UserService
                 .checkLogin()
                 .success(function (user) {
@@ -36,6 +42,7 @@
          * @param title
          */
         function searchBookByTitle(title) {
+            $location.url("/search/title/"+title);
             GoogleBooksService
                 .searchBookByTitle(title)
                 .success(function (books) {

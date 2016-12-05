@@ -6,14 +6,20 @@
         .module("BooksApp")
         .controller("AuthorSearchController", AuthorSearchController);
 
-    function AuthorSearchController(GoogleBooksService, UserService) {
+    function AuthorSearchController(GoogleBooksService, UserService, $routeParams, $location) {
         var vm = this;
         vm.searchBookByAuthor = searchBookByAuthor;
+        var author = $routeParams['author'];
 
         /**
          * check login on loading the page
          */
         function init() {
+            if(author){
+                vm.author = author;
+                $location.url("/search/author/"+author);
+                searchBookByAuthor(author);
+            }
             UserService
                 .checkLogin()
                 .success(function (user) {
@@ -35,6 +41,7 @@
          * @param author
          */
         function searchBookByAuthor(author) {
+            $location.url("/search/author/"+author);
             GoogleBooksService
                 .searchBookByAuthor(author)
                 .success(function (books) {

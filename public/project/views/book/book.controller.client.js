@@ -7,7 +7,7 @@
         .controller("BookDetailsController", BookDetailsController);
 
     function BookDetailsController($routeParams, GoogleBooksService, $sce,
-                                   UserService, BookshelfService, ReviewService) {
+                                   UserService, BookshelfService, ReviewService, $location) {
         var vm = this;
         var bookId = $routeParams['bid'];
         vm.checkSafeHtml = checkSafeHtml;
@@ -17,6 +17,10 @@
         vm.showEditButton = showEditButton;
         vm.editReview = editReview;
         vm.deleteReview = deleteReview;
+        vm.back = back;
+        var title = $routeParams['title'];
+        var author = $routeParams['author'];
+        var genre = $routeParams['genre'];
 
         /**
          * checklogin, get reviews of a book on loading the page
@@ -195,6 +199,17 @@
                 }
             }
 
+        }
+        
+        function back() {
+            if(title){
+                $location.url("/search/title/"+title);
+            } else if(author){
+                $location.url("/search/author/"+author);
+            } else if (genre){
+                $location.url("/search/genre/"+genre);
+            }
+            
         }
     }
 })();

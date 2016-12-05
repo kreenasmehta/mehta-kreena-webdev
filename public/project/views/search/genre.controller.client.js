@@ -6,14 +6,20 @@
         .module("BooksApp")
         .controller("GenreSearchController", GenreSearchController);
 
-    function GenreSearchController(GoogleBooksService, UserService) {
+    function GenreSearchController(GoogleBooksService, UserService, $routeParams, $location) {
         var vm = this;
         vm.searchBookByGenre = searchBookByGenre;
+        var genre = $routeParams['genre'];
 
         /**
          * check login on loading the page
          */
         function init() {
+            if(genre){
+                vm.genre = genre;
+                $location.url("/search/genre/"+genre);
+                searchBookByGenre(genre);
+            }
             UserService
                 .checkLogin()
                 .success(function (user) {
@@ -35,6 +41,7 @@
          * @param genre
          */
         function searchBookByGenre(genre) {
+            $location.url("/search/genre/"+genre);
             GoogleBooksService
                 .searchBookByGenre(genre)
                 .success(function (books) {

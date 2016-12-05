@@ -85,6 +85,11 @@
                 controller: "ReaderProfileController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/follows", {
+                templateUrl: "views/user/followingReaders.view.client.html",
+                controller: "FollowingReadersController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/main"
             });

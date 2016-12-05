@@ -14,6 +14,7 @@
             findUserByID: findUserByID,
             findUserByUserName: findUserByUserName,
             findUserByCredentials: findUserByCredentials,
+            getFollowsOfUser: getFollowsOfUser,
             updateUser: updateUser,
             deleteUser: deleteUser,
             login: login,
@@ -118,6 +119,11 @@
 
         function register(user) {
             return $http.post("/api/register", user);
+        }
+
+        function getFollowsOfUser(userId) {
+            var url = "/api/user/"+userId+"/follows";
+            return $http.get(url);
         }
 
 

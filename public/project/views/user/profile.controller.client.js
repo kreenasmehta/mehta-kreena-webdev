@@ -13,6 +13,7 @@
         vm.openBookshelf = openBookshelf;
         vm.deleteProfile = deleteProfile;
         vm.logout = logout;
+        vm.showFollowingReaders = showFollowingReaders;
 
         /**
          * check login on loading the page and find user by userId
@@ -97,6 +98,10 @@
                 .error(function () {
                     
                 });
+        }
+
+        function showFollowingReaders() {
+            $location.url("/user/"+userId+"/follows");
         }
     }
 })();

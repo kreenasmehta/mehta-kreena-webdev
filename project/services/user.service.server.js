@@ -30,6 +30,7 @@ module.exports = function (app, model) {
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
+    app.get('/api/user/:uid/follows', getFollowsOfUser);
 
 
     /**
@@ -277,6 +278,20 @@ module.exports = function (app, model) {
                     res.sendStatus(400);
                 }
             );
+    }
+
+    function getFollowsOfUser(req, res) {
+        var userId = req.params.uid;
+
+        model.userModel.findUserByIdExtended(userId)
+            .then(
+                function (user) {
+                res.json(user);
+            },
+                function(err){
+                console.log(err);
+            });
+
     }
 
 

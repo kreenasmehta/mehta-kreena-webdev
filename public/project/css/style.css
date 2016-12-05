@@ -19,7 +19,7 @@ h6 {
 /* Carousal */
 .carousal-images{
     width: 100%;
-    height: auto;
+    height: 50%;
 }
 
 
@@ -32,6 +32,15 @@ h6 {
 .main-content-padding{
     padding-top: 20px;
     padding-bottom: 40px;
+}
+
+.homepage-header {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    text-align: center;
+    color: black;
+    background: url("../img/home1.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 

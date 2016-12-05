@@ -27,6 +27,9 @@
                     }
                 })
                 .error(function (error) {
+                    if(error=="Unauthorized"){
+                        vm.error = "No such user."
+                    }
                     console.log(error);
                 });
         }

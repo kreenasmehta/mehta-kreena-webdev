@@ -14,10 +14,18 @@ module.exports = function () {
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
         deleteUser: deleteUser,
-        findUserByName: findUserByName
+        findUserByName: findUserByName,
+        findUserByIdExtended: findUserByIdExtended
     };
 
     return api;
+
+    function findUserByIdExtended(userId) {
+        return UserModel
+            .findById(userId)
+            .populate('follows')
+            .exec();
+    }
 
     /**
      * create user

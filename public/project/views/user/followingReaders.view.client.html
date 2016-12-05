@@ -1,0 +1,69 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/main">Kreeative Minds</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#/about">About</a>
+				</li>
+				<li>
+					<a href="#/search">Search books</a>
+				</li>
+				<li ng-show="model.loggedIn">
+					<a href="#/search/readers">Search readers</a>
+				</li>
+				<li ng-show="model.loggedIn">
+					<a href="#/user/{{model.currentUser._id}}">{{model.currentUser.firstName}}</a>
+				</li>
+				<li ng-show="model.loggedIn==false">
+					<a href="#/login">Login/Register</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+</nav>
+
+
+<div class="container about-content-padding">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="text-center">You are following:</h1>
+			<table class="table table-striped">
+				<tr ng-repeat="follow in model.follows">
+					<td>
+						<ul class="list-unstyled">
+							<li>
+								<a ng-click="model.viewReaderProfile(follow._id)" class="pull-right reader-profile-button">
+									<i class="fa fa-address-card" aria-hidden="true"></i>
+								</a>
+								<h4>{{follow.firstName}} {{follow.lastName}}</h4>
+							</li>
+							<li>
+								Username: {{follow.username}}
+							</li>
+							<li>
+								<em>E-mail address: {{follow.email}}</em>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.container -->

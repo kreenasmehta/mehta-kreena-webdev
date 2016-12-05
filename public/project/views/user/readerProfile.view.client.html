@@ -85,9 +85,15 @@
 				</table>
 				<div ng-show="model.info" class="alert alert-info add-to-book-shelf" role="alert">
 					{{model.info}}
+					<br>
+					<br>
+					<a ng-click="model.showFollowingReaders()">See the readers that you follow.</a>
 				</div>
 				<div ng-show="model.success" class="alert alert-success add-to-book-shelf" role="alert">
 					{{model.success}}
+					<br>
+					<br>
+					<a ng-click="model.showFollowingReaders()">See the readers that you follow.</a>
 				</div>
 
 				<a ng-show="model.canFollow" ng-click="model.followReader()" class="btn btn-block btn-primary">Follow</a>

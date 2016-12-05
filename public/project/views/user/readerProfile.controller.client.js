@@ -10,6 +10,7 @@
         var vm = this;
         vm.readerProfileId = $routeParams['pid'];
         vm.followReader = followReader;
+        vm.showFollowingReaders = showFollowingReaders;
 
         /**
          * check login, find the reader profile, find the reader bookshelf on loading the page
@@ -82,6 +83,10 @@
                 vm.info="You are already following " + vm.readerProfile.firstName +" "+
                     vm.readerProfile.lastName+".";
             }
+        }
+
+        function showFollowingReaders() {
+            $location.url("/user/"+vm.currentUser._id+"/follows");
         }
     }
 })();

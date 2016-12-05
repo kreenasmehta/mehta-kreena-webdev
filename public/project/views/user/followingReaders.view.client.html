@@ -40,7 +40,14 @@
 <div class="container about-content-padding">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="text-center">You are following:</h1>
+			<div class="alert alert-info" role="alert" ng-show="model.noFollows">
+				<i class="fa fa-users" aria-hidden="true"></i>
+				{{model.noFollows}}
+				<br>
+				<br>
+				<a href="#/search/readers">Start following readers!</a>
+			</div>
+			<h1 ng-hide="model.noFollows" class="text-center">You are following:</h1>
 			<table class="table table-striped">
 				<tr ng-repeat="follow in model.follows">
 					<td>

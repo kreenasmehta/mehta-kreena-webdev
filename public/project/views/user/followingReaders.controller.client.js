@@ -23,7 +23,12 @@
                         UserService
                             .getFollowsOfUser(user._id)
                             .success(function (extendedUser) {
-                                vm.follows = extendedUser.follows;
+                                if(extendedUser.follows.length==0){
+                                    vm.noFollows = "You are not following any readers yet.";
+                                } else{
+                                    vm.noFollows= false;
+                                    vm.follows = extendedUser.follows;
+                                }
                             })
                             .error(function () {
                                 

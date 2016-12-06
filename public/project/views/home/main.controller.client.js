@@ -39,7 +39,6 @@
             ReviewService
                 .getAllReviews()
                 .success(function (allReviews) {
-                    console.log(allReviews);
                     vm.readerReviews = allReviews;
                 })
                 .error(function (error) {

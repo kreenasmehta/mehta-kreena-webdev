@@ -208,6 +208,8 @@
                 $location.url("/search/author/"+author);
             } else if (genre){
                 $location.url("/search/genre/"+genre);
+            } else{
+                $location.url("/main");
             }
             
         }

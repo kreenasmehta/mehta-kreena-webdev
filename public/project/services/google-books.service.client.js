@@ -13,7 +13,8 @@
             searchBookByTitle: searchBookByTitle,
             searchBookByAuthor: searchBookByAuthor,
             searchBookByGenre: searchBookByGenre,
-            getBookById: getBookById
+            getBookById: getBookById,
+            getNewReleasedBooks: getNewReleasedBooks
         };
 
         return api;
@@ -54,6 +55,12 @@
         function searchBookByGenre(genre) {
             return $http.get("https://www.googleapis.com/books/v1/volumes?q=subject:"+genre);
         }
+
+        function getNewReleasedBooks() {
+            return $http.get("https://www.googleapis.com/books/v1/volumes?q=new");
+        }
+
+
 
     }
 })();

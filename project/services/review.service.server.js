@@ -7,6 +7,7 @@ module.exports = function (app, model) {
     app.get('/api/book/:bid/review', getReviewsOfBook);
     app.put('/api/review/:rid', editReview);
     app.delete('/api/review/:rid', deleteReview);
+    app.get('/api/review', getAllReviews);
 
     /**
      * add a review for a given book
@@ -85,5 +86,18 @@ module.exports = function (app, model) {
                 }
             );
 
+    }
+
+    function getAllReviews(req, res) {
+        model.reviewModel
+            .getAllReviews()
+            .then(
+                function (allReviews) {
+                    res.json(allReviews);
+                },
+                function (error) {
+                    res.sendStatus(400);
+                }
+            );
     }
 };

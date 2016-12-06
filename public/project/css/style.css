@@ -12,14 +12,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Apple Braille",sans-serif;
+    font-family: "American Typewriter",sans-serif;
     font-weight: 500;
-}
-
-/* Carousal */
-.carousal-images{
-    width: 100%;
-    height: 50%;
 }
 
 
@@ -35,14 +29,13 @@ h6 {
 }
 
 .homepage-header {
-    padding-top: 50px;
-    padding-bottom: 100px;
+    padding-top:100px;
+    padding-bottom: 200px;
     text-align: center;
     color: black;
-    background: url("../img/home1.jpg") no-repeat center center;
+    background: url("../img/unsplash.jpg") no-repeat center center;
     background-size: cover;
 }
-
 
 /* Portfolio - for main page 'New Release' and 'Reviews' */
 

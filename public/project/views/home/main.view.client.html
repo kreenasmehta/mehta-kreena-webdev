@@ -38,56 +38,27 @@
 
 
 <!--Home page image-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div class="homepage-header">
 
-	<!-- Wrapper -->
-	<div class="carousel-inner" role="listbox">
-		<div class="item active">
-			<img ng-src="/project/img/home1.jpg" class="carousal-images">
-		</div>
-	</div>
 </div>
-<br>
 
 <div class="container main-content-padding">
+
 
 	<!--New Release-->
 	<div class="main-page-heading">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-lg-offset-1 text-center">
-					<h2>New Release Books</h2>
+					<h2>Discover the world of Literature!</h2>
+					<h3>New Release Books</h3>
 					<hr class="small">
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4" ng-repeat="newRelease in model.newReleases">
 							<div class="portfolio-item">
-								<a href="#">
-									<h4>The Alchemist</h4>
-									<img class="img-portfolio img-responsive" src="">
-								</a>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="portfolio-item">
-								<a href="#">
-									<h4>The Alchemist</h4>
-									<img class="img-portfolio img-responsive" src="">
-								</a>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="portfolio-item">
-								<a href="#">
-									<h4>The Alchemist</h4>
-									<img class="img-portfolio img-responsive" src="">
-								</a>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="portfolio-item">
-								<a href="#">
-									<h4>The Alchemist</h4>
-									<img class="img-portfolio img-responsive" src="">
+								<a ng-click="model.getBookDetails(newRelease.id)">
+									<h4>{{newRelease.volumeInfo.title}}</h4>
+									<img class="img-portfolio img-responsive" ng-src="{{newRelease.volumeInfo.imageLinks.thumbnail}}">
 								</a>
 							</div>
 						</div>
@@ -105,43 +76,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-lg-offset-1 text-center">
-					<h2>Reviews from the Readers</h2>
+					<h3>Reviews from the Readers</h3>
 					<hr class="small">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-6" ng-repeat="readerReview in model.readerReviews">
 							<div class="portfolio-item">
-								<h3>Book Title</h3>
+								<h3>{{readerReview.title}}</h3>
 								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+									{{readerReview.review}}
 								</p>
-								<em>- Reviewer Name</em>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="portfolio-item">
-								<h3>Book Title</h3>
-								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								</p>
-								<em>- Reviewer Name</em>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="portfolio-item">
-								<h3>Book Title</h3>
-								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								</p>
-								<em>- Reviewer Name</em>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="portfolio-item">
-								<h3>Book Title</h3>
-								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								</p>
-								<em>- Reviewer Name</em>
+								<em>- {{readerReview.firstName}} {{readerReview.lastName}}</em>
 							</div>
 						</div>
 					</div>

@@ -6,6 +6,8 @@ module.exports = function (app, model) {
 
     var passport      = require('passport');
     var LocalStrategy    = require('passport-local').Strategy;
+    var FacebookStrategy = require('passport-facebook').Strategy;
+
     var cookieParser  = require('cookie-parser');
     var session       = require('express-session');
     app.use(session({
@@ -27,10 +29,66 @@ module.exports = function (app, model) {
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
     app.post('/api/login', passport.authenticate('local'), login);
+    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.get('/api/user/:uid/follows', getFollowsOfUser);
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/project/index.html#/user/',
+            failureRedirect: '/#/login'
+        }));
+
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+
+    /**
+     * facebook strategy to login with Facebook credentials
+     * @param token
+     * @param refreshToken
+     * @param profile
+     * @param done
+     */
+    function facebookStrategy(token, refreshToken, profile, done) {
+        model.userModel
+            .findUserByFacebookId(profile.id)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var nameParts = profile.displayName.split(" ");
+                        var newFacebookUser = {
+                            username:  nameParts[0]+nameParts[1],
+                            firstName: nameParts[0],
+                            lastName:  nameParts[1],
+                            facebook: {
+                                id:    profile.id,
+                                token: token
+                            }
+                        };
+                        return model.userModel.createUser(newFacebookUser);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            )
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
+                    if (err) { return done(err); }
+                }
+            );
+    }
 
 
     /**
@@ -167,6 +225,8 @@ module.exports = function (app, model) {
             findUserByCredentials(req, res);
         } else if(query.username){
             findUserByUsername(req, res);
+        }else{
+            res.json(req.user);
         }
     }
 
@@ -280,6 +340,11 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * get the users that the current user is following
+     * @param req
+     * @param res
+     */
     function getFollowsOfUser(req, res) {
         var userId = req.params.uid;
 

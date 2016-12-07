@@ -15,11 +15,17 @@ module.exports = function () {
         updateUser: updateUser,
         deleteUser: deleteUser,
         findUserByName: findUserByName,
-        findUserByIdExtended: findUserByIdExtended
+        findUserByIdExtended: findUserByIdExtended,
+        findUserByFacebookId: findUserByFacebookId
     };
 
     return api;
 
+    /**
+     * get the extended user, user object populated with follows users
+     * @param userId
+     * @returns {Promise}
+     */
     function findUserByIdExtended(userId) {
         return UserModel
             .findById(userId)
@@ -105,6 +111,15 @@ module.exports = function () {
                 firstName: new RegExp(readerName, 'i')
             }
         );
+    }
+
+    /**
+     * find a user using their facebook id
+     * @param facebookId
+     * @returns {Query|*}
+     */
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
     }
 
 };

@@ -16,6 +16,10 @@ module.exports = function () {
         email: String,
         role:{type:String, enum:["READER", "ADMIN"], default:"READER"},
         follows: {type: [mongoose.Schema.Types.ObjectId], ref:"UserModel", default:[]},
+        facebook:{
+            id: String,
+            token: String
+        },
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: "kmuser"});
 

@@ -96,6 +96,11 @@
                 controller: "BookDetailsController",
                 controllerAs: "model"
             })
+            .when("/book/:bid/user/:uid", {
+                templateUrl: "views/book/book.view.client.html",
+                controller: "BookDetailsController",
+                controllerAs: "model"
+            })
             .when("/search/readers", {
                 templateUrl: "views/search/readers.view.client.html",
                 controller: "ReaderSearchController",

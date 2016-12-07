@@ -21,6 +21,7 @@
         var title = $routeParams['title'];
         var author = $routeParams['author'];
         var genre = $routeParams['genre'];
+        var userId = $routeParams['uid'];
 
         /**
          * checklogin, get reviews of a book on loading the page
@@ -208,7 +209,9 @@
                 $location.url("/search/author/"+author);
             } else if (genre){
                 $location.url("/search/genre/"+genre);
-            } else{
+            } else if(userId){
+                $location.url("/user/"+userId+"/bookshelf");
+            }else{
                 $location.url("/main");
             }
             

@@ -57,7 +57,7 @@
         }
 
         function getNewReleasedBooks() {
-            return $http.get("https://www.googleapis.com/books/v1/volumes?q=new");
+            return $http.get("https://www.googleapis.com/books/v1/volumes?q=%22%20%22&orderBy=newest");
         }
 
 

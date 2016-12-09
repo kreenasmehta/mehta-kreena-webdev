@@ -74,6 +74,10 @@
             return $http.delete(url);
         }
 
+        /**
+         * get all the reviews
+         * @returns {*}
+         */
         function getAllReviews() {
             var url = "/api/review";
             return $http.get(url);

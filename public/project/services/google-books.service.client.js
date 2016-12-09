@@ -56,6 +56,10 @@
             return $http.get("https://www.googleapis.com/books/v1/volumes?q=subject:"+genre);
         }
 
+        /**
+         * get the newest books
+         * @returns {*}
+         */
         function getNewReleasedBooks() {
             return $http.get("https://www.googleapis.com/books/v1/volumes?q=%22%20%22&orderBy=newest");
         }

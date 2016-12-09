@@ -117,16 +117,23 @@
             return $http.post("/api/logout");
         }
 
+        /**
+         * register a user
+         * @param user
+         * @returns {*}
+         */
         function register(user) {
             return $http.post("/api/register", user);
         }
 
+        /**
+         * get the users that are followed by the user with the given userId
+         * @param userId
+         * @returns {*}
+         */
         function getFollowsOfUser(userId) {
             var url = "/api/user/"+userId+"/follows";
             return $http.get(url);
         }
-
-
-
     }
 })();

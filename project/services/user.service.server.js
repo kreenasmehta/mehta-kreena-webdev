@@ -24,6 +24,7 @@ module.exports = function (app, model) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
+    app.get('/api/admin/user',findAllUsers);
     app.post('/api/user', createUser);
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
@@ -32,6 +33,7 @@ module.exports = function (app, model) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.post('/api/checkLogin', checkLogin);
+    app.post('/api/checkAdmin', checkAdmin);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.get('/api/user/:uid/follows', getFollowsOfUser);
@@ -143,6 +145,24 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * find all the users
+     * @param req
+     * @param res
+     */
+    function findAllUsers(req, res) {
+        model.userModel
+            .findAllUsers()
+            .then(
+                function (users) {
+                    res.json(users);
+                },
+                function (error) {
+                    res.sendStatus(400);
+                }
+            );
+    }
+
 
     /**
      * login
@@ -161,6 +181,21 @@ module.exports = function (app, model) {
      */
     function checkLogin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    /**
+     * check admin
+     * @param req
+     * @param res
+     */
+    function checkAdmin(req, res) {
+        var loggedIn = req.isAuthenticated();
+        var isAdmin = req.user.role == "ADMIN";
+        if(loggedIn && isAdmin){
+            res.json(req.user);
+        } else{
+            res.send('0');
+        }
     }
 
     /**

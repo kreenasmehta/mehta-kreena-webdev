@@ -13,6 +13,7 @@
         vm.showFollowingReaders = showFollowingReaders;
         vm.back = back;
         var readerName = $routeParams['readerName'];
+        var adminId = $routeParams['adminId'];
 
         /**
          * check login, find the reader profile, find the reader bookshelf on loading the page
@@ -87,14 +88,22 @@
             }
         }
 
+        /**
+         * show all the following readers
+         */
         function showFollowingReaders() {
             $location.url("/user/"+vm.currentUser._id+"/follows");
         }
 
+        /**
+         * back button functionality
+         */
         function back() {
             if(readerName){
                 $location.url("/search/readers/"+readerName);
-            } else{
+            } else if(adminId){
+                $location.url("/admin");
+            }else{
                 $location.url("/user/" +vm.currentUser._id + "/follows");
             }
 

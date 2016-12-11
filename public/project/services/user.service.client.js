@@ -20,7 +20,9 @@
             login: login,
             checkLogin: checkLogin,
             logout: logout,
-            register: register
+            register: register,
+            checkAdmin: checkAdmin,
+            getAllUsers: getAllUsers
         };
 
         return api;
@@ -133,6 +135,23 @@
          */
         function getFollowsOfUser(userId) {
             var url = "/api/user/"+userId+"/follows";
+            return $http.get(url);
+        }
+
+        /**
+         * check admin
+         * @returns {*}
+         */
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
+        }
+
+        /**
+         * find all the users
+         * @returns {*}
+         */
+        function getAllUsers() {
+            var url = '/api/admin/user';
             return $http.get(url);
         }
     }

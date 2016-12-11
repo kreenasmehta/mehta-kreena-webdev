@@ -121,10 +121,23 @@
                 controller: "ReaderProfileController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/profile/:pid/admin/:adminId", {
+                templateUrl: "views/user/readerProfile.view.client.html",
+                controller: "ReaderProfileController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/follows", {
                 templateUrl: "views/user/followingReaders.view.client.html",
                 controller: "FollowingReadersController",
                 controllerAs: "model"
+            })
+            .when("/admin", {
+                templateUrl: "views/admin/user-list.view.client.html",
+                controller: "UserListController",
+                controllerAs: "model",
+                resolve: {
+                    checkAdmin: checkAdmin
+                }
             })
             .otherwise({
                 redirectTo: "/main"
@@ -140,6 +153,28 @@
             var deferred = $q.defer();
             UserService
                 .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0'){
+                            deferred.resolve();
+                        } else{
+                            deferred.reject();
+                        }
+                    }
+                );
+            return deferred.promise;
+        }
+
+        /**
+         * check admin
+         * @param $q
+         * @param UserService
+         * @returns {jQuery.promise|promise.promise|d.promise|*|promise}
+         */
+        function checkAdmin($q, UserService) {
+            var deferred = $q.defer();
+            UserService
+                .checkAdmin()
                 .success(
                     function (user) {
                         if(user != '0'){

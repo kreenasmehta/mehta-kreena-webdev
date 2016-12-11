@@ -79,9 +79,9 @@
 					<h3>Reviews from the Readers</h3>
 					<hr class="small">
 					<div class="row">
-						<div class="col-md-6" ng-repeat="readerReview in model.readerReviews">
+						<div class="col-md-12" ng-repeat="readerReview in model.readerReviews">
 							<div class="portfolio-item">
-								<h3>{{readerReview.title}}</h3>
+								<a ng-click="model.getBookDetails(readerReview._book)"><h3>{{readerReview.title}}</h3></a>
 								<p>
 									{{readerReview.review}}
 								</p>

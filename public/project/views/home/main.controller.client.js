@@ -39,7 +39,8 @@
             ReviewService
                 .getAllReviews()
                 .success(function (allReviews) {
-                    vm.readerReviews = allReviews;
+                    //Displaying only top 4 reviews
+                    vm.readerReviews = allReviews.splice(0,4);
                 })
                 .error(function (error) {
 

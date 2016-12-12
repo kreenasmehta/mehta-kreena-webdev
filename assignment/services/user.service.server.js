@@ -67,7 +67,12 @@ module.exports = function (app, model) {
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
-
+    /**
+     * check if logged in and self
+     * @param req
+     * @param res
+     * @param next
+     */
     function loggedInAndSelf(req, res, next) {
         var loggedIn = req.isAuthenticated();
         var userId = req.params.uid;
@@ -79,7 +84,13 @@ module.exports = function (app, model) {
         }
     }
 
-
+    /**
+     * google strategy
+     * @param token
+     * @param refreshToken
+     * @param profile
+     * @param done
+     */
     function googleStrategy(token, refreshToken, profile, done) {
         console.log(profile);
         model.userModel
@@ -118,6 +129,13 @@ module.exports = function (app, model) {
             );
     }
 
+    /**
+     * facebook strategy
+     * @param token
+     * @param refreshToken
+     * @param profile
+     * @param done
+     */
     function facebookStrategy(token, refreshToken, profile, done) {
         model.userModel
             .findUserByFacebookId(profile.id)
@@ -156,15 +174,30 @@ module.exports = function (app, model) {
     }
 
 
+    /**
+     * logout
+     * @param req
+     * @param res
+     */
     function logout(req, res) {
         req.logout();
         res.sendStatus(200);
     }
 
+    /**
+     * check login
+     * @param req
+     * @param res
+     */
     function checkLogin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
+    /**
+     * check admin
+     * @param req
+     * @param res
+     */
     function checkAdmin(req, res) {
         var loggedIn = req.isAuthenticated();
         var isAdmin = req.user.role == "ADMIN";
@@ -175,10 +208,20 @@ module.exports = function (app, model) {
         }
     }
 
+    /**
+     * serialize user
+     * @param user
+     * @param done
+     */
     function serializeUser(user, done) {
         done(null, user);
     }
 
+    /**
+     * deserialize user
+     * @param user
+     * @param done
+     */
     function deserializeUser(user, done) {
         model.userModel
             .findUserById(user._id)
@@ -193,6 +236,12 @@ module.exports = function (app, model) {
     }
 
 
+    /**
+     * local strategy
+     * @param username
+     * @param password
+     * @param done
+     */
     function localStrategy(username, password, done) {
         model.userModel
             .findUserByUsername(username)
@@ -212,12 +261,22 @@ module.exports = function (app, model) {
     }
 
 
+    /**
+     * login
+     * @param req
+     * @param res
+     */
     function login(req, res) {
         var user = req.user;
         res.json(user);
     }
 
 
+    /**
+     * register
+     * @param req
+     * @param res
+     */
     function register (req, res) {
         var user = req.body;
         user.password = bcrypt.hashSync(user.password);
